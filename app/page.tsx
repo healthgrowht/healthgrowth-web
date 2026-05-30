@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from '../Navbar';
-import Footer from '../Footer';
-import { SITE_CONFIG } from '../constants';
+import Navbar from './Navbar';
+import Footer from './Footer';
+import { SITE_CONFIG } from './constants';
 
 export default function TermsAndConditions() {
   return (
