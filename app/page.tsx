@@ -23,8 +23,7 @@ export default function TermsAndConditions() {
             <h2 className="text-xl font-bold text-white mb-4">2. Naturaleza del Servicio</h2>
             <p>
               HealthGrowth SpA ofrece servicios de consultoría, arquitectura operativa, modernización digital 
-              y automatización de procesos para Pymes y profesionales del área salud. La evaluación gratuita 
-              no constituye una obligación de contratación por ninguna de las partes.
+              y automatización de procesos para Pymes y profesionales del área salud.
             </p>
           </section>
 
@@ -40,7 +39,7 @@ export default function TermsAndConditions() {
             <h2 className="text-xl font-bold text-white mb-4">4. Limitación de Responsabilidad</h2>
             <p>
               HealthGrowth SpA no será responsable de daños derivados del uso o la imposibilidad de utilizar 
-              los materiales en su sitio web, incluso si se ha notificado la posibilidad de tales daños.
+              los materiales en su sitio web.
             </p>
           </section>
         </div>

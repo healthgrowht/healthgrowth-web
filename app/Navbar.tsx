@@ -1,39 +1,39 @@
 "use client";
 import React from 'react';
 import Image from 'next/image';
-import { NAV_LINKS, SITE_CONFIG } from './constants';
+import { SITE_CONFIG, NAV_LINKS } from './constants';
 
 export default function Navbar() {
   return (
-    <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-black/50 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <a href="/" className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10 transition-transform group-hover:scale-110">
-              <Image 
-                src={SITE_CONFIG.assets.logo} 
-                alt="HealthGrowth Logo" 
-                fill 
-                className="object-contain"
-              />
-            </div>
-            <span className="font-bold tracking-tighter text-xl uppercase italic text-white group-hover:text-blue-400 transition-colors">HealthGrowth</span>
-          </a>
-        </div>
-        
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
+    <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3 rounded-full border border-white/10 bg-black/50 backdrop-blur-xl">
+        <a href="/" className="flex items-center gap-3 group">
+          <Image 
+            src={SITE_CONFIG.assets.logo} 
+            alt="HealthGrowth SpA" 
+            width={32} 
+            height={32} 
+            className="transition-transform group-hover:scale-110"
+          />
+          <span className="text-white font-bold tracking-tighter text-lg uppercase hidden md:block">
+            {SITE_CONFIG.brand}
+          </span>
+        </a>
+
+        <div className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
-            <a key={link.href} href={link.href} className="hover:text-white transition-colors">
+            <a 
+              key={link.href} 
+              href={link.href} 
+              className="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors"
+            >
               {link.name}
             </a>
           ))}
         </div>
 
-        <a 
-          href="#diagnostico" 
-          className="px-5 py-2.5 rounded-full bg-white/10 border border-white/10 text-sm font-bold hover:bg-white hover:text-black transition-all"
-        >
-          Asesoría Gratis
+        <a href="#diagnostico" className="px-6 py-2 bg-blue-600 text-white rounded-full text-xs font-bold hover:bg-blue-500 transition-all">
+          Evaluación Gratis
         </a>
       </div>
     </nav>

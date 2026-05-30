@@ -43,10 +43,9 @@ export const SITE_CONFIG = {
 };
 
 export const NAV_LINKS = [
-  { name: "¿Qué hacemos?", href: "#mision" },
-  { name: "Beneficios", href: "#beneficios" },
+  { name: "Casos de Uso", href: "#casos-uso" },
   { name: "Packs Pyme", href: "#packs" },
   { name: "Línea Salud", href: "#salud" },
-  { name: "Caso Piloto", href: "#piloto" },
-  { name: "Confianza", href: "#seguridad" },
+  { name: "Autoridad", href: "#autoridad" },
+  { name: "FAQ", href: "#faq" },
 ];
