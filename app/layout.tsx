@@ -15,17 +15,46 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.domain),
-  title: "healthgrowth SpA | Modernización Digital y Acompañamiento Pyme",
-  description: "Especialistas en organización operativa y arquitectura de sistemas para minipymes y servicios de salud. Recupera el orden de tu negocio con rigor clínico.",
-  keywords: ["modernización digital pymes", "automatización chile", "CRM para salud", "gestión operativa pyme", "healthgrowth"],
-  authors: [{ name: "Luis Carlos Alberto Villanueva Andrades" }],
+  title: {
+    default: "Health Growth SpA | Modernización y Crecimiento para PYMEs",
+    template: "%s | Health Growth SpA",
+  },
+  description: "Ayudamos a PYMEs y profesionales a crecer mediante sistemas de organización, automatización e Inteligencia Artificial que blindan su operación y potencian su crecimiento.",
+  keywords: ["modernización pyme", "transformación digital", "automatización de procesos", "ecosistemas digitales", "inteligencia artificial para negocios", "consultoría pyme chile", "health growth"],
+  authors: [{ name: SITE_CONFIG.legal.founder, url: SITE_CONFIG.domain }],
+  creator: SITE_CONFIG.legal.founder,
+  publisher: SITE_CONFIG.legal.companyName,
   openGraph: {
-    title: "healthgrowth SpA - Modernización de Negocios",
-    description: "Acompañamiento práctico y sistemas operativos para emprendedores chilenos.",
+    title: "Health Growth SpA | Orden, Tecnología y Crecimiento para tu Negocio",
+    description: "Sistemas de organización, automatización e IA para PYMEs.",
     url: SITE_CONFIG.domain,
-    siteName: "healthgrowth SpA",
+    siteName: SITE_CONFIG.legal.companyName,
+    images: [
+      {
+        url: "/seo/og-image.jpg", // Ruta para Open Graph
+        width: 1200,
+        height: 630,
+      },
+    ],
     locale: "es_CL",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Health Growth SpA | Modernización y Crecimiento para PYMEs",
+    description: "Transformamos tu operación con tecnología, automatización e Inteligencia Artificial.",
+    images: ["/seo/twitter-image.jpg"], // Ruta para Twitter Cards
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 

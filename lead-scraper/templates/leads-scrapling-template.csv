@@ -1,0 +1,2 @@
+id,nombre_negocio,rubro,ciudad,zona,direccion,telefono,email,instagram,web,google_maps_url,calificacion,resenas,fuente,tiene_web,tiene_whatsapp,tiene_instagram,problema_visible,oportunidad_detectada,servicio_sugerido,prioridad,estado,fecha_extraccion,observaciones
+HG-001,Ejemplo Negocio,peluqueria-canina,Santiago,Ñuñoa,Av. Irarrázaval 1234,+56912345678,,@ejemplo_ig,https://ejemplo.cl,https://maps.google.com/?q=ejemplo,4.3,47,google_maps,SÍ,SÍ,SÍ,Instagram inactivo,Optimización Instagram + CTA,Pack Impulso Pyme,alta,prospecto,2026-06-23,Solo tiene web estática sin formulario

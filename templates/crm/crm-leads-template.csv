@@ -1,0 +1,2 @@
+id,nombre,empresa,rubro,instagram,web,whatsapp,email,ciudad,fuente,problema_detectado,servicio_sugerido,estado,prioridad,fecha_primer_contacto,fecha_ultimo_contacto,proxima_accion,observaciones
+HG-001,Ejemplo Cliente,Mi Negocio SpA,centro-estetico,@minegocio_ig,https://minegocio.cl,+56912345678,contacto@minegocio.cl,Santiago,instagram,Instagram inactivo - sin CTA en bio,Pack Impulso Pyme,prospecto,alta,2026-06-23,2026-06-23,Enviar checklist de Chimi,Primera semana de contacto
