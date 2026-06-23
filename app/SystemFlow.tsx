@@ -97,15 +97,6 @@ export default function SystemFlow() {
         </div>
       </div>
 
-      <style jsx>{`
-        @keyframes data-flow {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
-        .animate-data-flow {
-          animation: data-flow 3s linear infinite;
-        }
-      `}</style>
     </motion.section>
   );
 }
