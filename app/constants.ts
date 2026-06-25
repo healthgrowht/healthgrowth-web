@@ -9,21 +9,22 @@ export const SITE_CONFIG = {
   seo: {
     title: 'Health Growth | Ecosistema de Modernización para PYMEs',
     description: 'Impulsamos la transformación digital de las PYMEs a través de ecosistemas tecnológicos que garantizan orden, eficiencia y escalabilidad.',
-    ogImage: '/seo/og-image.png',
-    twitterImage: '/seo/twitter-image.png',
+    ogImage: '/seo/og-image.svg',
+    twitterImage: '/seo/twitter-image.svg',
   },
 
   legal: {
     companyName: 'Health Growth SpA',
     founder: 'Luis Carlos Alberto Villanueva Andrades',
-    rut: '[TODO: RUT definitivo]',
+    rut: '77.XXX.XXX-K',
     foundationYear: 2026,
     privacyPolicyUrl: '/politica-de-privacidad',
     termsAndConditionsUrl: '/terminos-y-condiciones',
   },
 
   contact: {
-    email: 'contacto@healthgrowth.cl',
+    email: 'agenda.salud.digital@gmail.com',
+    emailFuture: 'contacto@healthgrowth.cl',
     whatsapp: {
       number: '+56 9 5101 7947',
       url: 'https://wa.me/56951017947',
@@ -41,26 +42,38 @@ export const SITE_CONFIG = {
   },
 
   social: {
-    instagram: 'https://instagram.com/healthgrowthspa',
-    facebook: 'https://facebook.com/healthgrowthspa',
-    linkedin: '[TODO: URL LinkedIn]',
+    instagram: {
+      active: true,
+      url: 'https://www.instagram.com/healthgrowthspa/',
+      handle: '@healthgrowthspa',
+    },
+    facebook: {
+      active: false,
+      url: '',
+      handle: 'healthgrowthspa',
+    },
+    linkedin: {
+      active: false,
+      url: '',
+      handle: 'health-growth-spa',
+    },
   },
 
   assets: {
     logo: '/logo/health-growth-logo.svg',
-    favicon: '/favicon/favicon.ico',
+    favicon: '/favicon/favicon.svg',
   },
 
   founder: {
     name: 'Luis Carlos Alberto Villanueva Andrades',
-    image: '/images/founder/luis-villanueva.jpg', // [TODO: foto del fundador]
+    image: '/images/founder/founder.svg',
   },
 
   pilotProjects: {
     patitasFelices: {
       name: 'Patitas Felices',
       images: {
-        main: '/images/patitas-felices/main.jpg', // [TODO: foto del caso]
+        main: '/images/patitas-felices/main.svg',
       },
     },
   },
@@ -84,7 +97,7 @@ export const SITE_CONFIG = {
 
   navLinks: [
     { name: 'Soluciones', href: '#soluciones' },
-    { name: 'Nosotros', href: '#autoridad' },
+    { name: 'Misión', href: '#mision' },
     { name: 'Chimi', href: '#chimi' },
     { name: 'Caso Éxito', href: '#piloto' },
     { name: 'FAQ', href: '#faq' },

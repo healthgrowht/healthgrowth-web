@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.legal.companyName,
     images: [
       {
-        url: "/seo/og-image.jpg", // Ruta para Open Graph
+        url: SITE_CONFIG.seo.ogImage,
         width: 1200,
         height: 630,
       },
@@ -39,11 +39,16 @@ export const metadata: Metadata = {
     locale: "es_CL",
     type: "website",
   },
+  icons: {
+    icon: SITE_CONFIG.assets.favicon,
+    shortcut: SITE_CONFIG.assets.favicon,
+    apple: SITE_CONFIG.assets.favicon,
+  },
   twitter: {
     card: "summary_large_image",
     title: "Health Growth SpA | Modernización y Crecimiento para PYMEs",
     description: "Transformamos tu operación con tecnología, automatización e Inteligencia Artificial.",
-    images: ["/seo/twitter-image.jpg"], // Ruta para Twitter Cards
+    images: [SITE_CONFIG.seo.twitterImage],
   },
   robots: {
     index: true,

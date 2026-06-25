@@ -3,12 +3,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const benefitsList = [
-  { title: "Más Clientes", desc: "Sistemas de captación optimizados que atraen y convierten leads de forma constante." },
-  { title: "Cero Oportunidades Perdidas", desc: "Automatización y seguimiento riguroso para que ningún contacto se quede sin atención." },
-  { title: "Negocio Organizado", desc: "Información centralizada y procesos claros que eliminan el caos operativo." },
-  { title: "Continuidad Comercial", desc: "Tu negocio funciona 24/7, con recordatorios y reactivación automática de clientes." },
-  { title: "Decisiones Inteligentes", desc: "Datos organizados y análisis para tomar mejores decisiones estratégicas." },
-  { title: "Libertad para Crecer", desc: "Automatiza tareas repetitivas y enfócate en lo que realmente importa: tu visión." }
+  { title: "Más Confianza", desc: "Tu marca se percibe profesional, seria y lista para recibir a clientes exigentes." },
+  { title: "Atención Impecable", desc: "Flujos de WhatsApp ordenados para responder rápido y sin perder ninguna oportunidad." },
+  { title: "Agenda Inteligente", desc: "Reservas claras, confirmaciones automáticas y reducción drástica de inasistencias." },
+  { title: "Datos Seguros", desc: "Un registro centralizado donde conoces la historia y preferencias de cada cliente." },
+  { title: "Innovación Real", desc: "Aplicamos Inteligencia Artificial de manera práctica para facilitar tu gestión diaria." },
+  { title: "Tranquilidad Mental", desc: "Delegas el estrés operativo en sistemas confiables y te enfocas en entregar tu servicio." }
 ];
 
 export default function Benefits() {
@@ -22,10 +22,10 @@ export default function Benefits() {
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
-          <span className="text-xs font-bold uppercase tracking-[0.4em] text-blue-500 mb-4 block">Resultados Tangibles</span>
-          <h2 className="text-3xl md:text-6xl font-bold tracking-tighter text-white mb-6">Tu negocio, potenciado.</h2>
+          <span className="text-xs font-bold uppercase tracking-[0.4em] text-indigo-400 mb-4 block">El Resultado</span>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-6">Un negocio que fluye y crece</h2>
           <p className="text-gray-500 text-lg md:text-xl max-w-3xl mx-auto font-light">
-            Transformamos tu operación con sistemas que no solo resuelven problemas, sino que impulsan tu crecimiento.
+            La tecnología y el orden no son un gasto, son la base indispensable para escalar tu servicio con tranquilidad.
           </p>
         </div>
 
@@ -37,14 +37,10 @@ export default function Benefits() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="p-8 rounded-[32px] bg-zinc-900/30 border border-white/5 hover:border-blue-500/30 hover:bg-zinc-900/50 transition-all duration-500 group"
+              className="p-8 rounded-[32px] bg-zinc-900/20 border border-white/5 hover:border-indigo-500/30 hover:bg-zinc-900/40 transition-all duration-500 group shadow-lg"
             >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-full bg-blue-600/20 flex items-center justify-center text-xl text-blue-300 group-hover:bg-blue-600/40 transition-colors">
-                  {i + 1}
-                </div>
-                <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">{benefit.title}</h3>
-              </div>
+              <div className="w-2 h-2 rounded-full bg-indigo-500/50 mb-6 group-hover:scale-150 transition-transform" />
+              <h3 className="text-xl font-bold text-white mb-4 group-hover:text-indigo-300 transition-colors">{benefit.title}</h3>
               <p className="text-gray-500 font-light leading-relaxed">
                 {benefit.desc}
               </p>

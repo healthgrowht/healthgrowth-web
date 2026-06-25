@@ -1,14 +1,13 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 export default function Problem() {
   const issues = [
-    "Clientes que se pierden por falta de respuesta inmediata.",
-    "Dependencia absoluta de la memoria o de cuadernos físicos.",
-    "Falta de seguimiento comercial tras el primer contacto.",
-    "Desorden operativo que genera fugas de ingresos invisibles."
+    "Desorden en la atención y pérdida de tiempo valioso.",
+    "Clientes potenciales que se enfrían por falta de seguimiento.",
+    "Dependencia de la memoria para gestionar reservas y confirmaciones.",
+    "Una imagen digital que no refleja la calidad real de tu servicio."
   ];
 
   return (
@@ -17,38 +16,28 @@ export default function Problem() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6 }}
-      className="py-24 px-6 bg-zinc-950/30 border-b border-white/5"
+      className="py-32 px-6 border-b border-white/5 bg-zinc-950/30"
     >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div className="space-y-8">
-          <span className="text-xs font-bold uppercase tracking-[0.3em] text-red-500/80 block">El Diagnóstico Actual</span>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white leading-[1.1]">
-            El desorden es el drenaje silencioso de tus utilidades
-          </h2>
-          <p className="text-gray-400 text-lg font-light">
-            Muchas minipymes no fallan por falta de clientes, sino por la incapacidad de gestionar la información con eficiencia.
-          </p>
-          <ul className="space-y-4">
+      <div className="max-w-4xl mx-auto text-center mb-16">
+        <span className="text-xs font-bold uppercase tracking-[0.3em] text-zinc-500 block mb-4">El Problema</span>
+        <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight mb-8">
+          El desorden es el freno silencioso de tu negocio
+        </h2>
+        <p className="text-gray-400 text-lg md:text-xl font-light leading-relaxed">
+          La mayoría de las pequeñas empresas y profesionales no se estancan por falta de talento, sino por la incapacidad de gestionar su operación diaria de manera eficiente.
+        </p>
+      </div>
+
+      <div className="max-w-3xl mx-auto">
+        <div className="p-8 md:p-12 rounded-[32px] bg-zinc-900/30 border border-white/5 shadow-2xl backdrop-blur-sm">
+          <ul className="space-y-6">
             {issues.map((issue, i) => (
-              <li key={i} className="flex items-start gap-4 text-gray-500 text-sm">
-                <span className="text-red-900 font-bold">✕</span> {issue}
+              <li key={i} className="flex items-center gap-4 text-gray-300 text-base md:text-lg font-light">
+                <div className="min-w-8 h-8 rounded-full bg-zinc-800 border border-white/10 flex items-center justify-center text-zinc-500 text-sm">✕</div>
+                {issue}
               </li>
             ))}
           </ul>
-        </div>
-        
-        <div className="relative w-full aspect-video rounded-3xl overflow-hidden border border-red-500/10 group">
-          <Image 
-            src="/images/visuals/disorder.jpg"
-            alt="Desorden operativo"
-            fill
-            className="object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-700"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent" />
-          <div className="absolute bottom-8 left-8">
-            <p className="text-2xl font-black text-red-500 mb-1">PÉRDIDA SILENCIOSA</p>
-            <p className="text-[10px] font-mono text-gray-400 uppercase tracking-widest">Fugas operativas detectadas en el modelo tradicional</p>
-          </div>
         </div>
       </div>
     </motion.section>

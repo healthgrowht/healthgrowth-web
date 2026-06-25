@@ -17,7 +17,7 @@ const industries = [
 export default function UseCases() {
   return (
     <motion.section 
-      id="casos-uso"
+      id="soluciones"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
@@ -48,10 +48,11 @@ export default function UseCases() {
         </div>
 
         <div className="mt-16 p-8 rounded-[32px] bg-indigo-500/5 border border-indigo-500/20 text-center max-w-3xl mx-auto">
-          <p className="text-indigo-300 font-medium mb-6 italic text-lg">"Toda gran empresa comenzó ordenando sus cimientos."</p>
+          <p className="text-indigo-300 font-medium mb-6 italic text-lg">&ldquo;Toda gran empresa comenzó ordenando sus cimientos.&rdquo;</p>
           <a 
-            href={SITE_CONFIG.whatsapp.url} 
+            href={SITE_CONFIG.whatsapp.url}
             target="_blank"
+            rel="noreferrer"
             className="text-white font-bold hover:underline underline-offset-8"
           >
             Ver cómo aplicar esto a mi rubro &rarr;

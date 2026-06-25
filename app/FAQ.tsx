@@ -6,23 +6,23 @@ import { SITE_CONFIG } from './constants';
 const faqs = [
   {
     q: "¿Es esto una agencia de marketing?",
-    a: "No. Las agencias te traen clics; nosotros construimos el sistema para que esos clics se conviertan en dinero. Somos arquitectos de procesos y automatización."
+    a: "No. Las agencias tradicionales se enfocan en likes o campañas. Nosotros nos enfocamos en tu operación: ordenamos tu agenda, mejoramos tu atención por WhatsApp y profesionalizamos tu imagen digital para que crezcas sobre una base sólida."
   },
   {
     q: "¿Mi negocio es muy pequeño para esto?",
-    a: "Al contrario. Las empresas grandes ya tienen estos sistemas. Health Growth nace para que las pymes tengan acceso a la tecnología de élite de forma accesible y escalable."
+    a: "Al contrario. Nuestro objetivo es que emprendedores, profesionales independientes y minipymes tengan acceso a la misma organización, imagen y tecnología que usan las grandes empresas, pero adaptado a su realidad."
   },
   {
     q: "¿Necesito conocimientos técnicos?",
-    a: "Ninguno. Nosotros implementamos, configuramos y capacitamos a tu equipo. Tu única tarea es atender a los clientes que el sistema organizará por ti."
+    a: "Ninguno. Nosotros nos encargamos de implementar, configurar y dejar todo funcionando. Nuestro enfoque es que la tecnología trabaje para ti de forma simple, guiándote paso a paso en su uso."
   },
   {
     q: "¿Cuánto tiempo toma ver resultados?",
-    a: "Desde el Nivel 1 (Presencia Digital) el cambio de imagen es inmediato. Los sistemas de automatización suelen estar operativos y generando ahorro de tiempo en menos de 15 días."
+    a: "El impacto en tu imagen profesional (Presencia Digital) es inmediato. Los sistemas de organización y recordatorios suelen estar operativos e integrados en menos de un mes, generándote ahorro de tiempo desde el primer día de uso."
   },
   {
     q: "¿Cuál es la inversión requerida?",
-    a: "No creemos en tarifas planas porque no existen negocios idénticos. Nuestra estrategia comienza con un diagnóstico gratuito donde identificamos tus fugas operativas. Basándonos en ese análisis, te entregamos una propuesta personalizada, rentable y adaptada a la escala de tu negocio."
+    a: "Contamos con servicios desde la creación de una Presencia Digital Profesional hasta la implementación de Sistemas Inteligentes completos. La inversión depende del nivel de modernización que tu negocio necesite ahora. Inicia solicitando una evaluación sin costo."
   }
 ];
 
@@ -52,13 +52,13 @@ export default function FAQ() {
             >
               <button 
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full p-8 text-left flex items-center justify-between group"
+                className="w-full p-8 text-left flex items-center justify-between group transition-colors hover:bg-zinc-800/30"
               >
-                <h4 className="text-lg font-bold text-white flex items-center gap-3 group-hover:text-blue-400 transition-colors">
-                  <span className="text-blue-500 text-sm font-mono">0{i+1}.</span>
+                <h4 className="text-lg font-bold text-white flex items-center gap-3 group-hover:text-indigo-300 transition-colors">
+                  <span className="text-indigo-500/50 text-sm font-mono">0{i+1}</span>
                   {faq.q}
                 </h4>
-                <span className={`text-blue-500 transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`}>
+                <span className={`text-indigo-400 transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`}>
                   ↓
                 </span>
               </button>
@@ -83,10 +83,11 @@ export default function FAQ() {
         <div className="mt-16 text-center">
           <p className="text-gray-600 text-sm italic">¿Tienes otra pregunta? Luis te responde directamente.</p>
           <a 
-            href={SITE_CONFIG.whatsapp.url} 
+            href={SITE_CONFIG.whatsapp.url}
             target="_blank"
-            className="text-blue-500 font-bold hover:text-blue-400 transition-colors"
-          >Hablar con fundador &rarr;</a>
+            rel="noreferrer"
+            className="text-indigo-400 font-bold hover:text-indigo-300 transition-colors"
+          >Habla directamente con nosotros &rarr;</a>
         </div>
       </div>
     </motion.section>

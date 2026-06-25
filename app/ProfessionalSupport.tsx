@@ -63,7 +63,7 @@ export default function ProfessionalSupport() {
             </div>
 
             <div className="pt-4">
-               <p className="text-xs text-gray-600 italic">"Garantizo la continuidad de tu negocio con la misma precisión que requiere una unidad crítica."</p>
+               <p className="text-xs text-gray-600 italic">&ldquo;Garantizo la continuidad de tu negocio con la misma precisión que requiere una unidad crítica.&rdquo;</p>
             </div>
           </div>
         </div>

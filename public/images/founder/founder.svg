@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="f" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" rx="90" fill="url(#f)" />
+  <circle cx="300" cy="220" r="120" fill="#64748b" />
+  <rect x="180" y="320" width="240" height="180" rx="80" fill="#1e293b" />
+  <path d="M210 330 Q300 270 390 330" stroke="#cbd5e1" stroke-width="28" fill="none" stroke-linecap="round" />
+  <text x="50%" y="88%" text-anchor="middle" fill="#cbd5e1" font-size="42" font-family="Inter, system-ui, sans-serif" font-weight="700">Fundador</text>
+</svg>
