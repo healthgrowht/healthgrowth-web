@@ -1,20 +1,17 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { SITE_CONFIG } from './constants';
 
 const WA_MESSAGE = 'Hola Luis, acabo de completar el formulario en la web. Me gustaría avanzar con la evaluación.';
 
 export default function DiagnosticForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
-  const [selectedService, setSelectedService] = useState('');
-
-  useEffect(() => {
-    const stored = sessionStorage.getItem('hg-pack');
-    if (stored) {
-      setSelectedService(stored);
-      sessionStorage.removeItem('hg-pack');
-    }
-  }, []);
+  const [selectedService, setSelectedService] = useState<string>(() => {
+    if (typeof window === 'undefined') return '';
+    const stored = sessionStorage.getItem('hg-pack') ?? '';
+    if (stored) sessionStorage.removeItem('hg-pack');
+    return stored;
+  });
 
   const openWhatsApp = () => {
     window.open(
