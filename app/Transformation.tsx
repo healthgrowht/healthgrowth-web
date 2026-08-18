@@ -1,6 +1,4 @@
 "use client";
-import React from 'react';
-
 export default function Transformation() {
   return (
     <section id="transformacion" className="py-32 px-6 bg-zinc-950/50 border-y border-white/5">
@@ -29,7 +27,7 @@ export default function Transformation() {
               <li className="text-gray-300 text-sm flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-indigo-500" /> Presencia profesional que atrae y da seguridad</li>
               <li className="text-gray-300 text-sm flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-indigo-500" /> Agenda digital clara y sin cruces de horarios</li>
               <li className="text-gray-300 text-sm flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-indigo-500" /> WhatsApp profesional y respuestas estructuradas</li>
-              <li className="text-gray-300 text-sm flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-indigo-500" /> Recordatorios automáticos que aseguran asistencia</li>
+              <li className="text-gray-300 text-sm flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-indigo-500" /> Recordatorios automáticos que ayudan a reducir inasistencias</li>
               <li className="text-gray-300 text-sm flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-indigo-500" /> Tiempo libre para concentrarte en dar tu servicio</li>
             </ul>
           </div>

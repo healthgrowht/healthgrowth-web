@@ -1,4 +1,3 @@
-import React from 'react';
 import Image from 'next/image';
 import { SITE_CONFIG } from './constants';
 
@@ -29,10 +28,10 @@ export default function ProfessionalSupport() {
             
             <div className="space-y-4 text-gray-400 text-lg font-light leading-relaxed">
               <p>
-                Enfermero Universitario con más de 10 años de experiencia profesional en áreas críticas de salud, incluyendo UPC, UCI, Pabellón Central, coordinación clínica, gestión de procesos y trabajo en entornos de alta complejidad.
+                Enfermero Universitario con más de 10 años de experiencia en áreas críticas — UPC, UCI, Pabellón Central, coordinación clínica y gestión de procesos en entornos de alta complejidad donde el error no es una opción.
               </p>
               <p>
-                A partir de su experiencia profesional, comprendió cómo las organizaciones pierden tiempo, dinero y oportunidades debido al desorden operativo, la falta de procesos y la escasa digitalización.
+                Esa experiencia le enseñó algo que las consultoras digitales no ven: <strong className="text-white/80">el desorden operativo cuesta más que la tecnología.</strong> Decidió cruzar su mirada clínica con sistemas digitales, automatización e IA aplicada para ayudar a PYMEs a ordenarse antes de crecer.
               </p>
               
               <div className="py-6 space-y-4">
@@ -52,7 +51,7 @@ export default function ProfessionalSupport() {
               </div>
 
               <p>
-                Así nace <strong>Health Growth</strong>, enfocada en ayudar a tu empresa a integrar todas estas herramientas en un ecosistema que aporte valor real, cercanía y crecimiento.
+                Así nace <strong>Health Growth</strong>: la misma precisión que exige una UCI, aplicada a ordenar tu operación, tu atención y tu crecimiento.
               </p>
             </div>
 
@@ -60,10 +59,13 @@ export default function ProfessionalSupport() {
               <span className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-xs text-gray-400 font-medium">Operaciones</span>
               <span className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-xs text-gray-400 font-medium">Tecnología</span>
               <span className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-xs text-gray-400 font-medium">Procesos</span>
+              <span className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-xs text-gray-400 font-medium">IA Aplicada</span>
+              <span className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-xs text-gray-400 font-medium">Automatización</span>
+              <span className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-xs text-gray-400 font-medium">Healthtech</span>
             </div>
 
             <div className="pt-4">
-               <p className="text-xs text-gray-600 italic">&ldquo;Garantizo la continuidad de tu negocio con la misma precisión que requiere una unidad crítica.&rdquo;</p>
+               <p className="text-xs text-gray-600 italic">&ldquo;La misma precisión que exige una unidad crítica, aplicada a ordenar tu negocio.&rdquo;</p>
             </div>
           </div>
         </div>

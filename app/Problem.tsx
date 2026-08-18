@@ -1,13 +1,15 @@
 "use client";
-import React from 'react';
 import { motion } from 'framer-motion';
 
 export default function Problem() {
   const issues = [
-    "Desorden en la atención y pérdida de tiempo valioso.",
-    "Clientes potenciales que se enfrían por falta de seguimiento.",
-    "Dependencia de la memoria para gestionar reservas y confirmaciones.",
-    "Una imagen digital que no refleja la calidad real de tu servicio."
+    "Mensajes de WhatsApp sin responder y clientes que se van con la competencia.",
+    "Agenda desordenada: cruces de horario, olvidos y cancelaciones sin aviso.",
+    "Sin seguimiento: leads que llegan pero nunca se convierten en clientes.",
+    "Dependencia total de la memoria o de papeles para gestionar el día.",
+    "Redes sociales sin estrategia: presencia sin resultados ni coherencia.",
+    "Atención manual que consume horas que deberías usar en tu servicio.",
+    "Imagen digital que no transmite confianza ni refleja la calidad real de tu trabajo.",
   ];
 
   return (

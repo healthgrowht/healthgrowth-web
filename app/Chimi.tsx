@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { SITE_CONFIG } from './constants';
@@ -86,40 +86,38 @@ export default function Chimi() {
             <div className="flex items-center gap-4 p-6 border-b border-white/5 bg-zinc-900/80">
               <div className="relative w-12 h-12 rounded-full border-2 border-indigo-500/50 overflow-hidden flex-shrink-0">
                 <Image
-                  src="/images/chimi.svg"
+                  src="/images/chimi.jpeg"
                   alt="Chimi"
                   width={48}
                   height={48}
-                  className="object-cover w-full h-full"
+                  className="object-cover w-full h-full object-[85%_25%]"
                 />
               </div>
               <div className="flex-1">
                 <p className="text-white font-bold text-sm">Chimi</p>
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                  <span className="text-xs text-green-400 font-medium">Embajador Digital · En línea</span>
+                  <span className="text-xs text-green-400 font-medium">Embajador Digital · Vista previa del ecosistema</span>
                 </div>
               </div>
               <button
                 onClick={() => setChatOpen(!chatOpen)}
                 className="px-4 py-2 rounded-full bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 text-xs font-bold hover:bg-indigo-500/30 transition-all"
               >
-                {chatOpen ? 'Cerrar' : 'Chatear'}
+                {chatOpen ? 'Cerrar' : 'Explorar'}
               </button>
             </div>
 
             {/* Chimi image */}
-            <div className="relative p-8 flex justify-center">
-              <div className="relative w-48 h-48 group">
-                <div className="absolute inset-0 bg-indigo-500/20 blur-2xl rounded-full group-hover:bg-indigo-500/30 transition-all duration-700" />
-                <Image
-                  src="/images/chimi.svg"
-                  alt="Chimi — Embajador de Health Growth"
-                  width={192}
-                  height={192}
-                  className="relative z-10 w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
+            <div className="relative group overflow-hidden">
+              <div className="absolute inset-0 bg-indigo-500/10 blur-3xl group-hover:bg-indigo-500/20 transition-all duration-700" />
+              <Image
+                src="/images/chimi.jpeg"
+                alt="Chimi — Embajador de Health Growth"
+                width={640}
+                height={360}
+                className="relative z-10 w-full h-56 object-cover object-[85%_20%] transition-transform duration-700 group-hover:scale-105"
+              />
             </div>
 
             {/* Chat area */}
@@ -139,7 +137,7 @@ export default function Chimi() {
                       className="flex gap-3 items-start"
                     >
                       <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 border border-indigo-500/30">
-                        <Image src="/images/chimi.svg" alt="Chimi" width={32} height={32} className="w-full h-full object-cover" />
+                        <Image src="/images/chimi.jpeg" alt="Chimi" width={32} height={32} className="w-full h-full object-cover object-[85%_25%]" />
                       </div>
                       <div className="bg-zinc-800/80 border border-white/5 rounded-2xl rounded-tl-none px-4 py-3 max-w-xs">
                         <p className="text-white text-sm leading-relaxed">{CHIMI_MESSAGES[msgIndex]}</p>
@@ -159,9 +157,10 @@ export default function Chimi() {
                         rel="noreferrer"
                         className="flex-1 py-3 rounded-xl bg-[#25D366]/20 border border-[#25D366]/30 text-[#25D366] text-xs font-bold text-center hover:bg-[#25D366]/30 transition-all"
                       >
-                        WhatsApp
+                        Hablar real →
                       </a>
                     </div>
+                    <p className="text-center text-gray-700 text-[10px] pt-1">Este es un demo — el equipo real te atiende por WhatsApp</p>
                   </div>
                 </motion.div>
               )}

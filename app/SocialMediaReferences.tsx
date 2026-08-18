@@ -1,5 +1,4 @@
 "use client";
-import React from 'react';
 import { motion } from 'framer-motion';
 import { SITE_CONFIG } from './constants';
 import { InstagramIcon, WhatsAppIcon } from './SocialIcons';
@@ -21,7 +20,7 @@ const socialChannels = [
     name: 'Instagram',
     Icon: InstagramIcon,
     url: SITE_CONFIG.social.instagram.url,
-    description: 'Casos de éxito, tips diarios y contenido de transformación PYME.',
+    description: 'Avances del proyecto, tips para PYMEs y contenido de transformación digital.',
     handle: SITE_CONFIG.social.instagram.handle,
     color: 'from-pink-500/15 to-rose-600/5',
     border: 'hover:border-pink-500/40',

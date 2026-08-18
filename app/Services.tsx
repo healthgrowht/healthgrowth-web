@@ -1,5 +1,4 @@
 "use client";
-import React from 'react';
 import { motion } from 'framer-motion';
 
 const services = [
@@ -20,7 +19,7 @@ const services = [
   },
   {
     title: "Ecosistema de Crecimiento",
-    description: "Integramos tu negocio con sistemas de CRM, n8n y reportes para que tomes decisiones con datos.",
+    description: "Integramos tu negocio con herramientas digitales, seguimiento de clientes y reportes para que tomes decisiones con datos reales.",
     bullet: "Sistema organizado y escalable"
   }
 ];

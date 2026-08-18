@@ -1,19 +1,17 @@
-import React from 'react';
-
 const features = [
   {
-    title: "Atención 24/7",
-    description: "Sistemas inteligentes que responden y califican prospectos en WhatsApp mientras descansas.",
+    title: "Respuestas fuera del horario",
+    description: "Flujos automáticos en WhatsApp que responden y califican consultas cuando no estás disponible.",
     icon: "🤖"
   },
   {
-    title: "Seguimiento Infalible",
-    description: "Automatización de recordatorios y confirmaciones para reducir ausentismos a cero.",
+    title: "Seguimiento Programado",
+    description: "Recordatorios y confirmaciones automáticas que ayudan a reducir inasistencias y olvidos.",
     icon: "🔄"
   },
   {
     title: "Recuperación de Leads",
-    description: "IA programada para reactivar clientes antiguos y detectar oportunidades perdidas.",
+    description: "Flujos configurados para reactivar contactos que no cerraron y detectar oportunidades sin seguimiento.",
     icon: "📈"
   }
 ];
@@ -26,9 +24,9 @@ export default function AutomationAI() {
           <div className="lg:w-1/2 space-y-8">
             <div>
               <span className="text-xs font-bold uppercase tracking-[0.3em] text-blue-500 mb-4 block">Inteligencia Operativa</span>
-              <h2 className="text-3xl md:text-6xl font-bold tracking-tight text-white mb-6">Tu negocio nunca <br /> deja de trabajar</h2>
+              <h2 className="text-3xl md:text-6xl font-bold tracking-tight text-white mb-6">Tu operación trabaja<br /> aunque no estés</h2>
               <p className="text-gray-400 text-lg font-light leading-relaxed">
-                No es solo tecnología, es un sistema diseñado para garantizar que cada contacto reciba una respuesta impecable, profesional y oportuna.
+                Diseñamos flujos automáticos para que cada consulta tenga respuesta, cada cita tenga recordatorio y cada lead tenga seguimiento — sin que tengas que hacerlo todo tú a mano.
               </p>
             </div>
             
@@ -46,8 +44,11 @@ export default function AutomationAI() {
           </div>
           
           <div className="lg:w-1/2 w-full aspect-square rounded-[40px] bg-gradient-to-br from-blue-600/20 to-zinc-900 border border-white/10 flex items-center justify-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20" />
-            <div className="text-blue-500/50 font-mono text-xs animate-pulse text-center p-8"> [ SYSTEM_CORE_ACTIVE ] <br /> n8n_integration_ready </div>
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-indigo-600/10 rounded-[40px]" />
+            <div className="text-blue-500/50 font-mono text-xs animate-pulse text-center p-8 space-y-2">
+              <div>[ FLUJO ACTIVO ]</div>
+              <div>consulta → registro → seguimiento</div>
+            </div>
           </div>
         </div>
       </div>

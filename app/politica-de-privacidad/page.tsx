@@ -22,7 +22,10 @@ export default function PoliticaPrivacidad() {
           <section>
             <h2 className="text-xl font-semibold text-white mb-3">1. Responsable del Tratamiento</h2>
             <p>
-              {SITE_CONFIG.legal.founder} — Health Growth ({SITE_CONFIG.domain})<br />
+              {SITE_CONFIG.legal.companyName}<br />
+              RUT: {SITE_CONFIG.legal.rut}<br />
+              Representante: {SITE_CONFIG.legal.founder}<br />
+              Sitio web: {SITE_CONFIG.domain}<br />
               Contacto: {SITE_CONFIG.contact.email}
             </p>
           </section>

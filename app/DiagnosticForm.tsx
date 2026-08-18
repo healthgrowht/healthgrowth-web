@@ -1,11 +1,20 @@
 "use client";
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { SITE_CONFIG } from './constants';
 
 const WA_MESSAGE = 'Hola Luis, acabo de completar el formulario en la web. Me gustaría avanzar con la evaluación.';
 
 export default function DiagnosticForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
+  const [selectedService, setSelectedService] = useState('');
+
+  useEffect(() => {
+    const stored = sessionStorage.getItem('hg-pack');
+    if (stored) {
+      setSelectedService(stored);
+      sessionStorage.removeItem('hg-pack');
+    }
+  }, []);
 
   const openWhatsApp = () => {
     window.open(
@@ -14,7 +23,7 @@ export default function DiagnosticForm() {
     );
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('loading');
 
@@ -73,13 +82,13 @@ export default function DiagnosticForm() {
 
           <div className="text-center mb-16">
             <span className="text-xs font-bold uppercase tracking-[0.4em] text-indigo-400 mb-4 block">
-              Evaluación Inicial
+              Evaluación Inicial Gratuita
             </span>
             <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight text-white">
-              Conversemos sobre tu negocio
+              Cuéntanos sobre tu negocio
             </h2>
-            <p className="text-gray-400 text-lg font-light">
-              Completa tus datos y nos pondremos en contacto para entender cómo podemos ayudarte a crecer con orden.
+            <p className="text-gray-400 text-lg font-light max-w-xl mx-auto leading-relaxed">
+              No es un formulario largo. Son tus datos básicos para que Luis te contacte en menos de 24 horas y entienda qué tiene más sentido implementar primero.
             </p>
           </div>
 
@@ -138,17 +147,26 @@ export default function DiagnosticForm() {
               <label htmlFor="service" className="text-[10px] font-bold uppercase tracking-widest text-gray-500 ml-2">
                 Servicio de Interés
               </label>
-              <select
-                id="service" name="service" required
-                className="w-full px-6 py-[18px] rounded-2xl bg-zinc-950/50 border border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition-all text-gray-300 font-light appearance-none"
-              >
-                <option value="">Seleccionar...</option>
-                <option value="presencia">Presencia Digital</option>
-                <option value="redes">Redes Sociales</option>
-                <option value="salud">Línea Salud</option>
-                <option value="automatizacion">Organización Operativa</option>
-                <option value="personalizado">Sistema Integral</option>
-              </select>
+              <div className="relative">
+                <select
+                  id="service" name="service" required
+                  value={selectedService}
+                  onChange={(e) => setSelectedService(e.target.value)}
+                  className="w-full px-6 py-[18px] rounded-2xl bg-zinc-950/50 border border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition-all text-gray-300 font-light appearance-none pr-12"
+                >
+                  <option value="">Seleccionar...</option>
+                  <option value="presencia">Presencia Digital</option>
+                  <option value="redes">Redes Sociales</option>
+                  <option value="salud">Línea Salud</option>
+                  <option value="automatizacion">Organización Operativa</option>
+                  <option value="personalizado">Sistema Integral</option>
+                </select>
+                <div className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-gray-500">
+                  <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+                    <path d="M1 1l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+              </div>
             </div>
 
             <div className="space-y-2">
@@ -167,7 +185,7 @@ export default function DiagnosticForm() {
                 ¿Cuál es tu mayor desafío actual en la atención y ventas?
               </label>
               <textarea
-                id="challenge" name="challenge" rows={4}
+                id="challenge" name="challenge" rows={4} required
                 placeholder="Cuéntanos brevemente sobre tu negocio y qué te gustaría mejorar..."
                 className="w-full px-6 py-4 rounded-2xl bg-zinc-950/50 border border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition-all resize-none placeholder:text-zinc-700 text-white font-light"
               />

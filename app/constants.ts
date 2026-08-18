@@ -7,8 +7,8 @@ export const SITE_CONFIG = {
   domain: 'https://healthgrowth.cl',
 
   seo: {
-    title: 'Health Growth | Ecosistema de Modernización para PYMEs',
-    description: 'Impulsamos la transformación digital de las PYMEs a través de ecosistemas tecnológicos que garantizan orden, eficiencia y escalabilidad.',
+    title: 'Health Growth | Orden, Tecnología y Crecimiento para PYMEs Chilenas',
+    description: 'Ayudamos a PYMEs y negocios de servicios a ordenar su atención, automatizar procesos y crecer con tecnología simple. Sin caos, sin sistemas complejos.',
     ogImage: '/seo/og-image.svg',
     twitterImage: '/seo/twitter-image.svg',
   },
@@ -16,7 +16,7 @@ export const SITE_CONFIG = {
   legal: {
     companyName: 'Health Growth SpA',
     founder: 'Luis Carlos Alberto Villanueva Andrades',
-    rut: '77.XXX.XXX-K',
+    rut: '78.342.421-5',
     foundationYear: 2026,
     privacyPolicyUrl: '/politica-de-privacidad',
     termsAndConditionsUrl: '/terminos-y-condiciones',
@@ -61,6 +61,7 @@ export const SITE_CONFIG = {
 
   assets: {
     logo: '/logo/health-growth-logo.svg',
+    logoPng: '/logo/health-growth-logo.jpeg',
     favicon: '/favicon/favicon.svg',
   },
 
@@ -96,10 +97,10 @@ export const SITE_CONFIG = {
   },
 
   navLinks: [
+    { name: 'Servicios', href: '#servicios' },
     { name: 'Soluciones', href: '#soluciones' },
     { name: 'Misión', href: '#mision' },
-    { name: 'Chimi', href: '#chimi' },
-    { name: 'Caso Éxito', href: '#piloto' },
+    { name: 'Caso Patitas', href: '#piloto' },
     { name: 'FAQ', href: '#faq' },
   ],
 };

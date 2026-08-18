@@ -1,5 +1,4 @@
 "use client";
-import React from 'react';
 import { motion } from 'framer-motion';
 
 const points = [
@@ -15,7 +14,7 @@ export default function WhyHealthGrowth() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-20">
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-blue-500 mb-4 block">Diferenciación Operativa</span>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-6">¿Por qué HealthGrowth?</h2>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-6">¿Por qué Health Growth?</h2>
           <p className="text-gray-500 text-lg max-w-2xl font-light leading-relaxed">
             No somos una agencia convencional ni diseñadores gráficos tradicionales. Somos socios estratégicos para tu modernización.
           </p>

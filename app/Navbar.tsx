@@ -1,6 +1,7 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { SITE_CONFIG } from './constants';
 
@@ -27,13 +28,15 @@ export default function Navbar() {
           }`}
         >
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group" onClick={closeMenu}>
-            <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-500 to-blue-600 text-white font-bold text-sm group-hover:shadow-lg group-hover:shadow-indigo-500/50 transition-all">
-              HG
-            </div>
-            <span className="text-white font-bold tracking-tight text-base uppercase hidden md:block bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-              Health Growth
-            </span>
+          <Link href="/" className="flex items-center group" onClick={closeMenu}>
+            <Image
+              src={SITE_CONFIG.assets.logo}
+              alt="Health Growth SpA"
+              width={140}
+              height={56}
+              className="h-10 w-auto object-contain group-hover:opacity-90 transition-opacity"
+              priority
+            />
           </Link>
 
           {/* Desktop nav */}

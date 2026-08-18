@@ -1,13 +1,12 @@
 "use client";
-import React from 'react';
 import { motion } from 'framer-motion';
 
 const steps = [
   { id: 1, label: "Instagram", sub: "Captación", icon: "📱" },
-  { id: 2, label: "Landing HG", sub: "Conversión", icon: "🌐" },
+  { id: 2, label: "Landing", sub: "Conversión", icon: "🌐" },
   { id: 3, label: "Formulario", sub: "Calificación", icon: "📝" },
-  { id: 4, label: "n8n Core", sub: "Automatización", icon: "⚙️" },
-  { id: 5, label: "CRM HG", sub: "Seguimiento", icon: "📂" },
+  { id: 4, label: "Automatización", sub: "Flujos digitales", icon: "⚙️" },
+  { id: 5, label: "CRM", sub: "Seguimiento", icon: "📂" },
   { id: 6, label: "WhatsApp", sub: "Cierre", icon: "💬" },
 ];
 
@@ -28,8 +27,8 @@ export default function SystemFlow() {
           <span className="text-xs font-bold uppercase tracking-[0.4em] text-blue-500 mb-4 block">Arquitectura Operativa</span>
           <h2 className="text-3xl md:text-6xl font-bold tracking-tighter text-white mb-6">El Flujo de Crecimiento</h2>
           <p className="text-gray-500 text-lg md:text-xl max-w-3xl mx-auto font-light">
-            Diseñamos sistemas donde la información fluye sin interrupciones, asegurando que 
-            <span className="text-white"> cada lead sea gestionado con rigor clínico</span>.
+            Diseñamos sistemas donde la información fluye sin interrupciones, asegurando que
+            <span className="text-white"> cada oportunidad sea captada, calificada y seguida</span>.
           </p>
         </div>
 
@@ -84,15 +83,15 @@ export default function SystemFlow() {
         <div className="mt-28 flex flex-wrap justify-center gap-x-12 gap-y-6 text-[10px] font-mono text-gray-600 uppercase tracking-[0.2em]">
           <div className="flex items-center gap-2">
             <div className="w-1.5 h-1.5 rounded-full bg-blue-500/40" />
-            Sincronización API-REST
+            Conexión entre canales
           </div>
           <div className="flex items-center gap-2">
             <div className="w-1.5 h-1.5 rounded-full bg-blue-500/40" />
-            Trazabilidad Lead-to-Sale
+            Seguimiento de oportunidades
           </div>
           <div className="flex items-center gap-2">
             <div className="w-1.5 h-1.5 rounded-full bg-blue-500/40" />
-            Encriptación End-to-End
+            Manejo Responsable de Datos
           </div>
         </div>
       </div>

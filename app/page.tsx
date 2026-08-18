@@ -1,4 +1,3 @@
-import React from 'react';
 import Navbar from './Navbar';
 import Hero from './Hero';
 import Problem from './Problem';
@@ -14,6 +13,7 @@ import UseCases from './UseCases';
 import Chimi from './Chimi';
 import Roquito from './Roquito';
 import SocialProof from './SocialProof';
+import VideoShowcase from './VideoShowcase';
 import SocialMediaReferences from './SocialMediaReferences';
 import FAQ from './FAQ';
 import DiagnosticForm from './DiagnosticForm';
@@ -49,7 +49,8 @@ export default function Home() {
       <SocialProof />
       <Roquito />
       
-      {/* 6. REDES SOCIALES Y CONEXIÓN */}
+      {/* 6. VIDEOS Y REDES SOCIALES */}
+      <VideoShowcase />
       <SocialMediaReferences />
       
       {/* 7. DUDAS FINALES Y ACCIÓN */}

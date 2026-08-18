@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { SITE_CONFIG } from './constants';
 import { InstagramIcon, WhatsAppIcon } from './SocialIcons';
 
@@ -10,15 +11,21 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-16 pb-16 border-b border-white/10">
           {/* Logo & Company Info */}
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-blue-600 text-white font-bold flex items-center justify-center text-sm">
-                HG
-              </div>
-              <span className="font-bold text-lg text-white">{SITE_CONFIG.legal.companyName}</span>
+            <div className="mb-6">
+              <Image
+                src={SITE_CONFIG.assets.logo}
+                alt={SITE_CONFIG.legal.companyName}
+                width={200}
+                height={80}
+                className="h-14 w-auto object-contain"
+              />
             </div>
-            <p className="text-gray-500 text-sm mb-2">Transformación Digital de PYMEs</p>
-            <p className="text-gray-600 text-[11px] uppercase tracking-widest mb-6">
-              Fundada {SITE_CONFIG.legal.foundationYear}
+            <p className="text-gray-500 text-sm mb-2">Modernización Tecnológica para PYMEs · Chile</p>
+            <p className="text-gray-600 text-[11px] uppercase tracking-widest">
+              Empresa Constituida · {SITE_CONFIG.legal.foundationYear}
+            </p>
+            <p className="text-gray-700 text-[10px] font-mono tracking-widest mb-6">
+              RUT {SITE_CONFIG.legal.rut}
             </p>
             {/* Active social icons */}
             <div className="flex items-center gap-3">
@@ -125,7 +132,7 @@ export default function Footer() {
           <p>
             &copy; {SITE_CONFIG.legal.foundationYear} {SITE_CONFIG.legal.companyName}. Todos los derechos reservados.
           </p>
-          <p>Diseñado y construido con precisión para PYMEs transformadoras.</p>
+          <p>Orden · Automatización · Crecimiento Real</p>
           <p className="text-gray-700">{SITE_CONFIG.domain}</p>
         </div>
       </div>

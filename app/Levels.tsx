@@ -1,6 +1,12 @@
 "use client";
-import React from 'react';
 import { motion } from 'framer-motion';
+
+const packValues: Record<string, string> = {
+  "Presencia Digital": "presencia",
+  "Orden Comercial": "automatizacion",
+  "Automatización": "automatizacion",
+  "Sistema de Crecimiento": "personalizado",
+};
 
 const levels = [
   { 
@@ -24,15 +30,15 @@ const levels = [
     title: "Automatización", 
     icon: "⚙️",
     color: "from-purple-500/20 to-purple-600/10",
-    items: ["Recordatorios Automáticos", "IA de Clasificación", "WhatsApp Inteligente", "Recuperación de Leads"],
+    items: ["Recordatorios Automáticos", "Clasificación de consultas", "WhatsApp con seguimiento", "Recuperación de Leads"],
     description: "Deja que la tecnología trabaje mientras tú creces."
   },
   { 
     phase: "04", 
-    title: "Ecosistema Total", 
+    title: "Sistema de Crecimiento",
     icon: "🚀",
     color: "from-pink-500/20 to-pink-600/10",
-    items: ["Dashboards n8n", "Inteligencia Operativa", "Seguimiento Avanzado", "Integración CRM Pro"],
+    items: ["Paneles de seguimiento", "Inteligencia Operativa", "Seguimiento Avanzado", "Integración CRM Pro"],
     description: "Toma decisiones con datos reales, en tiempo real."
   }
 ];
@@ -56,7 +62,7 @@ export default function Levels() {
           </h2>
           <div className="h-1 w-20 bg-gradient-to-r from-indigo-600 to-blue-600 mb-8" />
           <p className="text-gray-500 text-base md:text-lg max-w-2xl font-light leading-relaxed">
-            Implementación por fases para garantizar resultados tangibles sin saturar la operación diaria de tu negocio. Cada nivel construye sobre el anterior.
+            Implementación por fases diseñada para generar resultados concretos sin saturar la operación diaria de tu negocio. Cada nivel construye sobre el anterior.
           </p>
         </motion.div>
       </div>
@@ -102,9 +108,17 @@ export default function Levels() {
             </ul>
 
             {/* CTA Button */}
-            <button className="w-full px-4 py-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-xs font-bold text-indigo-300 hover:bg-indigo-500/20 hover:border-indigo-500/50 transition-all uppercase tracking-wider group-hover:scale-105">
-              Conocer Detalles
-            </button>
+            <a
+              href="#diagnostico"
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  sessionStorage.setItem('hg-pack', packValues[item.title] ?? '');
+                }
+              }}
+              className="w-full px-4 py-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-xs font-bold text-indigo-300 hover:bg-indigo-500/20 hover:border-indigo-500/50 transition-all uppercase tracking-wider group-hover:scale-105 text-center block"
+            >
+              Conocer Detalles →
+            </a>
           </motion.div>
         ))}
       </div>
