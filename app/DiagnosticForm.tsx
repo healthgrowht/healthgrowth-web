@@ -26,7 +26,13 @@ export default function DiagnosticForm() {
 
     const formData = new FormData(e.currentTarget);
     const data = {
-      ...Object.fromEntries(formData.entries()),
+      nombre:   String(formData.get('fullName') ?? ''),
+      negocio:  String(formData.get('company') ?? ''),
+      email:    String(formData.get('email') ?? ''),
+      ciudad:   String(formData.get('commune') ?? ''),
+      rubro:    String(formData.get('service') ?? ''),
+      telefono: String(formData.get('whatsapp') ?? ''),
+      necesidad: String(formData.get('challenge') ?? ''),
       source: 'web-healthgrowth.cl',
       timestamp: new Date().toISOString(),
       utmSource: new URLSearchParams(window.location.search).get('utm_source') ?? 'directo',

@@ -90,8 +90,8 @@ export const SITE_CONFIG = {
 
   // Integraciones externas
   integrations: {
-    // Webhook n8n para recibir leads del formulario de diagnóstico
-    diagnosticWebhook: 'https://n8n.healthgrowth.cl/webhook/a0b41fdd-697f-4026-9c95-51a329b2cd00/webhook-hg/hg-captacion',
+    // Endpoint CRM Carlos OS — recibe leads del formulario de diagnóstico
+    diagnosticWebhook: 'https://api.healthgrowth.cl/api/capture',
     // [TODO: webhook CHIMI cuando esté activo]
     chimiWebhook: '',
   },
