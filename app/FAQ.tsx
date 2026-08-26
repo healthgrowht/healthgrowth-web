@@ -17,12 +17,12 @@ const faqs = [
     a: "No. Las agencias tradicionales se enfocan en likes o campañas. Nosotros nos enfocamos en tu operación: ordenamos tu agenda, mejoramos tu atención por WhatsApp, automatizamos el seguimiento de clientes y profesionalizamos tu imagen digital. El resultado es un negocio que vende y responde mejor."
   },
   {
-    q: "¿Incluye WhatsApp? ¿Y automatización?",
-    a: "Sí a ambas. WhatsApp Business profesional está incluido en todos nuestros servicios. Y a partir del nivel de Automatización, implementamos respuestas automáticas, recordatorios de citas, flujos de seguimiento de leads y recuperación de clientes inactivos mediante flujos digitales configurados para tu negocio."
-  },
-  {
     q: "¿Mi negocio es muy pequeño para esto?",
     a: "Al contrario. Trabajamos principalmente con negocios chicos y medianos, porque son quienes más ganan al ordenarse. No necesitas tener un equipo grande ni presupuesto corporativo. Si tienes clientes que atender y procesos que mejorar, podemos ayudarte."
+  },
+  {
+    q: "¿Incluye WhatsApp? ¿Y automatización?",
+    a: "Sí a ambas. WhatsApp Business profesional está incluido en todos nuestros servicios. Y a partir del nivel de Automatización, implementamos respuestas automáticas, recordatorios de citas, flujos de seguimiento de leads y recuperación de clientes inactivos."
   },
   {
     q: "¿Necesito saber de tecnología?",
@@ -42,47 +42,44 @@ const faqs = [
   },
   {
     q: "¿Qué pasa después de llenar el formulario?",
-    a: "Te contactamos por WhatsApp en menos de 24 horas para conocer más sobre tu negocio. Si hay un match, coordinamos una sesión de diagnóstico donde revisamos tu situación actual y te entregamos 3 mejoras concretas que puedes aplicar. Sin jerga técnica, sin venta agresiva."
+    a: "Te contactamos por WhatsApp en menos de 24 horas para conocer más sobre tu negocio. Si hay un match, coordinamos una sesión de diagnóstico donde revisamos tu situación actual y te entregamos 3 mejoras concretas. Sin jerga técnica, sin venta agresiva."
   },
   {
     q: "¿Cuánto cuesta? ¿Hay evaluación previa gratuita?",
-    a: "La evaluación inicial es completamente gratuita y sin compromiso. Los planes se cotizan después de esa evaluación, para recomendarte solo lo que realmente necesita tu negocio ahora. Los valores dependen del nivel de apoyo: orden digital básico, presencia web, contenido, automatización, seguimiento o acompañamiento completo. No publicamos precios fijos porque cada negocio es diferente — pero sí buscamos que la propuesta sea concreta, aterrizada y proporcional a tu realidad."
+    a: "La evaluación inicial es completamente gratuita y sin compromiso. Los planes se cotizan después de esa evaluación, para recomendarte solo lo que realmente necesita tu negocio ahora. No publicamos precios fijos porque cada negocio es diferente — pero sí buscamos que la propuesta sea concreta, aterrizada y proporcional a tu realidad."
   }
 ];
 
+const INITIAL_VISIBLE = 4;
+
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [showAll, setShowAll] = useState(false);
+
+  const visibleFaqs = showAll ? faqs : faqs.slice(0, INITIAL_VISIBLE);
 
   return (
-    <motion.section 
-      id="faq" 
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      className="py-32 px-6 bg-zinc-950/50 border-t border-white/5"
-    >
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-6">Preguntas Frecuentes</h2>
-          <p className="text-gray-500 text-lg">Todo lo que necesitas saber antes de dar el primer paso.</p>
+    <section id="faq" className="py-14 md:py-20 px-6 bg-zinc-950/50 border-t border-white/5">
+      <div className="max-w-3xl mx-auto">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-white mb-3">Preguntas Frecuentes</h2>
+          <p className="text-gray-500 text-sm">Todo lo que necesitas saber antes de dar el primer paso.</p>
         </div>
 
-        <div className="grid gap-6">
-          {faqs.map((faq, i) => (
-            <motion.div 
-              key={i} 
-              initial={false}
-              className="rounded-[32px] bg-zinc-900/30 border border-white/5 overflow-hidden"
+        <div className="grid gap-3">
+          {visibleFaqs.map((faq, i) => (
+            <div
+              key={i}
+              className="rounded-2xl bg-zinc-900/30 border border-white/5 overflow-hidden"
             >
-              <button 
+              <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full p-8 text-left flex items-center justify-between group transition-colors hover:bg-zinc-800/30"
+                className="w-full p-5 text-left flex items-center justify-between group hover:bg-zinc-800/30 transition-colors"
               >
-                <h4 className="text-lg font-bold text-white flex items-center gap-3 group-hover:text-indigo-300 transition-colors">
-                  <span className="text-indigo-500/50 text-sm font-mono">{String(i + 1).padStart(2, '0')}</span>
+                <h4 className="text-sm font-bold text-white group-hover:text-indigo-300 transition-colors pr-4">
                   {faq.q}
                 </h4>
-                <span className={`text-indigo-400 transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`}>
+                <span className={`text-indigo-400 flex-shrink-0 transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`}>
                   ↓
                 </span>
               </button>
@@ -92,28 +89,41 @@ export default function FAQ() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.25 }}
                   >
-                    <p className="px-8 pb-8 text-gray-400 leading-relaxed font-light">
+                    <p className="px-5 pb-5 text-gray-400 text-sm leading-relaxed font-light">
                       {faq.a}
                     </p>
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </div>
           ))}
         </div>
-        
-        <div className="mt-16 text-center">
-          <p className="text-gray-600 text-sm italic">¿Tienes otra pregunta? Luis te responde directamente.</p>
-          <a 
+
+        {!showAll && (
+          <div className="mt-4 text-center">
+            <button
+              onClick={() => setShowAll(true)}
+              className="px-6 py-3 rounded-full border border-white/15 text-gray-400 text-sm font-semibold hover:border-white/30 hover:text-white transition-all"
+            >
+              Ver más preguntas ({faqs.length - INITIAL_VISIBLE} restantes) ↓
+            </button>
+          </div>
+        )}
+
+        <div className="mt-8 text-center border-t border-white/5 pt-6">
+          <p className="text-gray-600 text-xs italic mb-2">¿Tienes otra pregunta? Luis te responde directamente.</p>
+          <a
             href={SITE_CONFIG.whatsapp.url}
             target="_blank"
             rel="noreferrer"
-            className="text-indigo-400 font-bold hover:text-indigo-300 transition-colors"
-          >Habla directamente con nosotros &rarr;</a>
+            className="text-indigo-400 text-sm font-bold hover:text-indigo-300 transition-colors"
+          >
+            Habla directamente con nosotros &rarr;
+          </a>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

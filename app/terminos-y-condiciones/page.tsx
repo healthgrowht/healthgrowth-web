@@ -9,14 +9,14 @@ export const metadata = {
 
 export default function TerminosCondiciones() {
   return (
-    <main className="bg-black text-white min-h-screen py-24 px-6">
+    <main className="bg-[#071428] text-white min-h-screen py-24 px-6">
       <div className="max-w-3xl mx-auto">
         <Link href="/" className="text-blue-500 text-sm hover:underline mb-8 inline-block">
           ← Volver al inicio
         </Link>
 
         <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">Términos y Condiciones</h1>
-        <p className="text-gray-500 text-sm mb-12">Última actualización: junio 2026</p>
+        <p className="text-gray-500 text-sm mb-12">Última actualización: agosto 2026</p>
 
         <div className="space-y-10 text-gray-300 leading-relaxed">
           <section>

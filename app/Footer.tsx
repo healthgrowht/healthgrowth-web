@@ -7,16 +7,17 @@ export default function Footer() {
   return (
     <footer className="py-20 border-t border-white/5 bg-gradient-to-b from-black via-zinc-950 to-black">
       <div className="max-w-7xl mx-auto px-6">
+
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-16 pb-16 border-b border-white/10">
           {/* Logo & Company Info */}
           <div>
             <div className="mb-6">
               <Image
-                src={SITE_CONFIG.assets.logo}
+                src={SITE_CONFIG.assets.logoPng}
                 alt={SITE_CONFIG.legal.companyName}
                 width={200}
-                height={80}
+                height={250}
                 className="h-14 w-auto object-contain"
               />
             </div>
@@ -117,10 +118,10 @@ export default function Footer() {
               <a href="#diagnostico" className="block text-gray-400 hover:text-indigo-400 transition-colors text-sm">
                 Evaluación Gratis
               </a>
-              <a href="#mision" className="block text-gray-400 hover:text-indigo-400 transition-colors text-sm">
-                Misión y Visión
+              <a href="#transformacion" className="block text-gray-400 hover:text-indigo-400 transition-colors text-sm">
+                Cómo funciona
               </a>
-              <a href="#chimi" className="block text-gray-400 hover:text-indigo-400 transition-colors text-sm">
+              <a href="#automatizacion" className="block text-gray-400 hover:text-indigo-400 transition-colors text-sm">
                 Chimi — Canal Oficial
               </a>
             </div>

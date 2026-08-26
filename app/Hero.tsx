@@ -5,51 +5,47 @@ import { SITE_CONFIG } from './constants';
 
 export default function Hero() {
   return (
-    <motion.section 
+    <motion.section
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="relative pt-40 pb-20 px-6 max-w-7xl mx-auto flex flex-col items-center text-center"
+      className="relative pt-28 md:pt-40 pb-14 md:pb-20 px-6 max-w-7xl mx-auto flex flex-col items-center text-center"
     >
-      {/* Logo Principal con Brillo de Marca */}
-      <div className="relative mt-10 mb-12 group">
-        <div className="absolute -inset-8 bg-indigo-500/15 blur-3xl rounded-3xl group-hover:bg-indigo-500/25 transition-all duration-700" />
+      <div className="relative mt-4 mb-8 group">
+        <div className="absolute -inset-6 bg-cyan-500/10 blur-3xl rounded-3xl group-hover:bg-cyan-500/15 transition-all duration-700" />
         <Image
-          src={SITE_CONFIG.assets.logo}
+          src={SITE_CONFIG.assets.logoPng}
           alt={SITE_CONFIG.legal.companyName}
-          width={340}
-          height={136}
+          width={200}
+          height={250}
           priority
-          className="relative z-10 h-32 md:h-40 w-auto object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-2xl"
+          className="relative z-10 h-28 md:h-36 w-auto object-contain drop-shadow-2xl"
         />
       </div>
 
-      <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-10 group hover:border-white/20 transition-all">
-        <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
-        <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase text-indigo-300">
-          Modernización Digital para PYMEs · Chile
+      <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-cyan-400/20 bg-cyan-500/5 backdrop-blur-md mb-10">
+        <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+        <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase text-cyan-300">
+          Digitalización · Gestión · Crecimiento · Chile
         </span>
       </div>
 
-      <h1 className="text-5xl md:text-7xl lg:text-[80px] font-bold tracking-tighter leading-[1] mb-10">
+      <h1 className="text-4xl md:text-6xl lg:text-[72px] font-bold tracking-tighter leading-[1.1] mb-6">
         Ordenamos tu negocio <br />
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-blue-400 to-teal-400">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500">
           para que venda mejor.
         </span>
       </h1>
 
-      <p className="max-w-3xl text-lg md:text-xl text-gray-400 font-light leading-relaxed mb-6">
-        Ordenamos tu atención, tus clientes y tus procesos para que tu negocio responda más rápido, pierda menos oportunidades y crezca con sistemas simples y automatizados.
+      <p className="max-w-2xl text-base md:text-lg text-gray-400 font-light leading-relaxed mb-12">
+        Ayudamos a PYMEs y negocios de servicios a ordenar su atención,
+        profesionalizar procesos y vender mejor — paso a paso, sin complicaciones técnicas.
       </p>
 
-      <p className="max-w-2xl text-sm md:text-base text-gray-400 font-light leading-relaxed mb-16">
-        Diagnóstico inicial gratuito. Implementación en semanas, sin instalaciones complejas ni curvas de aprendizaje. Acompañamiento real desde el primer día hasta que el sistema quede implementado y puedas usarlo con claridad.
-      </p>
-
-      <div className="flex flex-col sm:flex-row gap-8 items-center">
+      <div className="flex flex-col sm:flex-row gap-8 items-center mb-16">
         <a
           href="#diagnostico"
-          className="px-12 py-6 bg-white text-black rounded-full font-extrabold text-xl transition-all hover:shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:scale-105 active:scale-95"
+          className="px-12 py-6 bg-white text-black rounded-full font-extrabold text-xl transition-all hover:shadow-[0_0_40px_rgba(6,182,212,0.35)] hover:scale-105 active:scale-95"
         >
           Quiero ordenar mi negocio
         </a>
@@ -62,6 +58,14 @@ export default function Hero() {
           <span>Hablar por WhatsApp</span>
           <span className="text-xl">→</span>
         </a>
+      </div>
+
+      <div className="flex items-center gap-3 text-gray-600">
+        <div className="w-10 h-px bg-gradient-to-r from-transparent to-cyan-500/30" />
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-cyan-500/40 animate-bounce">
+          <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+        <div className="w-10 h-px bg-gradient-to-l from-transparent to-cyan-500/30" />
       </div>
     </motion.section>
   );

@@ -1,46 +1,49 @@
 "use client";
 import { motion } from 'framer-motion';
 
-export default function Problem() {
-  const issues = [
-    "Mensajes de WhatsApp sin responder y clientes que se van con la competencia.",
-    "Agenda desordenada: cruces de horario, olvidos y cancelaciones sin aviso.",
-    "Sin seguimiento: leads que llegan pero nunca se convierten en clientes.",
-    "Dependencia total de la memoria o de papeles para gestionar el día.",
-    "Redes sociales sin estrategia: presencia sin resultados ni coherencia.",
-    "Atención manual que consume horas que deberías usar en tu servicio.",
-    "Imagen digital que no transmite confianza ni refleja la calidad real de tu trabajo.",
-  ];
+const issues = [
+  { icon: "💬", text: "WhatsApp sin responder y clientes que se van con la competencia" },
+  { icon: "📅", text: "Agenda desordenada: cruces de horario y cancelaciones sin aviso" },
+  { icon: "🔕", text: "Leads que llegan pero nunca se convierten en clientes" },
+  { icon: "📋", text: "Todo en la memoria o en papeles, sin sistema claro" },
+  { icon: "📱", text: "Redes sociales sin estrategia: presencia sin resultados" },
+  { icon: "⏱️", text: "Atención manual consume horas que deberías usar en tu servicio" },
+  { icon: "🌐", text: "Imagen digital que no transmite la calidad real de tu trabajo" },
+];
 
+export default function Problem() {
   return (
-    <motion.section 
+    <motion.section
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6 }}
-      className="py-32 px-6 border-b border-white/5 bg-zinc-950/30"
+      className="py-16 md:py-24 px-6 bg-white"
     >
-      <div className="max-w-4xl mx-auto text-center mb-16">
-        <span className="text-xs font-bold uppercase tracking-[0.3em] text-zinc-500 block mb-4">El Problema</span>
-        <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight mb-8">
+      <div className="max-w-4xl mx-auto text-center mb-10 md:mb-14">
+        <span className="text-xs font-bold uppercase tracking-[0.3em] text-slate-400 block mb-4">¿Te pasa esto?</span>
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900 leading-tight mb-4">
           El desorden es el freno silencioso de tu negocio
         </h2>
-        <p className="text-gray-400 text-lg md:text-xl font-light leading-relaxed">
-          La mayoría de las pequeñas empresas y profesionales no se estancan por falta de talento, sino por la incapacidad de gestionar su operación diaria de manera eficiente.
+        <p className="text-gray-500 text-base md:text-lg font-light leading-relaxed max-w-2xl mx-auto">
+          La mayoría de los negocios no se estancan por falta de talento. Se estancan porque la operación diaria no tiene orden.
         </p>
       </div>
 
-      <div className="max-w-3xl mx-auto">
-        <div className="p-8 md:p-12 rounded-[32px] bg-zinc-900/30 border border-white/5 shadow-2xl backdrop-blur-sm">
-          <ul className="space-y-6">
-            {issues.map((issue, i) => (
-              <li key={i} className="flex items-center gap-4 text-gray-300 text-base md:text-lg font-light">
-                <div className="min-w-8 h-8 rounded-full bg-zinc-800 border border-white/10 flex items-center justify-center text-zinc-500 text-sm">✕</div>
-                {issue}
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {issues.map((issue, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.07 }}
+            className="flex items-start gap-3 p-4 rounded-2xl bg-red-50 border border-red-100"
+          >
+            <span className="text-xl flex-shrink-0">{issue.icon}</span>
+            <p className="text-gray-700 text-sm font-medium leading-snug">{issue.text}</p>
+          </motion.div>
+        ))}
       </div>
     </motion.section>
   );

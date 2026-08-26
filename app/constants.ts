@@ -97,10 +97,9 @@ export const SITE_CONFIG = {
   },
 
   navLinks: [
-    { name: 'Servicios', href: '#servicios' },
-    { name: 'Soluciones', href: '#soluciones' },
-    { name: 'Misión', href: '#mision' },
-    { name: 'Caso Patitas', href: '#piloto' },
+    { name: 'Cómo funciona', href: '#transformacion' },
+    { name: 'Soluciones', href: '#packs' },
+    { name: 'Caso Real', href: '#piloto' },
     { name: 'FAQ', href: '#faq' },
   ],
 };

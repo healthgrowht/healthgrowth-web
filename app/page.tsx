@@ -2,19 +2,11 @@ import Navbar from './Navbar';
 import Hero from './Hero';
 import Problem from './Problem';
 import Transformation from './Transformation';
-import Levels from './Levels';
-import SystemFlow from './SystemFlow';
-import Services from './Services';
-import AutomationAI from './AutomationAI';
-import Mission from './Mission';
-import WhyHealthGrowth from './WhyHealthGrowth';
-import ProfessionalSupport from './ProfessionalSupport';
+import PacksCanonical from './PacksCanonical';
 import UseCases from './UseCases';
-import Chimi from './Chimi';
-import Roquito from './Roquito';
-import SocialProof from './SocialProof';
-import VideoShowcase from './VideoShowcase';
-import SocialMediaReferences from './SocialMediaReferences';
+import AutomationAI from './AutomationAI';
+import CasoPatitas from './CasoPatitas';
+import ProfessionalSupport from './ProfessionalSupport';
 import FAQ from './FAQ';
 import DiagnosticForm from './DiagnosticForm';
 import Footer from './Footer';
@@ -22,41 +14,35 @@ import FloatingWhatsApp from './FloatingWhatsApp';
 
 export default function Home() {
   return (
-    <main className="bg-black text-white min-h-screen relative">
+    <main className="bg-[#071428] text-white min-h-screen relative">
       <Navbar />
-      
+
       {/* 1. ATENCIÓN */}
       <Hero />
-      
-      {/* 2. EL DOLOR Y LA IDENTIFICACIÓN */}
+
+      {/* 2. PROBLEMA + PROCESO */}
       <Problem />
-      <UseCases />
       <Transformation />
-      
-      {/* 3. LA SOLUCIÓN: HEALTHGROWTH ECOSYSTEM OS */}
-      <Levels />
-      <Services />
-      <SystemFlow />
+
+      {/* 3. SOLUCIONES */}
+      <PacksCanonical />
+
+      {/* 4. RUBROS */}
+      <UseCases />
+
+      {/* 5. CÓMO FUNCIONA + CHIMI */}
       <AutomationAI />
-      
-      {/* 4. PROPÓSITO Y AUTORIDAD */}
-      <Mission />
-      <WhyHealthGrowth />
+
+      {/* 6. CASO REAL — PATITAS FELICES + ROCCO */}
+      <CasoPatitas />
+
+      {/* 7. DIFERENCIADORES */}
       <ProfessionalSupport />
 
-      {/* 5. EMBAJADOR DIGITAL Y CASO FUNDACIONAL */}
-      <Chimi />
-      <SocialProof />
-      <Roquito />
-      
-      {/* 6. VIDEOS Y REDES SOCIALES */}
-      <VideoShowcase />
-      <SocialMediaReferences />
-      
-      {/* 7. DUDAS FINALES Y ACCIÓN */}
+      {/* 8. PREGUNTAS + FORMULARIO */}
       <FAQ />
       <DiagnosticForm />
-      
+
       <Footer />
       <FloatingWhatsApp />
     </main>

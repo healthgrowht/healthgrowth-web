@@ -9,14 +9,14 @@ export const metadata = {
 
 export default function PoliticaPrivacidad() {
   return (
-    <main className="bg-black text-white min-h-screen py-24 px-6">
+    <main className="bg-[#071428] text-white min-h-screen py-24 px-6">
       <div className="max-w-3xl mx-auto">
         <Link href="/" className="text-blue-500 text-sm hover:underline mb-8 inline-block">
           ← Volver al inicio
         </Link>
 
         <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">Política de Privacidad</h1>
-        <p className="text-gray-500 text-sm mb-12">Última actualización: junio 2026</p>
+        <p className="text-gray-500 text-sm mb-12">Última actualización: agosto 2026</p>
 
         <div className="space-y-10 text-gray-300 leading-relaxed">
           <section>
@@ -57,8 +57,8 @@ export default function PoliticaPrivacidad() {
             <h2 className="text-xl font-semibold text-white mb-3">4. Compartición de Datos</h2>
             <p>
               No vendemos, cedemos ni compartimos tus datos con terceros con fines comerciales.
-              Utilizamos herramientas de automatización (n8n) y CRM (Notion) para gestión interna,
-              sujetos a sus propias políticas de privacidad.
+              Utilizamos herramientas de automatización y gestión interna para el procesamiento de tu información,
+              sujetas a contratos de confidencialidad y a sus propias políticas de privacidad.
             </p>
           </section>
 

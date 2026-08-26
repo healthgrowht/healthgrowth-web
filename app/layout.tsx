@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: '#4f46e5',
+  themeColor: '#071428',
   colorScheme: 'dark',
   width: 'device-width',
   initialScale: 1,
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     "agenda digital negocios",
     "crm para pymes chile",
     "health growth spa",
-    "inteligencia artificial para pequeños negocios",
+    "digitalización de negocios chile",
     "transformación digital chile",
     "orden operativo pyme",
     "asistente digital negocios",
@@ -98,7 +98,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}>
-      <body className="min-h-full bg-black text-white selection:bg-blue-600 selection:text-white">
+      <body className="min-h-full bg-[#071428] text-white selection:bg-cyan-600 selection:text-white">
         {children}
       </body>
     </html>

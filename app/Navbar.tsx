@@ -30,10 +30,10 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center group" onClick={closeMenu}>
             <Image
-              src={SITE_CONFIG.assets.logo}
+              src={SITE_CONFIG.assets.logoPng}
               alt="Health Growth SpA"
               width={140}
-              height={56}
+              height={175}
               className="h-10 w-auto object-contain group-hover:opacity-90 transition-opacity"
               priority
             />
