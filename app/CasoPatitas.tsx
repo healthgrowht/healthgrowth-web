@@ -3,11 +3,11 @@ import { motion } from 'framer-motion';
 import { SITE_CONFIG } from './constants';
 
 const implemented = [
-  { icon: "🌐", item: "Landing page profesional con WhatsApp integrado" },
-  { icon: "📱", item: "Calendario de contenido y reels para Instagram" },
-  { icon: "🔔", item: "Automatización de confirmación y recordatorio de citas" },
-  { icon: "📋", item: "Registro de clientes y seguimiento de mascotas" },
-  { icon: "📊", item: "CRM básico operativo para gestión interna" },
+  { icon: "🌐", item: "Landing page profesional con WhatsApp integrado", done: true },
+  { icon: "📱", item: "Calendario de contenido y reels para Instagram", done: true },
+  { icon: "🔔", item: "Automatización de confirmación y recordatorio de citas", done: false },
+  { icon: "📋", item: "Registro de clientes y seguimiento de mascotas", done: true },
+  { icon: "📊", item: "CRM básico operativo para gestión interna", done: true },
 ];
 
 const roccoFunctions = [
@@ -60,9 +60,13 @@ export default function CasoPatitas() {
               <p className="text-[10px] text-cyan-400 uppercase tracking-widest mb-3 font-bold">Qué se implementó</p>
               <ul className="space-y-2">
                 {implemented.map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-gray-300 text-sm">
-                    <span className="text-green-400 flex-shrink-0 mt-0.5 text-xs">✓</span>
-                    <span>{item.item}</span>
+                  <li key={i} className="flex items-start gap-2 text-sm">
+                    <span className={`flex-shrink-0 mt-0.5 text-xs ${item.done ? 'text-green-400' : 'text-amber-400'}`}>
+                      {item.done ? '✓' : '⏳'}
+                    </span>
+                    <span className={item.done ? 'text-gray-300' : 'text-gray-400'}>
+                      {item.item}{!item.done && <span className="ml-1 text-amber-400/70 text-[10px] font-medium">(en implementación)</span>}
+                    </span>
                   </li>
                 ))}
               </ul>

@@ -16,7 +16,7 @@ export default function PoliticaPrivacidad() {
         </Link>
 
         <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">Política de Privacidad</h1>
-        <p className="text-gray-500 text-sm mb-12">Última actualización: agosto 2026</p>
+        <p className="text-gray-500 text-sm mb-12">Última actualización: septiembre 2026</p>
 
         <div className="space-y-10 text-gray-300 leading-relaxed">
           <section>
@@ -36,7 +36,7 @@ export default function PoliticaPrivacidad() {
             <ul className="list-disc list-inside mt-2 space-y-1 text-gray-400">
               <li>Nombre y apellido</li>
               <li>Correo electrónico</li>
-              <li>Número de WhatsApp (opcional)</li>
+              <li>Número de WhatsApp / teléfono de contacto</li>
               <li>Nombre del negocio</li>
               <li>Tipo de negocio e industria</li>
               <li>Descripción de necesidades digitales</li>

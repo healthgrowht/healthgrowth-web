@@ -8,8 +8,8 @@ export default function ProfessionalSupport() {
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-indigo-400 mb-3">Quién está detrás</p>
           <h3 className="text-xl font-bold text-white mb-1">{SITE_CONFIG.founder.name}</h3>
           <p className="text-gray-500 text-sm mb-5 max-w-xl leading-relaxed">
-            Enfermero con 10+ años en entornos críticos. Fundador de Health Growth para aplicar
-            la misma precisión operativa de una UCI a los procesos de PYMEs chilenas.
+            Enfermero con 10+ años en entornos de alta exigencia. Fundador de Health Growth para
+            traer la misma disciplina operativa a la gestión de PYMEs chilenas.
           </p>
           <div className="flex flex-wrap gap-2">
             {["HubSpot CRM", "Google Cloud", "Vertex AI", "Automatización", "IA Aplicada"].map(c => (

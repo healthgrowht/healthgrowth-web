@@ -11,6 +11,7 @@ type Step1 = { fullName: string; company: string; email: string; whatsapp: strin
 
 export default function DiagnosticForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
+  const [submitOk, setSubmitOk] = useState<boolean | null>(null);
   const [step, setStep] = useState<1 | 2>(1);
   const [step1, setStep1] = useState<Step1>({ fullName: '', company: '', email: '', whatsapp: '' });
   const [selectedService, setSelectedService] = useState<string>(() => {
@@ -54,19 +55,29 @@ export default function DiagnosticForm() {
       necesidad: String(formData.get('challenge') ?? ''),
       source: 'web-healthgrowth.cl',
       timestamp: new Date().toISOString(),
-      utmSource: new URLSearchParams(window.location.search).get('utm_source') ?? 'directo',
+      utmSource:   new URLSearchParams(window.location.search).get('utm_source') ?? 'directo',
+      utmMedium:   new URLSearchParams(window.location.search).get('utm_medium') ?? '',
+      utmCampaign: new URLSearchParams(window.location.search).get('utm_campaign') ?? '',
+      utmContent:  new URLSearchParams(window.location.search).get('utm_content') ?? '',
+      utmTerm:     new URLSearchParams(window.location.search).get('utm_term') ?? '',
+      referrer:    document.referrer || '',
+      landing_page: window.location.pathname + window.location.search,
+      consent_privacy: true,
     };
 
+    let ok = false;
     try {
-      await fetch(SITE_CONFIG.integrations.diagnosticWebhook, {
+      const res = await fetch(SITE_CONFIG.integrations.diagnosticWebhook, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
+      ok = res.ok;
     } catch {
-      // silencioso — la conversión sigue por WhatsApp
+      ok = false;
     }
 
+    setSubmitOk(ok);
     setStatus('success');
     setTimeout(openWhatsApp, 1500);
   };
@@ -78,9 +89,13 @@ export default function DiagnosticForm() {
           <div className="w-16 h-16 bg-green-500/20 border border-green-500/30 rounded-full flex items-center justify-center mx-auto mb-6">
             <span className="text-3xl">✅</span>
           </div>
-          <h2 className="text-2xl md:text-4xl font-bold mb-4 text-white">¡Datos Recibidos!</h2>
+          <h2 className="text-2xl md:text-4xl font-bold mb-4 text-white">
+            {submitOk ? '¡Datos Recibidos!' : 'Continuando por WhatsApp'}
+          </h2>
           <p className="text-gray-400 mb-6 leading-relaxed font-light">
-            En un momento abriremos WhatsApp para continuar la conversación con el equipo.
+            {submitOk
+              ? 'En un momento abriremos WhatsApp para continuar la conversación con el equipo.'
+              : 'Cuéntanos sobre tu negocio cuando abra WhatsApp y el equipo te atenderá en menos de 24 horas.'}
           </p>
           <button
             onClick={openWhatsApp}
@@ -225,6 +240,23 @@ export default function DiagnosticForm() {
                   className={`${inputClass} resize-none`}
                 />
               </div>
+
+              {/* Privacy consent — required by Law 21.719 */}
+              <label className="flex items-start gap-3 cursor-pointer group">
+                <input
+                  type="checkbox"
+                  name="consent_privacy"
+                  required
+                  className="mt-0.5 flex-shrink-0 w-4 h-4 rounded border-white/20 bg-zinc-900 accent-cyan-500"
+                />
+                <span className="text-gray-500 text-xs leading-relaxed group-hover:text-gray-400 transition-colors">
+                  He leído y acepto la{' '}
+                  <a href="/politica-de-privacidad" target="_blank" className="text-cyan-400 hover:underline">
+                    Política de Privacidad
+                  </a>
+                  {' '}de Health Growth SpA. Acepto que mis datos sean usados para la evaluación gratuita solicitada.
+                </span>
+              </label>
 
               <div className="flex gap-3 pt-1">
                 <button
