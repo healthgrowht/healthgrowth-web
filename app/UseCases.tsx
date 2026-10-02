@@ -79,7 +79,7 @@ export default function UseCases() {
         </div>
 
         {/* Chips — scroll horizontal en mobile */}
-        <div className="flex gap-2 overflow-x-auto pb-3 mb-8 md:flex-wrap md:justify-center" style={{ scrollbarWidth: 'none' }}>
+        <div className="no-scrollbar flex gap-2 overflow-x-auto pb-3 mb-8 md:flex-wrap md:justify-center">
           {rubros.map((r, i) => (
             <button
               key={i}
