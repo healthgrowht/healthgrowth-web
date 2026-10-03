@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { SITE_CONFIG } from './constants';
 
 const STEPS = [
@@ -11,17 +11,62 @@ const STEPS = [
   { icon: "📅", label: "Reserva confirmada", sub: "Hora + seguimiento automático" },
 ];
 
+const LIVE_EVENTS = [
+  "Nuevo lead · formulario web",
+  "Lead calificado por IA",
+  "WhatsApp enviado",
+  "Reserva confirmada",
+];
+
 function PipelineCard() {
   const [active, setActive] = useState(0);
+  const [notifVisible, setNotifVisible] = useState(false);
+  const [notifIdx, setNotifIdx] = useState(0);
 
   useEffect(() => {
     const id = setInterval(() => setActive(a => (a + 1) % STEPS.length), 1800);
     return () => clearInterval(id);
   }, []);
 
+  useEffect(() => {
+    const show = setTimeout(() => {
+      setNotifVisible(true);
+      const hide = setTimeout(() => {
+        setNotifVisible(false);
+        setNotifIdx(n => (n + 1) % LIVE_EVENTS.length);
+      }, 2600);
+      return () => clearTimeout(hide);
+    }, 3000);
+    const repeat = setInterval(() => {
+      setNotifVisible(true);
+      setTimeout(() => {
+        setNotifVisible(false);
+        setNotifIdx(n => (n + 1) % LIVE_EVENTS.length);
+      }, 2600);
+    }, 7000);
+    return () => { clearTimeout(show); clearInterval(repeat); };
+  }, []);
+
   return (
     <div className="relative w-full max-w-[340px] mx-auto lg:mx-0 lg:ml-auto">
       <div className="absolute inset-0 bg-cyan-500/[0.04] blur-3xl rounded-full pointer-events-none" />
+
+      {/* Live notification toast */}
+      <AnimatePresence>
+        {notifVisible && (
+          <motion.div
+            initial={{ opacity: 0, y: -8, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -4, scale: 0.95 }}
+            transition={{ duration: 0.3 }}
+            className="absolute -top-10 left-2 right-2 z-10 flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#071f3a] border border-cyan-500/25 shadow-lg shadow-black/40"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse flex-shrink-0" />
+            <span className="text-[10px] text-cyan-300 font-mono truncate">{LIVE_EVENTS[notifIdx]}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="relative bg-[#071f3a]/90 backdrop-blur-2xl border border-white/[0.09] rounded-[28px] p-5 shadow-2xl shadow-black/40">
 
         <div className="flex items-center gap-2 mb-5 pb-4 border-b border-white/[0.05]">

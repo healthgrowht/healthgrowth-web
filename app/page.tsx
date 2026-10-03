@@ -5,8 +5,10 @@ import Transformation from './Transformation';
 import PacksCanonical from './PacksCanonical';
 import UseCases from './UseCases';
 import AutomationAI from './AutomationAI';
+import LiveSystemFlow from './LiveSystemFlow';
 import CasoPatitas from './CasoPatitas';
 import ProfessionalSupport from './ProfessionalSupport';
+import VideoShowcase from './VideoShowcase';
 import FAQ from './FAQ';
 import DiagnosticForm from './DiagnosticForm';
 import Footer from './Footer';
@@ -33,13 +35,19 @@ export default function Home() {
       {/* 5. CÓMO FUNCIONA + CHIMI */}
       <AutomationAI />
 
-      {/* 6. CASO REAL — PATITAS FELICES + ROCCO */}
+      {/* 6. ECOSISTEMA EN ACCIÓN */}
+      <LiveSystemFlow />
+
+      {/* 7. CASO REAL — PATITAS FELICES + ROCCO */}
       <CasoPatitas />
 
-      {/* 7. DIFERENCIADORES */}
+      {/* 8. DIFERENCIADORES */}
       <ProfessionalSupport />
 
-      {/* 8. PREGUNTAS + FORMULARIO */}
+      {/* 9. VIDEO */}
+      <VideoShowcase />
+
+      {/* 10. PREGUNTAS + FORMULARIO */}
       <FAQ />
       <DiagnosticForm />
 

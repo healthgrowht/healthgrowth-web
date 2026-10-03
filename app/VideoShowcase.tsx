@@ -30,22 +30,22 @@ export default function VideoShowcase() {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      className="py-32 px-6 bg-black border-t border-white/5"
+      className="py-16 md:py-24 px-6 bg-[#040e1f] border-t border-white/5"
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <span className="text-xs font-bold uppercase tracking-[0.4em] text-indigo-400 mb-4 block">
             Health Growth en Video
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
+          <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-white mb-3">
             Míranos trabajar
           </h2>
-          <p className="text-gray-500 text-lg font-light max-w-xl mx-auto">
+          <p className="text-gray-500 text-sm md:text-base font-light max-w-xl mx-auto">
             No solo lo decimos — lo mostramos. Así se ve la modernización de una PYME con Health Growth.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
           {videos.map((v, i) => (
             <motion.button
               key={i}

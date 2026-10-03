@@ -56,16 +56,28 @@ export default function AutomationAI() {
         </div>
 
         {/* Flow — horizontal compact */}
-        <div className="flex gap-2 mb-8 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none' }}>
+        <div className="flex gap-2 mb-8 overflow-x-auto pb-2 no-scrollbar">
           {flowSteps.map((step, i) => (
             <div key={i} className="flex items-center gap-2 flex-shrink-0">
-              <div className="flex flex-col items-center text-center p-3 rounded-xl bg-white/5 border border-white/8 min-w-[72px]">
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="flex flex-col items-center text-center p-3 rounded-xl bg-white/5 border border-white/8 min-w-[72px] hover:bg-white/8 hover:border-cyan-500/20 transition-all"
+              >
                 <span className="text-lg mb-1">{step.icon}</span>
                 <p className="text-white text-[11px] font-semibold leading-tight">{step.label}</p>
                 <p className="text-gray-600 text-[10px] leading-tight">{step.sub}</p>
-              </div>
+              </motion.div>
               {i < flowSteps.length - 1 && (
-                <span className="text-cyan-500/30 text-base flex-shrink-0">→</span>
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 + 0.15 }}
+                  className="text-cyan-500/40 text-base flex-shrink-0"
+                >→</motion.span>
               )}
             </div>
           ))}
