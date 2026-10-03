@@ -1,6 +1,6 @@
 # V35 OPERATIONS CHECKPOINT
 # CARLOS OS — HEALTH GROWTH
-# Fecha: 2026-10-02T23:xx UTC
+# Fecha: 2026-10-03T00:xx UTC | DOMAIN RESOLVED
 
 ---
 
@@ -13,15 +13,16 @@
 | Repo | healthgrowth-web (local + Vercel) |
 | Rama | main |
 | Deployment productivo | dpl_HkiPXErYdkQRu3vM4ddiaHPuR22a |
-| URL producción activa | https://healthgrowth-web.vercel.app |
-| Dominio público final | https://healthgrowth.cl (DOMAIN_ORPHAN — ver §DOMAIN) |
-| www | PENDIENTE tras resolución DOMAIN_ORPHAN |
+| URL producción activa | https://healthgrowth.cl ← LIVE |
+| URL secundaria | https://healthgrowth-web.vercel.app |
+| Dominio público final | https://healthgrowth.cl LIVE_VERIFIED 2026-10-03 |
+| www | https://www.healthgrowth.cl → redirect 308 → healthgrowth.cl LIVE_VERIFIED |
 | API backend | https://api.healthgrowth.cl |
 | Instagram | https://www.instagram.com/healthgrowthspa/ |
 | WhatsApp Health Growth | +56 9 5101 7947 / wa.me/56951017947 |
 | Último commit | 28aadc4 |
 
-**REGLA:** healthgrowth.cl es el dominio final. healthgrowth-web.vercel.app es el proxy activo mientras DOMAIN_ORPHAN no se resuelva. Nunca usar otro deployment como producción.
+**REGLA:** healthgrowth.cl es el dominio final y está LIVE. healthgrowth-web.vercel.app es el alias secundario. Nunca usar otro deployment como producción.
 
 ---
 
@@ -29,10 +30,10 @@
 
 | Componente | Estado | Evidencia |
 |-----------|--------|-----------|
-| PUBLIC_WEB | LIVE_VERIFIED | healthgrowth-web.vercel.app HTTP 200, contenido correcto |
-| DOMAIN | BLOCKED_HUMAN | healthgrowth.cl apunta a proyecto Vercel distinto (ver §DOMAIN) |
-| HTTPS | LIVE_VERIFIED | Vercel TLS automático en .vercel.app |
-| WWW | BLOCKED_HUMAN | Tras resolución DOMAIN_ORPHAN |
+| PUBLIC_WEB | LIVE_VERIFIED | healthgrowth.cl HTTP 200, "Ordenamos tu negocio" ✅ |
+| DOMAIN | LIVE_VERIFIED | healthgrowth.cl → Vercel prj_5I83VPdqDp0DLjWMIRfphno5JQ4f VERIFIED 2026-10-03 |
+| HTTPS | LIVE_VERIFIED | TLS automático Vercel en healthgrowth.cl ✅ |
+| WWW | LIVE_VERIFIED | www.healthgrowth.cl → 308 → healthgrowth.cl VERIFIED 2026-10-03 |
 | VISUAL | LIVE_VERIFIED | Hero 2-col + pipeline card, build 0 errores |
 | MOBILE | READY_NOT_LIVE | Pipeline card hidden mobile, hero texto responsive — pendiente test en dispositivo real |
 | FORM | LIVE_VERIFIED | DiagnosticForm 2-step, UTM, consent, healthgrowth-web.vercel.app |
@@ -54,33 +55,21 @@
 
 ---
 
-## §DOMAIN — PASOS EXACTOS PARA RESOLUCIÓN
+## §DOMAIN — RESOLUCIÓN COMPLETADA 2026-10-03
 
 ```
-DNS actual healthgrowth.cl:
-  A: 64.29.17.1, 216.198.79.1  ← Vercel IPs de cuenta vieja
-  TXT _vercel: vc-domain-verify=healthgrowth.cl,f9a89f7408f093570a4e,dc  ← viejo
+ESTADO FINAL (2026-10-03):
+  healthgrowth.cl     CNAME → cname.vercel-dns.com (proxied=false)
+  www.healthgrowth.cl CNAME → cname.vercel-dns.com (proxied=false)
+  api.healthgrowth.cl CNAME → b886239b...cfargotunnel.com (proxied=true) ← INTACTO
 
-Acción 1 — Cloudflare (5 min):
-  Entrar a Cloudflare Dashboard → healthgrowth.cl → DNS
-  Añadir registro TXT:
-    Nombre: _vercel
-    Valor: vc-domain-verify=healthgrowth.cl,ec18480282575d9fa0b6
-  Verificar propagación:
-    nslookup -type=TXT _vercel.healthgrowth.cl 8.8.8.8
+  Vercel project: prj_5I83VPdqDp0DLjWMIRfphno5JQ4f (healthgrowth-web)
+  Domain healthgrowth.cl:     verified=true  2026-10-03
+  Domain www.healthgrowth.cl: verified=true, redirect→healthgrowth.cl 308
 
-Acción 2 — Vercel (5 min):
-  Opción A (Dashboard):
-    vercel.com → healthgrowth-web → Settings → Domains
-    → Add Domain → healthgrowth.cl → Move Here si lo pide
-
-  Opción B (si pide actualizar DNS):
-    Cloudflare → healthgrowth.cl → DNS
-    Cambiar A records a: 76.76.21.21 (y 76.76.21.22 como backup)
-
-Verificación:
-  curl -s -o /dev/null -w "%{http_code}" https://healthgrowth.cl
-  → Esperar 200 con "Ordenamos tu negocio"
+CURL EVIDENCIA:
+  curl -s https://healthgrowth.cl → HTTP 200 "Ordenamos tu negocio" ✅
+  api.healthgrowth.cl/health → HTTP 200 ✅
 ```
 
 ---
@@ -89,7 +78,7 @@ Verificación:
 
 | Gate | Descripción | Estado | Impacto si resuelto |
 |------|-------------|--------|---------------------|
-| GATE-DOMAIN | TXT _vercel + domain claim Vercel | BLOCKED_HUMAN | healthgrowth.cl sirve web nueva |
+| GATE-DOMAIN | TXT _vercel + domain claim Vercel | RESOLVED 2026-10-03 | healthgrowth.cl LIVE con web V35 ✅ |
 | GATE-2 | n8n owner/setup inicial | BLOCKED_HUMAN | Desbloquea workflows, Gmail, Calendar |
 | GATE-3 | SIM/eSIM dedicada ISAPRE | BLOCKED_HUMAN | Línea ISAPRE dedicada |
 | GATE-4 | Meta/Instagram token error 190 | BLOCKED_HUMAN | WhatsApp inbound HG + Instagram DM |
@@ -112,7 +101,7 @@ Verificación:
 
 | Test | Estado | Evidencia |
 |------|--------|-----------|
-| A — PUBLIC_WEB | PASS | healthgrowth-web.vercel.app HTTP 200, "Ordenamos tu negocio" |
+| A — PUBLIC_WEB | PASS | healthgrowth.cl HTTP 200, "Ordenamos tu negocio" ✅ (2026-10-03) |
 | B — FORM→API→CRM | PASS | lead_id: lead_1790985368751_w3tx2 (2026-10-02) |
 | C — WHATSAPP_CTA | PASS | Todos CTAs → wa.me/56951017947 (Health Growth) verificado en código |
 | D — WHATSAPP_AI | BLOCKED | Sin Meta credentials HG |
@@ -144,25 +133,20 @@ Verificación:
 OPEN_EXECUTABLE = 0
 ```
 
-Trabajo ejecutable agotado. Todos los bloqueadores son BLOCKED_HUMAN (gates que requieren acción manual).
+Trabajo ejecutable agotado. DOMAIN resuelto 2026-10-03. Bloqueadores restantes son BLOCKED_HUMAN (gates que requieren acción manual).
 
 ---
 
-## NEXT_HUMAN_ACTION — UNA SOLA
+## NEXT_HUMAN_ACTION
 
-**Resolver DOMAIN_ORPHAN:**
+DOMAIN resuelto. No hay acción inmediata requerida en producción.
 
-```
-1. Cloudflare Dashboard → healthgrowth.cl → DNS
-   Añadir TXT: _vercel = vc-domain-verify=healthgrowth.cl,ec18480282575d9fa0b6
-
-2. vercel.com → healthgrowth-web → Settings → Domains
-   → Add Domain: healthgrowth.cl
-   → Click "Move Here" si aparece
-```
-
-Tiempo estimado: 10-15 minutos. Resultado: healthgrowth.cl sirve la web nueva inmediatamente.
+Próximas acciones opcionales (en orden de impacto):
+1. GATE-2: n8n owner setup → desbloquea workflows automáticos
+2. GATE-4: Meta token error 190 → desbloquea WhatsApp Business inbound
+3. GATE-5: Gmail + Google Calendar OAuth → calendar sync (depende Gate 2)
 
 ---
 
 *Generado por POWER lane | V35 | 2026-10-02 | commit 28aadc4*
+*DOMAIN RESOLVED 2026-10-03 — healthgrowth.cl LIVE con contenido V35*
