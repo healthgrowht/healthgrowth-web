@@ -16,11 +16,11 @@ const NODES = [
   {
     icon: "📊",
     id: "crm",
-    label: "CRM",
-    channel: "Carlos OS",
+    label: "Se registra",
+    channel: "Nada se pierde",
     event: "CRM_UPDATED",
-    badge: "lead_id",
-    notification: "lead_1790985 registrado → source: web",
+    badge: "guardado",
+    notification: "Consulta registrada correctamente",
     color: "blue",
   },
   {
@@ -96,7 +96,7 @@ export default function LiveSystemFlow() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/[0.07] border border-cyan-500/20 mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-400">Sistema activo · En tiempo real</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-400">Demo del flujo · Así funciona</span>
           </div>
           <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight mb-3">
             Así funciona el ecosistema
@@ -202,7 +202,7 @@ export default function LiveSystemFlow() {
         <div className="bg-[#071428]/80 backdrop-blur border border-white/[0.07] rounded-[20px] p-4 md:p-5">
           <div className="flex items-center gap-2 mb-4 pb-3 border-b border-white/[0.05]">
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            <span className="text-[9px] font-bold uppercase tracking-[0.35em] text-gray-500">Carlos OS · Live Log</span>
+            <span className="text-[9px] font-bold uppercase tracking-[0.35em] text-gray-500">Health Growth · Flujo de ejemplo</span>
             <span className="ml-auto font-mono text-[9px] text-cyan-500/50">api.healthgrowth.cl</span>
           </div>
           <div className="space-y-2 min-h-[80px]">

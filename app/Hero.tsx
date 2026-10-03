@@ -4,11 +4,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { SITE_CONFIG } from './constants';
 
 const STEPS = [
-  { icon: "🌐", label: "Lead llega", sub: "Web · WhatsApp · Instagram" },
-  { icon: "📊", label: "CRM Carlos OS", sub: "lead_id · trazabilidad completa" },
-  { icon: "🤖", label: "IA Comercial", sub: "Califica · Responde · Agenda" },
-  { icon: "💬", label: "WhatsApp Business", sub: "Respuesta en minutos" },
-  { icon: "📅", label: "Reserva confirmada", sub: "Hora + seguimiento automático" },
+  { icon: "🌐", label: "Consulta llega", sub: "Web · WhatsApp · Instagram" },
+  { icon: "📊", label: "Queda registrado", sub: "Nada se pierde" },
+  { icon: "🤖", label: "Clasifica y responde", sub: "Automáticamente" },
+  { icon: "💬", label: "WhatsApp", sub: "Respuesta en minutos" },
+  { icon: "📅", label: "Reserva confirmada", sub: "Con recordatorio automático" },
 ];
 
 const LIVE_EVENTS = [
@@ -71,8 +71,8 @@ function PipelineCard() {
 
         <div className="flex items-center gap-2 mb-5 pb-4 border-b border-white/[0.05]">
           <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
-          <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-gray-500">Sistema activo</span>
-          <span className="ml-auto text-[9px] font-mono text-cyan-400/50">Carlos OS</span>
+          <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-gray-500">Flujo automático</span>
+          <span className="ml-auto text-[9px] font-mono text-cyan-400/50">Health Growth</span>
         </div>
 
         <div className="space-y-0">
@@ -118,17 +118,9 @@ function PipelineCard() {
           ))}
         </div>
 
-        <div className="mt-5 pt-4 border-t border-white/[0.05] grid grid-cols-3 gap-2">
-          {[
-            { label: 'Leads hoy', val: '3' },
-            { label: 'Respuesta', val: '<2m' },
-            { label: 'Tasa cierre', val: '↑' },
-          ].map(m => (
-            <div key={m.label} className="text-center">
-              <p className="text-sm font-bold text-white font-mono">{m.val}</p>
-              <p className="text-[9px] text-gray-600 uppercase tracking-wide mt-0.5">{m.label}</p>
-            </div>
-          ))}
+        <div className="mt-5 pt-4 border-t border-white/[0.05] flex items-center justify-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
+          <span className="text-[10px] text-gray-500 font-mono">Sistema operativo</span>
         </div>
       </div>
     </div>
