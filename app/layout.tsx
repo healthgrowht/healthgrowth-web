@@ -91,6 +91,34 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Health Growth SpA",
+  "url": "https://healthgrowth.cl",
+  "logo": "https://healthgrowth.cl/logo/health-growth-logo.svg",
+  "description": "Ordenamos la operación de PYMEs chilenas: presencia digital, atención automática por WhatsApp, agenda digital y gestión de clientes.",
+  "areaServed": {
+    "@type": "Country",
+    "name": "Chile"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "availableLanguage": "Spanish",
+    "contactOption": "TollFree"
+  },
+  "sameAs": [
+    "https://www.instagram.com/healthgrowthspa/"
+  ],
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "CLP",
+    "offerCount": "6",
+    "description": "Packs de modernización para PYMEs: desde diagnóstico gratuito hasta ecosistema digital completo."
+  }
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -98,6 +126,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-full bg-[#071428] text-white selection:bg-cyan-600 selection:text-white">
         {children}
       </body>
