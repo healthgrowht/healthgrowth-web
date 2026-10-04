@@ -6,7 +6,7 @@
 **Commit V38 fase 2:** dpl_5UiR89ZrT1UMQVFymYh4tnUpp3AX
 **Commit V38 fase 3:** dpl_csi5e0k8z (LiveSystemFlow dedup + FAQ extensions)
 **Commit V38 fase 4+:** (SEO, Chimi, Instagram, jargon pass — commits 92c5807..ba86321)
-**HEAD:** ba86321  
+**HEAD:** fc838d6 (VideoShowcase copy fix)  
 **URL Producción:** https://healthgrowth.cl  
 **Estado HTTP:** 200 ✅  
 **Verificado:** 2026-10-04
@@ -122,10 +122,10 @@ Las siguientes tareas del V38 original NO fueron ejecutadas y siguen pendientes:
 3. ~~**Instagram section**~~ — RESUELTO. `InstagramBlock` component añadido entre ProfessionalSupport y VideoShowcase. Muestra @healthgrowthspa, descripción de contenido semanal, y "Seguir en Instagram" CTA. LIVE ✅
 
 ### Prioridad Media
-4. **Mobile QA** — Test visual 360x800 y 390x844. Sin overflow horizontal, texto legible, touch targets correctos.
+4. ~~**Mobile QA**~~ — RESUELTO. overflow-x: hidden en html+body, min-h-[44px] en chips de NeedsSelector y PacksCanonical. LIVE ✅
 5. ~~**SEO audit**~~ — RESUELTO. title sin "Tecnología", keywords actualizadas, JSON-LD ProfessionalService añadido, canonical correcto. LIVE ✅
-6. **Analytics** — Instrumentar eventos: `hero_cta`, `need_selected`, `pack_view`, `form_start`, `form_step2`, `form_submit`.
-7. **Video section** — Verificar posters, lazy loading, copy "pocas semanas" necesita caveat de evidencia.
+6. **Analytics** — Instrumentar eventos: `hero_cta`, `need_selected`, `pack_view`, `form_start`, `form_step2`, `form_submit`. PENDING (requiere herramienta de analytics — Google Analytics / Plausible).
+7. ~~**Video section**~~ — RESUELTO. Copy "pocas semanas" eliminado. Videos existen en /public/videos/empresa/. LIVE ✅
 
 ### Prioridad Baja / Documentación
 8. **Precios** — Clasificar en CANONICAL_OFFER_V1: ACTIVE_CONFIRMED / HISTORICAL / NEEDS_CARLOS.
