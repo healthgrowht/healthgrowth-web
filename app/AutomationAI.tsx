@@ -9,7 +9,7 @@ const features = [
   {
     icon: "🤖",
     title: "Respuestas fuera del horario",
-    description: "Flujos automáticos en WhatsApp que responden y califican consultas cuando no estás disponible.",
+    description: "Flujos automáticos en WhatsApp que responden y organizan consultas cuando no estás disponible.",
   },
   {
     icon: "🔄",
@@ -18,7 +18,7 @@ const features = [
   },
   {
     icon: "📈",
-    title: "Recuperación de leads",
+    title: "Clientes que no respondieron",
     description: "Flujos para reactivar contactos que no cerraron y detectar oportunidades sin seguimiento.",
   },
 ];
@@ -30,20 +30,34 @@ const flowSteps = [
   { icon: "📋", label: "Seguimiento", sub: "Programado" },
 ];
 
-const CHIMI_MESSAGES = [
-  "¡Hola! Soy Chimi 🐱 ¿En qué puedo ayudarte hoy?",
-  "¿Quieres modernizar tu negocio? Te conecto con el equipo.",
-  "¡Pregúntame sobre los servicios de Health Growth!",
-  "¿Listo para dar el siguiente paso? 🚀",
+const CHIMI_NEEDS = [
+  {
+    label: "Responder más rápido",
+    icon: "⚡",
+    reply: "¡Perfecto! Con Atención Automática, tus consultas de WhatsApp se responden solas cuando no estás. ¿Te cuento cómo?",
+  },
+  {
+    label: "Verme profesional",
+    icon: "🌐",
+    reply: "Entiendo. El Pack Impulso incluye web profesional + WhatsApp Business + imagen digital. Una sola inversión, imagen que genera confianza.",
+  },
+  {
+    label: "Organizar clientes",
+    icon: "📋",
+    reply: "Con el Pack Organización, todos tus clientes quedan registrados con historial, agenda sin cruces y seguimiento claro. Sin cuadernos ni memoria.",
+  },
+  {
+    label: "No sé por dónde empezar",
+    icon: "🤷",
+    reply: "Sin problema. El Diagnóstico Express es gratis — en 30 minutos te digo exactamente qué mejorar primero en tu negocio.",
+  },
 ];
 
 export default function AutomationAI() {
   const [chatOpen, setChatOpen] = useState(false);
-  const [msgIndex, setMsgIndex] = useState(0);
+  const [selectedNeed, setSelectedNeed] = useState<number | null>(null);
 
-  const nextMessage = () => setMsgIndex((prev) => (prev + 1) % CHIMI_MESSAGES.length);
-
-  const whatsappChimi = `${SITE_CONFIG.whatsapp.url}?text=${encodeURIComponent('Hola, me contacta Chimi desde la web de Health Growth. Me gustaría saber más sobre cómo pueden ayudar a mi negocio.')}`;
+  const whatsappChimi = `${SITE_CONFIG.whatsapp.url}?text=${encodeURIComponent('Hola, me gustaría saber más sobre cómo pueden ayudar a mi negocio.')}`;
 
   return (
     <section id="automatizacion" className="py-14 md:py-20 px-6 bg-[#071428] border-t border-white/5">
@@ -160,36 +174,72 @@ export default function AutomationAI() {
                   className="border-t border-white/5"
                 >
                   <div className="p-4 space-y-3">
-                    <motion.div
-                      key={msgIndex}
-                      initial={{ opacity: 0, y: 6 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="flex gap-2 items-start"
-                    >
+                    {/* Chimi initial message */}
+                    <div className="flex gap-2 items-start">
                       <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-indigo-500/30">
                         <Image src="/images/chimi.jpeg" alt="Chimi" width={28} height={28} className="w-full h-full object-cover object-[85%_25%]" />
                       </div>
-                      <div className="bg-zinc-800/80 border border-white/5 rounded-xl rounded-tl-none px-3 py-2 max-w-[200px]">
-                        <p className="text-white text-xs leading-relaxed">{CHIMI_MESSAGES[msgIndex]}</p>
+                      <div className="bg-zinc-800/80 border border-white/5 rounded-xl rounded-tl-none px-3 py-2 max-w-[220px]">
+                        <p className="text-white text-xs leading-relaxed">¡Hola! 🐱 ¿Qué quieres mejorar en tu negocio?</p>
                       </div>
-                    </motion.div>
-                    <div className="flex gap-2">
-                      <button
-                        onClick={nextMessage}
-                        className="flex-1 py-2 rounded-xl bg-zinc-800/60 border border-white/5 text-gray-400 text-xs hover:text-white hover:border-white/10 transition-all"
-                      >
-                        Siguiente →
-                      </button>
-                      <a
-                        href={whatsappChimi}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex-1 py-2 rounded-xl bg-[#25D366]/20 border border-[#25D366]/30 text-[#25D366] text-xs font-bold text-center hover:bg-[#25D366]/30 transition-all"
-                      >
-                        Real →
-                      </a>
                     </div>
-                    <p className="text-center text-gray-700 text-[10px]">Demo — el equipo real te atiende por WhatsApp</p>
+
+                    {/* Need options or reply */}
+                    <AnimatePresence mode="wait">
+                      {selectedNeed === null ? (
+                        <motion.div
+                          key="options"
+                          initial={{ opacity: 0, y: 6 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0 }}
+                          className="flex flex-col gap-1.5 pl-9"
+                        >
+                          {CHIMI_NEEDS.map((need, i) => (
+                            <button
+                              key={i}
+                              onClick={() => setSelectedNeed(i)}
+                              className="text-left px-3 py-2 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-medium hover:bg-indigo-500/20 hover:border-indigo-500/40 transition-all"
+                            >
+                              {need.icon} {need.label}
+                            </button>
+                          ))}
+                        </motion.div>
+                      ) : (
+                        <motion.div
+                          key="reply"
+                          initial={{ opacity: 0, y: 6 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="space-y-2"
+                        >
+                          <div className="flex gap-2 items-start">
+                            <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-indigo-500/30">
+                              <Image src="/images/chimi.jpeg" alt="Chimi" width={28} height={28} className="w-full h-full object-cover object-[85%_25%]" />
+                            </div>
+                            <div className="bg-zinc-800/80 border border-white/5 rounded-xl rounded-tl-none px-3 py-2 max-w-[220px]">
+                              <p className="text-white text-xs leading-relaxed">{CHIMI_NEEDS[selectedNeed].reply}</p>
+                            </div>
+                          </div>
+                          <div className="flex gap-2 pl-9">
+                            <button
+                              onClick={() => setSelectedNeed(null)}
+                              className="flex-1 py-2 rounded-xl bg-zinc-800/60 border border-white/5 text-gray-400 text-xs hover:text-white transition-all"
+                            >
+                              ← Volver
+                            </button>
+                            <a
+                              href={whatsappChimi}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="flex-1 py-2 rounded-xl bg-[#25D366]/20 border border-[#25D366]/30 text-[#25D366] text-xs font-bold text-center hover:bg-[#25D366]/30 transition-all"
+                            >
+                              Hablar →
+                            </a>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+                    <p className="text-center text-gray-700 text-[10px]">DEMO · Chimi responderá automáticamente cuando esté activo</p>
                   </div>
                 </motion.div>
               )}
