@@ -151,7 +151,7 @@ export default function PacksCanonical() {
             <button
               key={p.id}
               onClick={() => setSelected(i)}
-              className={`flex-shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold border transition-all ${
+              className={`flex-shrink-0 flex items-center gap-1.5 px-4 py-2.5 min-h-[44px] rounded-full text-sm font-semibold border transition-all ${
                 selected === i
                   ? 'bg-white text-[#071428] border-white shadow-lg'
                   : 'bg-transparent text-gray-400 border-white/15 hover:border-white/35 hover:text-white'

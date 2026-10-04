@@ -100,7 +100,7 @@ export default function NeedsSelector() {
             <button
               key={n.id}
               onClick={() => handleSelect(i)}
-              className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold border transition-all ${
+              className={`flex items-center gap-1.5 px-4 py-2.5 min-h-[44px] rounded-full text-sm font-semibold border transition-all ${
                 selected === i
                   ? 'bg-[#071428] text-white border-[#071428] shadow-md'
                   : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400 hover:text-gray-900'
