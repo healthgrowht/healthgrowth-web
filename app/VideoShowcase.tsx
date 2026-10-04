@@ -7,17 +7,17 @@ const videos = [
   {
     src: '/videos/empresa/video-empresa-01.mp4',
     title: 'Health Growth en Acción',
-    desc: 'Cómo transformamos la operación de una PYME en pocas semanas.',
+    desc: 'Cómo ayudamos a una PYME a ordenar su atención, su agenda y sus clientes.',
   },
   {
     src: '/videos/empresa/video-empresa-02.mp4',
-    title: 'Automatización Real',
-    desc: 'Sistemas que trabajan por ti: agenda, WhatsApp, seguimiento de clientes.',
+    title: 'Sistemas que Trabajan por Ti',
+    desc: 'Agenda, WhatsApp y seguimiento de clientes funcionando solos.',
   },
   {
     src: '/videos/empresa/video-empresa-03.mp4',
-    title: 'Chimi y el Ecosistema',
-    desc: 'El embajador digital de Health Growth presentando la metodología.',
+    title: 'Chimi, el Embajador Digital',
+    desc: 'Conoce a Chimi y cómo presenta la metodología de Health Growth.',
   },
 ];
 
