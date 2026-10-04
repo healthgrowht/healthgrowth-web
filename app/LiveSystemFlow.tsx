@@ -6,7 +6,7 @@ const NODES = [
   {
     icon: "🌐",
     id: "lead",
-    label: "Lead llega",
+    label: "Consulta llega",
     channel: "Web · WhatsApp · Instagram",
     event: "LEAD_CAPTURED",
     badge: "Nuevo",
@@ -26,7 +26,7 @@ const NODES = [
   {
     icon: "🤖",
     id: "ai",
-    label: "IA Clasifica",
+    label: "Clasifica y responde",
     channel: "Califica · Responde",
     event: "AI_QUALIFIED",
     badge: "score:8/10",
@@ -99,10 +99,10 @@ export default function LiveSystemFlow() {
             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-400">Demo del flujo · Así funciona</span>
           </div>
           <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight mb-3">
-            Así funciona el ecosistema
+            Del primer contacto a la cita confirmada
           </h2>
           <p className="text-gray-500 text-sm md:text-base max-w-xl">
-            Cada lead que entra se registra, clasifica, responde y agenda — automáticamente.
+            Cada consulta que llega se registra, clasifica, responde y agenda — sin que tengas que hacer nada.
           </p>
         </motion.div>
 

@@ -217,11 +217,11 @@ export default function DiagnosticForm() {
                   >
                     <option value="">Seleccionar...</option>
                     <option value="diagnostico">Diagnóstico Express (gratuito)</option>
-                    <option value="impulso">Pack Impulso — Presencia digital</option>
-                    <option value="asistente">Asistente IA Esencial</option>
-                    <option value="automatizacion">Pack Automatización — Organiza clientes y agenda</option>
-                    <option value="ecosistema">Ecosistema Completo</option>
-                    <option value="acompanamiento">Acompañamiento Mensual</option>
+                    <option value="impulso">Pack Impulso — Presencia y imagen digital</option>
+                    <option value="asistente">Atención Automática — Respuesta rápida a consultas</option>
+                    <option value="automatizacion">Pack Organización — Clientes, agenda y seguimiento</option>
+                    <option value="ecosistema">Ecosistema Completo — Todo integrado</option>
+                    <option value="acompanamiento">Acompañamiento Mensual — Mejora continua</option>
                     <option value="otro">No sé todavía — quiero orientación</option>
                   </select>
                   <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gray-500">

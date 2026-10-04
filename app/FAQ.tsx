@@ -47,6 +47,22 @@ const faqs = [
   {
     q: "¿Cuánto cuesta? ¿Hay evaluación previa gratuita?",
     a: "La evaluación inicial es completamente gratuita y sin compromiso. Los planes se cotizan después de esa evaluación, para recomendarte solo lo que realmente necesita tu negocio ahora. No publicamos precios fijos porque cada negocio es diferente — pero sí buscamos que la propuesta sea concreta, aterrizada y proporcional a tu realidad."
+  },
+  {
+    q: "¿También ayudan con redes sociales y publicidad?",
+    a: "Sí. Dentro de los packs más completos incluimos estrategia de contenido y optimización de Instagram para atraer clientes nuevos. No hacemos publicidad pagada de forma independiente, pero sí ayudamos a que tu presencia orgánica en redes funcione y genere consultas reales — no solo seguidores."
+  },
+  {
+    q: "¿Puedo empezar con algo pequeño y crecer después?",
+    a: "Absolutamente. El Diagnóstico Express es gratuito y sirve para entender exactamente por dónde empezar. A partir de ahí, cada pack resuelve un problema concreto. Puedes empezar solo con presencia profesional y agregar automatización o gestión de clientes cuando estés listo — no tienes que contratar todo junto."
+  },
+  {
+    q: "¿Trabajan solo en Santiago o también en regiones?",
+    a: "Trabajamos con negocios de todo Chile. La implementación es mayormente digital y remota, por lo que la ciudad no es una limitación. Hemos apoyado negocios en Santiago, Valparaíso, Concepción y otras ciudades. Lo importante es tu negocio, no tu dirección."
+  },
+  {
+    q: "¿Puedo contratar por etapas o tengo que decidirlo todo de una vez?",
+    a: "Por etapas, siempre. Diseñamos todo para que puedas avanzar paso a paso: empezar con lo urgente, estabilizarlo y luego sumar más herramientas. Nadie debería comprometerse con un sistema complejo antes de ver que las bases funcionan. Somos flexibles porque los negocios reales son así."
   }
 ];
 
