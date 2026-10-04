@@ -4,7 +4,9 @@
 **Commit previo (V37):** 7828512  
 **Commit V38 fase 1:** effff31  
 **Commit V38 fase 2:** dpl_5UiR89ZrT1UMQVFymYh4tnUpp3AX
-**Commit V38 fase 3:** dpl_csi5e0k8z (LiveSystemFlow dedup + FAQ extensions)  
+**Commit V38 fase 3:** dpl_csi5e0k8z (LiveSystemFlow dedup + FAQ extensions)
+**Commit V38 fase 4+:** (SEO, Chimi, Instagram, jargon pass — commits 92c5807..ba86321)
+**HEAD:** ba86321  
 **URL Producción:** https://healthgrowth.cl  
 **Estado HTTP:** 200 ✅  
 **Verificado:** 2026-10-04
@@ -39,7 +41,15 @@ Aplicar **Regla Alicia**: cada sección debe ser comprensible por un dueño de P
 |---|---|---|
 | `DiagnosticForm.tsx` | Labels de dropdown actualizados para coincidir con nuevos nombres de packs: "Atención Automática — Respuesta rápida a consultas", "Pack Organización — Clientes, agenda y seguimiento" | LIVE ✅ |
 | `FAQ.tsx` | 4 nuevas preguntas añadidas: redes sociales/publicidad, empezar pequeño, fuera de Santiago, contratar por etapas | LIVE ✅ |
-| `LiveSystemFlow.tsx` | H2 "Así funciona el ecosistema" → "Del primer contacto a la cita confirmada". NODES[0].label "Lead llega" → "Consulta llega". NODES[2].label "IA Clasifica" → "Clasifica y responde". Body copy sin "lead". | LIVE ✅ |
+| `LiveSystemFlow.tsx` | H2 "Así funciona el ecosistema" → "Del primer contacto a la cita confirmada". NODES[0].label "Lead llega" → "Consulta llega". NODES[2].label "IA Clasifica" → "Clasifica y responde". Badge "score:8/10" → "prioridad alta". | LIVE ✅ |
+| `AutomationAI.tsx` | Chimi chat: flujo guiado "¿Qué quieres mejorar?" con 4 opciones + respuestas + DEMO label. features[2].title "Recuperación de leads" → "Clientes que no respondieron". Body copy "lead" → "cliente". | LIVE ✅ |
+| `Hero.tsx` | LIVE_EVENTS: "Nuevo lead" → "Nueva consulta", "Lead calificado por IA" → "Consulta clasificada y registrada". | LIVE ✅ |
+| `FAQ.tsx` | "automatización y CRM" → "automatización y registro de clientes". 4 nuevas preguntas sobre redes, empezar pequeño, Santiago, por etapas. | LIVE ✅ |
+| `UseCases.tsx` | "CRM de oportunidades" → "Registro de oportunidades". | LIVE ✅ |
+| `opengraph-image.tsx` | "CRM para PYMEs chilenas" → "Clientes organizados". | LIVE ✅ |
+| `layout.tsx` | Title "Orden, Tecnología y Crecimiento" → "Más clientes, menos caos para tu PYME". JSON-LD ProfessionalService schema añadido. Keywords limpias. | LIVE ✅ |
+| `constants.ts` | seo.title y description actualizados a lenguaje Alicia. | LIVE ✅ |
+| `InstagramBlock.tsx` | Nuevo componente: @healthgrowthspa strip con descripción de contenido y "Seguir en Instagram". Insertado entre ProfessionalSupport y VideoShowcase. | LIVE ✅ |
 
 ---
 
@@ -108,12 +118,12 @@ Las siguientes tareas del V38 original NO fueron ejecutadas y siguen pendientes:
 
 ### Prioridad Alta
 1. ~~**LiveSystemFlow duplicado**~~ — RESUELTO. El H2 "Así funciona el ecosistema" colisionaba visualmente con el pack "Ecosistema Completo". Cambiado a "Del primer contacto a la cita confirmada". LIVE ✅
-2. **Chimi — flujo guiado** — Hacer que Chimi pregunte "¿Qué quieres mejorar?" con opciones guiadas. Debe mostrar badge DEMO hasta que WhatsApp Meta esté activo.
-3. **Instagram section** — Añadir bloque prominente de Instagram (no solo footer). `@healthgrowthspa` como canal de descubrimiento y confianza.
+2. ~~**Chimi — flujo guiado**~~ — RESUELTO. Chimi ahora pregunta "¿Qué quieres mejorar?" con 4 opciones (responder rápido / verme profesional / organizar clientes / no sé). Cada opción muestra respuesta contextual + CTA WhatsApp. Footer: "DEMO · Chimi responderá automáticamente cuando esté activo". LIVE ✅
+3. ~~**Instagram section**~~ — RESUELTO. `InstagramBlock` component añadido entre ProfessionalSupport y VideoShowcase. Muestra @healthgrowthspa, descripción de contenido semanal, y "Seguir en Instagram" CTA. LIVE ✅
 
 ### Prioridad Media
 4. **Mobile QA** — Test visual 360x800 y 390x844. Sin overflow horizontal, texto legible, touch targets correctos.
-5. **SEO audit** — title, meta description, H1/H2, OG image, structured data, canonical, sitemap.
+5. ~~**SEO audit**~~ — RESUELTO. title sin "Tecnología", keywords actualizadas, JSON-LD ProfessionalService añadido, canonical correcto. LIVE ✅
 6. **Analytics** — Instrumentar eventos: `hero_cta`, `need_selected`, `pack_view`, `form_start`, `form_step2`, `form_submit`.
 7. **Video section** — Verificar posters, lazy loading, copy "pocas semanas" necesita caveat de evidencia.
 
