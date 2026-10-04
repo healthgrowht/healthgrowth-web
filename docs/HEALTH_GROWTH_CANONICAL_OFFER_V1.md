@@ -1,6 +1,6 @@
 # HEALTH GROWTH — OFERTA CANÓNICA V1
 # Fuente de verdad de productos y servicios
-# Fecha: 2026-10-03 | Sesión V37
+# Fecha: 2026-10-03 | Sesión V37 | Actualizado: 2026-10-04 | Sesión V38
 # PROHIBIDO alterar precios o packs sin actualizar este archivo primero.
 
 ---
@@ -55,41 +55,43 @@ Tu negocio en internet, con imagen y WhatsApp que transmiten confianza.
 
 ---
 
-### 2. ASISTENTE IA ESENCIAL
+### 2. ATENCIÓN AUTOMÁTICA *(antes "Asistente IA Esencial" — renombrado V38)*
 | Campo | Valor |
 |-------|-------|
 | ID | `asistente` |
 | Estado | READY — precio pendiente |
+| Chip web | "Respuesta rápida" |
 | Precio | A definir (setup + mensualidad) |
-| Incluye | Flujos automáticos WA + Clasificación de consultas + Recordatorios de cita + Seguimiento de leads |
+| Incluye | Flujos automáticos WA + Clasificación de consultas + Recordatorios de cita + Seguimiento |
 
 **Descripción customer-facing:**
-Responde, clasifica y hace seguimiento automáticamente.
+Responde, organiza y hace seguimiento sin que tengas que estar pendiente.
 
 **Beneficios (Mom Test):**
-- Flujos automáticos de respuesta en WhatsApp
-- Clasificación de consultas sin trabajo manual
-- Recordatorios de cita que llegan solos
-- Seguimiento de clientes que no cerraron
+- Respuestas automáticas en WhatsApp cuando no estás
+- Las consultas se organizan solas por tipo y urgencia
+- Recordatorios de cita que llegan sin que lo pidas
+- Seguimiento automático a clientes que no respondieron
 
 ---
 
-### 3. PACK AUTOMATIZACIÓN
+### 3. PACK ORGANIZACIÓN *(antes "Pack Automatización" — renombrado V38)*
 | Campo | Valor |
 |-------|-------|
 | ID | `automatizacion` |
 | Estado | READY — precio pendiente |
+| Chip web | "Organización" |
 | Precio | A definir (setup + mensualidad) |
-| Incluye | Gestión de clientes + Agenda digital + Flujos de seguimiento + Reportes básicos |
+| Incluye | Registro de clientes + Agenda digital + Flujos de seguimiento + Información para decisiones |
 
 **Descripción customer-facing:**
-Organiza tus clientes, tu agenda y tus seguimientos en un solo lugar.
+Todos tus clientes, tu agenda y tus seguimientos en un solo lugar.
 
 **Beneficios (Mom Test):**
-- Sistema de gestión de clientes (organización, no jargon técnico)
+- Registro organizado de tus clientes y su historial
 - Agenda digital sin cruces de horario
-- Flujos de seguimiento de oportunidades
-- Reportes básicos para tomar decisiones
+- Seguimiento claro de quién necesita atención
+- Información real para tomar mejores decisiones
 
 **NOTA:** Evitar la palabra "CRM" en material público dirigido a dueños de negocio no técnicos.
 
@@ -133,18 +135,33 @@ Revisión, ajustes y soporte mensual para que el sistema siempre funcione.
 
 ---
 
-## ESTRUCTURA DE PRECIOS (PENDIENTE DE VALIDACIÓN)
+## ESTRUCTURA DE PRECIOS — MATRIZ DE CLASIFICACIÓN (actualizado V38)
 
 ```
-NIVEL           MODELO          PRECIO    STATUS
-────────────────────────────────────────────────
-Diagnóstico     Gratis          $0        DEFINIDO
-Pack Impulso    Pago único      TBD       PENDIENTE CARLOS
-Asistente IA    Setup + mes     TBD       PENDIENTE CARLOS
-Automatización  Setup + mes     TBD       PENDIENTE CARLOS
-Ecosistema      Setup + mes     TBD       PENDIENTE CARLOS
-Mensual         Mensualidad     TBD       PENDIENTE CARLOS
+NIVEL                 MODELO         PRECIO      CLASIFICACIÓN
+──────────────────────────────────────────────────────────────
+Diagnóstico           Gratis         $0          ACTIVE_CONFIRMED
+Pack Impulso          Pago único     TBD         NEEDS_CARLOS
+Atención Automática   Setup + mes    TBD         NEEDS_CARLOS
+Pack Organización     Setup + mes    TBD         NEEDS_CARLOS
+Ecosistema Completo   Setup + mes    TBD         NEEDS_CARLOS
+Acompañamiento Mens.  Mensualidad    TBD         NEEDS_CARLOS
 ```
+
+### Clasificación de precios históricos hallados en git
+
+Búsqueda exhaustiva en historial git (todos los commits de PacksCanonical, Packs, Levels):
+**No se encontraron valores numéricos de precio en ningún commit.** Los archivos históricos
+(`app/Packs.tsx`, `app/Levels.tsx`) contenían nombres descriptivos pero SIN precios definidos.
+
+| Precio | Clasificación | Fuente |
+|--------|--------------|--------|
+| $49.990 "Pack Inicio" | HISTORICAL/UNVERIFIED | No encontrado en git — posiblemente de conversación verbal |
+| $89.990 "Crecimiento" | HISTORICAL/UNVERIFIED | No encontrado en git — idem |
+| $99.990 "Pack Presencia" | HISTORICAL/UNVERIFIED | No encontrado en git — idem |
+
+**Instrucción:** Todos los precios numéricos requieren confirmación de Carlos antes de publicar.
+La web correctamente NO muestra precios. Mantener así hasta Gate-PRECIO.
 
 **Política de publicación de precios:**
 - NO publicar precios en web hasta que Carlos los apruebe
@@ -182,6 +199,7 @@ Mensual         Mensualidad     TBD       PENDIENTE CARLOS
 | Versión | Fecha | Cambio |
 |---------|-------|--------|
 | V1 | 2026-10-03 | Creación inicial — recuperación completa desde código y docs |
+| V1.1 | 2026-10-04 | V38 sync: nombres de packs actualizados (Atención Automática, Pack Organización), matriz de clasificación de precios añadida |
 
 ---
 
