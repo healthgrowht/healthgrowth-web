@@ -7,8 +7,8 @@ export const SITE_CONFIG = {
   domain: 'https://healthgrowth.cl',
 
   seo: {
-    title: 'Health Growth | Orden, Tecnología y Crecimiento para PYMEs Chilenas',
-    description: 'Ayudamos a PYMEs y negocios de servicios a ordenar su atención, automatizar procesos y crecer con tecnología simple. Sin caos, sin sistemas complejos.',
+    title: 'Health Growth | Más clientes, menos caos para tu PYME',
+    description: 'Ordenamos tu atención, tus clientes y tus procesos para que tu negocio responda más rápido y pierda menos oportunidades. Sin jerga técnica, con resultados concretos.',
     ogImage: '/seo/og-image.svg',
     twitterImage: '/seo/twitter-image.svg',
   },
