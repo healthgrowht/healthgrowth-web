@@ -30,7 +30,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto tiempo toma ver resultados?",
-    a: "La presencia digital profesional (web + WhatsApp configurado) se puede tener lista en días. Los sistemas de automatización y CRM suelen estar operativos en 2 a 4 semanas. Desde el primer día en que el sistema funciona, empiezas a ahorrar tiempo y a no perder clientes por respuesta lenta."
+    a: "La presencia digital profesional (web + WhatsApp configurado) se puede tener lista en días. Los sistemas de automatización y registro de clientes suelen estar operativos en 2 a 4 semanas. Desde el primer día en que el sistema funciona, empiezas a ahorrar tiempo y a no perder clientes por respuesta lenta."
   },
   {
     q: "¿Qué necesito para empezar?",

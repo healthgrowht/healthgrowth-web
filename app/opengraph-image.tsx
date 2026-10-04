@@ -100,7 +100,7 @@ export default function OGImage() {
             marginBottom: '48px',
           }}
         >
-          Presencia digital · Automatización · CRM para PYMEs chilenas
+          Presencia digital · Atención automática · Clientes organizados
         </div>
 
         {/* Bottom row: brand + CTA */}

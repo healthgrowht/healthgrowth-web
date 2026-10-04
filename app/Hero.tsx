@@ -12,8 +12,8 @@ const STEPS = [
 ];
 
 const LIVE_EVENTS = [
-  "Nuevo lead · formulario web",
-  "Lead calificado por IA",
+  "Nueva consulta · formulario web",
+  "Consulta clasificada y registrada",
   "WhatsApp enviado",
   "Reserva confirmada",
 ];

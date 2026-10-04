@@ -40,7 +40,7 @@ const rubros = [
     name: "Servicios",
     fullName: "Servicios Profesionales",
     problems: ["Propuestas sin seguimiento", "Prospectos sin gestionar", "Comunicación dispersa entre canales"],
-    solution: "CRM de oportunidades, seguimiento de propuestas y comunicación centralizada.",
+    solution: "Registro de oportunidades, seguimiento de propuestas y comunicación centralizada.",
     result: "Más cierres y menos oportunidades perdidas.",
   },
   {

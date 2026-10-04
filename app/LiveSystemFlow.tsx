@@ -29,7 +29,7 @@ const NODES = [
     label: "Clasifica y responde",
     channel: "Califica · Responde",
     event: "AI_QUALIFIED",
-    badge: "score:8/10",
+    badge: "prioridad alta",
     notification: "Intención: agendar evaluación → prioridad alta",
     color: "indigo",
   },

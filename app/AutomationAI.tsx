@@ -52,7 +52,7 @@ export default function AutomationAI() {
         <div className="mb-8">
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-cyan-400 mb-2 block">Cómo funciona Health Growth</span>
           <h2 className="text-2xl md:text-4xl font-bold text-white mb-2">Tu operación organizada, aunque no estés mirando</h2>
-          <p className="text-gray-500 text-sm max-w-xl">Flujos automáticos para que cada consulta tenga respuesta, cada cita tenga recordatorio y cada lead tenga seguimiento.</p>
+          <p className="text-gray-500 text-sm max-w-xl">Flujos automáticos para que cada consulta tenga respuesta, cada cita tenga recordatorio y cada cliente tenga seguimiento.</p>
         </div>
 
         {/* Flow — horizontal compact */}
