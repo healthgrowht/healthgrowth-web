@@ -9,6 +9,7 @@ import AutomationAI from './AutomationAI';
 import LiveSystemFlow from './LiveSystemFlow';
 import CasoPatitas from './CasoPatitas';
 import ProfessionalSupport from './ProfessionalSupport';
+import InstagramBlock from './InstagramBlock';
 import VideoShowcase from './VideoShowcase';
 import FAQ from './FAQ';
 import DiagnosticForm from './DiagnosticForm';
@@ -46,10 +47,13 @@ export default function Home() {
       {/* 8. DIFERENCIADORES */}
       <ProfessionalSupport />
 
-      {/* 9. VIDEO */}
+      {/* 9. INSTAGRAM */}
+      <InstagramBlock />
+
+      {/* 10. VIDEO */}
       <VideoShowcase />
 
-      {/* 10. PREGUNTAS + FORMULARIO */}
+      {/* 11. PREGUNTAS + FORMULARIO */}
       <FAQ />
       <DiagnosticForm />
 
