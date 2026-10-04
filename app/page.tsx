@@ -1,6 +1,7 @@
 import Navbar from './Navbar';
 import Hero from './Hero';
 import Problem from './Problem';
+import NeedsSelector from './NeedsSelector';
 import Transformation from './Transformation';
 import PacksCanonical from './PacksCanonical';
 import UseCases from './UseCases';
@@ -22,8 +23,9 @@ export default function Home() {
       {/* 1. ATENCIÓN */}
       <Hero />
 
-      {/* 2. PROBLEMA + PROCESO */}
+      {/* 2. PROBLEMA + NECESIDAD + PROCESO */}
       <Problem />
+      <NeedsSelector />
       <Transformation />
 
       {/* 3. SOLUCIONES */}

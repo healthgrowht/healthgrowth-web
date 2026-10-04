@@ -11,6 +11,7 @@ const packs = [
     badgeClass: "bg-green-500 text-black font-bold",
     title: "Diagnóstico Express Pyme",
     tagline: "Entiende qué frena tu negocio antes de invertir en nada.",
+    forWho: "Para cualquier negocio que quiere saber por dónde empezar.",
     benefits: [
       "Revisión de tu operación y presencia actual",
       "3 mejoras concretas aplicables de inmediato",
@@ -30,11 +31,12 @@ const packs = [
     badgeClass: "bg-blue-500/20 border border-blue-500/30 text-blue-400",
     title: "Pack Impulso",
     tagline: "Tu negocio en internet, con imagen y WhatsApp que transmiten confianza.",
+    forWho: "Para negocios que quieren verse profesionales y generar más contactos.",
     benefits: [
-      "Sitio web profesional orientado a conversiones",
+      "Sitio web profesional orientado a consultas",
       "WhatsApp Business configurado y organizado",
-      "Imagen digital coherente en todos los canales",
-      "Perfil de Instagram optimizado",
+      "Imagen digital coherente en todos tus canales",
+      "Perfil de Instagram optimizado para atraer clientes",
     ],
     cta: "Consultar disponibilidad",
     ctaClass: "bg-white hover:bg-cyan-500 hover:text-black text-black font-extrabold",
@@ -43,17 +45,18 @@ const packs = [
   },
   {
     id: "asistente",
-    chip: "Asistente IA",
-    icon: "🤖",
-    badge: "AUTOMÁTICO",
+    chip: "Respuesta rápida",
+    icon: "💬",
+    badge: "ATENCIÓN",
     badgeClass: "bg-indigo-500/20 border border-indigo-500/30 text-indigo-400",
-    title: "Asistente IA Esencial",
-    tagline: "Responde, clasifica y hace seguimiento automáticamente.",
+    title: "Atención Automática",
+    tagline: "Responde, organiza y hace seguimiento sin que tengas que estar pendiente.",
+    forWho: "Para negocios que reciben muchos mensajes pero pierden consultas por demora.",
     benefits: [
-      "Flujos automáticos de respuesta en WhatsApp",
-      "Clasificación de consultas sin trabajo manual",
-      "Recordatorios de cita que llegan solos",
-      "Seguimiento de clientes que no cerraron",
+      "Respuestas automáticas en WhatsApp cuando no estás",
+      "Las consultas se organizan solas por tipo y urgencia",
+      "Recordatorios de cita que llegan sin que lo pidas",
+      "Seguimiento automático a clientes que no respondieron",
     ],
     cta: "Consultar disponibilidad",
     ctaClass: "bg-white hover:bg-cyan-500 hover:text-black text-black font-extrabold",
@@ -62,17 +65,18 @@ const packs = [
   },
   {
     id: "automatizacion",
-    chip: "Automatización",
-    icon: "⚙️",
+    chip: "Organización",
+    icon: "📋",
     badge: "GESTIÓN",
     badgeClass: "bg-purple-500/20 border border-purple-500/30 text-purple-400",
-    title: "Pack Automatización",
-    tagline: "Organiza tus clientes, tu agenda y tus seguimientos en un solo lugar.",
+    title: "Pack Organización",
+    tagline: "Todos tus clientes, tu agenda y tus seguimientos en un solo lugar.",
+    forWho: "Para negocios con clientes recurrentes que quieren dejar de depender de la memoria.",
     benefits: [
-      "Sistema de gestión de clientes (CRM)",
+      "Registro organizado de tus clientes y su historial",
       "Agenda digital sin cruces de horario",
-      "Flujos de seguimiento de oportunidades",
-      "Reportes básicos para tomar decisiones",
+      "Seguimiento claro de quién necesita atención",
+      "Información real para tomar mejores decisiones",
     ],
     cta: "Consultar disponibilidad",
     ctaClass: "bg-white hover:bg-cyan-500 hover:text-black text-black font-extrabold",
@@ -86,11 +90,12 @@ const packs = [
     badge: "INTEGRAL",
     badgeClass: "bg-pink-500/20 border border-pink-500/30 text-pink-400",
     title: "Ecosistema Completo",
-    tagline: "Presencia + automatización + gestión de clientes + contenido.",
+    tagline: "Presencia + atención organizada + clientes registrados + contenido digital.",
+    forWho: "Para PYMEs que quieren modernizarse en serio, paso a paso, con acompañamiento.",
     benefits: [
-      "Todo lo de los packs anteriores integrado",
-      "Paneles de seguimiento de resultados",
-      "Estrategia de contenido digital",
+      "Todo lo anterior integrado y funcionando junto",
+      "Seguimiento de resultados para saber qué está pasando",
+      "Estrategia de contenido para redes sociales",
       "Canales digitales conectados entre sí",
     ],
     cta: "Consultar disponibilidad",
@@ -105,12 +110,13 @@ const packs = [
     badge: "CONTINUO",
     badgeClass: "bg-amber-500/20 border border-amber-500/30 text-amber-400",
     title: "Acompañamiento Mensual",
-    tagline: "Revisión, ajustes y soporte mensual para que el sistema siempre funcione.",
+    tagline: "Revisión, ajustes y soporte para que el sistema siempre funcione bien.",
+    forWho: "Para negocios que quieren seguir mejorando mes a mes sin hacerlo solos.",
     benefits: [
-      "Revisión mensual de operación y resultados",
-      "Ajustes y mejoras continuas al sistema",
-      "Soporte directo con el equipo",
-      "Estrategia de crecimiento progresivo",
+      "Revisión mensual de cómo está funcionando todo",
+      "Ajustes y mejoras continuas sin costo extra",
+      "Soporte directo cuando lo necesitas",
+      "Plan de crecimiento progresivo para tu negocio",
     ],
     cta: "Consultar disponibilidad",
     ctaClass: "bg-white hover:bg-cyan-500 hover:text-black text-black font-extrabold",
@@ -177,7 +183,8 @@ export default function PacksCanonical() {
               </span>
             </div>
 
-            <p className="text-gray-300 text-sm font-medium leading-relaxed mb-5">{pack.tagline}</p>
+            <p className="text-gray-300 text-sm font-medium leading-relaxed mb-2">{pack.tagline}</p>
+            <p className="text-gray-500 text-xs mb-5 italic">{pack.forWho}</p>
 
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6">
               {pack.benefits.map((b, j) => (

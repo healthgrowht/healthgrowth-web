@@ -7,7 +7,7 @@ const implemented = [
   { icon: "📱", item: "Calendario de contenido y reels para Instagram", done: true },
   { icon: "🔔", item: "Automatización de confirmación y recordatorio de citas", done: false },
   { icon: "📋", item: "Registro de clientes y seguimiento de mascotas", done: true },
-  { icon: "📊", item: "CRM básico operativo para gestión interna", done: true },
+  { icon: "📊", item: "Sistema básico de registro y seguimiento de clientes", done: true },
 ];
 
 const roccoFunctions = [
@@ -110,8 +110,8 @@ export default function CasoPatitas() {
                 ))}
               </div>
               <div className="mt-3 p-3 rounded-xl bg-white/3 border border-white/6">
-                <p className="text-gray-600 text-[10px] font-mono uppercase tracking-wider mb-1">Stack:</p>
-                <p className="text-gray-500 text-[11px] leading-relaxed">WhatsApp Business API · Automatización de flujos · CRM Health Growth · IA conversacional</p>
+                <p className="text-gray-600 text-[10px] font-mono uppercase tracking-wider mb-1">Qué se está integrando:</p>
+                <p className="text-gray-500 text-[11px] leading-relaxed">Atención por WhatsApp · Recordatorios automáticos · Registro de clientes · Seguimiento de consultas</p>
               </div>
             </motion.div>
 

@@ -2,13 +2,14 @@
 import { motion } from 'framer-motion';
 
 const issues = [
-  { icon: "💬", text: "WhatsApp sin responder y clientes que se van con la competencia" },
-  { icon: "📅", text: "Agenda desordenada: cruces de horario y cancelaciones sin aviso" },
-  { icon: "🔕", text: "Leads que llegan pero nunca se convierten en clientes" },
-  { icon: "📋", text: "Todo en la memoria o en papeles, sin sistema claro" },
-  { icon: "📱", text: "Redes sociales sin estrategia: presencia sin resultados" },
-  { icon: "⏱️", text: "Atención manual consume horas que deberías usar en tu servicio" },
-  { icon: "🌐", text: "Imagen digital que no transmite la calidad real de tu trabajo" },
+  { icon: "💬", text: "Te llegan mensajes y después no sabes a quién tenías que llamar de vuelta." },
+  { icon: "📅", text: "La agenda se cruza, hay cancelaciones sin aviso y horas perdidas." },
+  { icon: "📱", text: "Publicas pero casi nadie pregunta — o piden precio y no responden más." },
+  { icon: "📋", text: "Todo está en la memoria o en cuadernos, sin ningún registro claro." },
+  { icon: "🌐", text: "Tu negocio funciona bien, pero en internet no se nota." },
+  { icon: "⏱️", text: "Pasas horas respondiendo siempre lo mismo, en vez de atender." },
+  { icon: "🚀", text: "Quieres promocionarte, pero no sabes bien por dónde empezar." },
+  { icon: "🔄", text: "Todo depende de ti — si no estás, nada avanza." },
 ];
 
 export default function Problem() {

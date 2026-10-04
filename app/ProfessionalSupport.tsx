@@ -12,7 +12,7 @@ export default function ProfessionalSupport() {
             traer la misma disciplina operativa a la gestión de PYMEs chilenas.
           </p>
           <div className="flex flex-wrap gap-2">
-            {["HubSpot CRM", "Google Cloud", "Vertex AI", "Automatización", "IA Aplicada"].map(c => (
+            {["Disciplina clínica aplicada", "Procesos precisos", "Implementación práctica", "Acompañamiento real", "Metodología probada"].map(c => (
               <span key={c} className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-gray-500">
                 {c}
               </span>
