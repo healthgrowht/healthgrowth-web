@@ -306,18 +306,95 @@ export default function ChimiChat() {
     }
   };
 
-  const handleFreeText = (text: string) => {
+  const handleFreeText = useCallback(async (text: string) => {
     if (!text.trim()) return;
     track.chimiMessage();
     const uid = `${Date.now()}-u`;
-    setMessages(prev => [...prev, { id: uid, role: 'user', text: text.trim() }]);
-    addChimiMsg(
-      "Entendido 🐱 ¿Se parece a alguna de estas opciones? Así puedo orientarte mejor.",
-      WELCOME_QRS, undefined, 900,
-    );
-    setStage('welcome');
-    setCtx({ need: null, packId: null });
-  };
+    const userMsg: Msg = { id: uid, role: 'user', text: text.trim() };
+    setMessages(prev => [...prev, userMsg]);
+
+    // Build message history for the API (last 10 turns max)
+    const historySnapshot = [...messages, userMsg].slice(-10);
+    const apiMessages = historySnapshot.map(m => ({
+      role: m.role === 'chimi' ? 'assistant' as const : 'user' as const,
+      content: m.text,
+    }));
+
+    let session: Record<string, string> = {};
+    try {
+      const stored = sessionStorage.getItem('chimi-context');
+      if (stored) session = JSON.parse(stored);
+    } catch { /* ok */ }
+
+    setIsTyping(true);
+    try {
+      const res = await fetch('/api/chimi', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: apiMessages, session }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || data.error === 'AI_UNAVAILABLE' || !data.text) {
+        // Graceful fallback to rule-based engine
+        setIsTyping(false);
+        addChimiMsg(
+          "Entendido 🐱 ¿Se parece a alguna de estas opciones? Así puedo orientarte mejor.",
+          WELCOME_QRS, undefined, 0,
+        );
+        setStage('welcome');
+        setCtx({ need: null, packId: null });
+        return;
+      }
+
+      setIsTyping(false);
+      const id = `${Date.now()}-ai`;
+      setMessages(prev => [...prev, { id, role: 'chimi', text: data.text }]);
+
+      // Handle frontend actions from Claude
+      if (data.actions?.length) {
+        for (const action of data.actions as Array<{ action: string; pack_id?: string; whatsapp_message?: string }>) {
+          if (action.action === 'scroll_to_diagnostico') {
+            if (action.pack_id) {
+              try { sessionStorage.setItem('hg-pack', action.pack_id); } catch { /* ok */ }
+            }
+            setTimeout(() => {
+              setOpen(false);
+              setTimeout(() => document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' }), 150);
+            }, 1500);
+          } else if (action.action === 'scroll_to_packs') {
+            setTimeout(() => {
+              setOpen(false);
+              setTimeout(() => document.getElementById('packs')?.scrollIntoView({ behavior: 'smooth' }), 150);
+            }, 1500);
+          } else if (action.action === 'open_whatsapp') {
+            const msg = action.whatsapp_message ?? 'Hola, estuve conversando con Chimi en la web y me gustaría orientación.';
+            window.open(`${SITE_CONFIG.whatsapp.url}?text=${encodeURIComponent(msg)}`, '_blank');
+          }
+        }
+      }
+
+      // Save customer context to sessionStorage
+      if (data.customer_context) {
+        try {
+          const cx = data.customer_context as { data?: { need?: string; pack_recommendation?: string } };
+          const d = cx.data ?? {};
+          const existing = JSON.parse(sessionStorage.getItem('chimi-context') ?? '{}');
+          sessionStorage.setItem('chimi-context', JSON.stringify({ ...existing, ...d, source: 'chimi-ai' }));
+          if (d.need) setCtx(c => ({ ...c, need: d.need ?? null }));
+          if (d.pack_recommendation) setCtx(c => ({ ...c, packId: d.pack_recommendation ?? null }));
+        } catch { /* ok */ }
+      }
+
+    } catch {
+      setIsTyping(false);
+      addChimiMsg(
+        "No pude conectarme ahora 🐱 ¿Me cuentas con tus palabras qué necesitas?",
+        WELCOME_QRS, undefined, 0,
+      );
+    }
+  }, [messages, addChimiMsg, setIsTyping]);
 
   const toggle = () => {
     setOpen(o => !o);
