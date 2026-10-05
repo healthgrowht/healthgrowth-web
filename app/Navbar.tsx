@@ -40,7 +40,7 @@ export default function Navbar() {
               alt="Health Growth SpA"
               width={140}
               height={175}
-              className="h-10 w-auto object-contain group-hover:opacity-90 transition-opacity"
+              className="h-12 md:h-14 w-auto object-contain group-hover:opacity-90 transition-opacity"
               priority
             />
           </Link>

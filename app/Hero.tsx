@@ -31,8 +31,8 @@ function ChimiPreview() {
         {/* Header */}
         <div className="flex items-center gap-3 px-5 py-3.5 bg-[#060e1f] border-b border-white/[0.06]">
           <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-indigo-500/40 flex-shrink-0">
-            <Image src="/images/chimi.jpeg" alt="Chimi" width={36} height={36}
-              className="w-full h-full object-cover object-[85%_25%]" />
+            <Image src="/images/chimi.svg" alt="Chimi" width={36} height={36}
+              className="w-full h-full object-contain" />
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-white font-bold text-sm leading-none">Chimi</p>
@@ -54,9 +54,9 @@ function ChimiPreview() {
           {/* Chimi opens */}
           {stage >= 1 && (
             <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="flex gap-2 items-start">
-              <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-indigo-500/25 mt-0.5">
-                <Image src="/images/chimi.jpeg" alt="" width={28} height={28}
-                  className="w-full h-full object-cover object-[85%_25%]" />
+              <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-cyan-500/25 mt-0.5 bg-[#0c1828]">
+                <Image src="/images/chimi.svg" alt="" width={28} height={28}
+                  className="w-full h-full object-contain" />
               </div>
               <div className="bg-zinc-800/70 border border-white/[0.06] rounded-2xl rounded-tl-sm px-3 py-2.5 max-w-[240px]">
                 <p className="text-gray-200 text-[13px] leading-relaxed">Hola 👋 Soy Chimi. ¿Qué quieres mejorar en tu negocio?</p>
@@ -88,9 +88,9 @@ function ChimiPreview() {
           {/* Chimi follow-up */}
           {stage >= 3 ? (
             <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="flex gap-2 items-start">
-              <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-indigo-500/25 mt-0.5">
-                <Image src="/images/chimi.jpeg" alt="" width={28} height={28}
-                  className="w-full h-full object-cover object-[85%_25%]" />
+              <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-cyan-500/25 mt-0.5 bg-[#0c1828]">
+                <Image src="/images/chimi.svg" alt="" width={28} height={28}
+                  className="w-full h-full object-contain" />
               </div>
               <div className="bg-zinc-800/70 border border-white/[0.06] rounded-2xl rounded-tl-sm px-3 py-2.5 max-w-[240px]">
                 <p className="text-gray-200 text-[13px] leading-relaxed">Entendido, ¿por dónde te llegan las consultas hoy?</p>
@@ -99,8 +99,8 @@ function ChimiPreview() {
           ) : stage === 2 ? (
             <div className="flex gap-2 items-center">
               <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-indigo-500/25">
-                <Image src="/images/chimi.jpeg" alt="" width={28} height={28}
-                  className="w-full h-full object-cover object-[85%_25%]" />
+                <Image src="/images/chimi.svg" alt="" width={28} height={28}
+                  className="w-full h-full object-contain" />
               </div>
               <div className="bg-zinc-800/70 border border-white/[0.06] rounded-2xl rounded-tl-sm px-3 py-2.5">
                 <span className="flex gap-1 items-center h-4">
@@ -201,11 +201,9 @@ export default function Hero() {
               </a>
               <button
                 onClick={openChimi}
-                className="flex items-center justify-center gap-2 px-8 py-4 border border-white/[0.12] text-white font-semibold rounded-2xl hover:border-indigo-500/50 hover:text-indigo-300 transition-all"
+                className="flex items-center justify-center gap-2 px-8 py-4 border border-white/[0.12] text-white font-semibold rounded-2xl hover:border-cyan-500/50 hover:text-cyan-300 transition-all"
               >
-                <div className="w-6 h-6 rounded-full overflow-hidden border border-white/20 flex-shrink-0">
-                  <Image src="/images/chimi.jpeg" alt="" width={24} height={24} className="w-full h-full object-cover object-[85%_25%]" />
-                </div>
+                <Image src="/images/chimi.svg" alt="" width={24} height={24} className="w-6 h-6" />
                 Hablar con Chimi
               </button>
             </div>

@@ -42,38 +42,43 @@ const PACKS: Record<string, PackInfo> = {
     benefits: ["Revisión de tu operación actual", "3 mejoras concretas", "Plan de prioridades claro", "Sin costo y sin compromiso"],
     id: "diagnostico", badge: "GRATIS",
   },
-  impulso: {
-    name: "Pack Impulso",
-    tagline: "Presencia profesional que genera contactos.",
-    benefits: ["Web profesional orientada a consultas", "WhatsApp Business configurado", "Imagen digital coherente", "Perfil Instagram optimizado"],
-    id: "impulso", badge: "PRESENCIA",
+  imagen: {
+    name: "Imagen Digital",
+    tagline: "Imagen de marca y presencia digital que te representan bien.",
+    benefits: ["Piezas gráficas para Instagram y redes", "Imagen digital coherente en todos tus canales", "WhatsApp Business configurado", "Perfil Instagram optimizado"],
+    id: "imagen", badge: "IMAGEN + CONTENIDO",
   },
-  asistente: {
-    name: "Atención Automática",
-    tagline: "Responde y organiza sin que estés pendiente.",
-    benefits: ["Respuestas automáticas en WhatsApp", "Consultas organizadas por tipo", "Recordatorios de cita", "Seguimiento a clientes"],
-    id: "asistente", badge: "ATENCIÓN",
+  captacion: {
+    name: "Captación Activa",
+    tagline: "Más contenido y visibilidad para atraer clientes nuevos.",
+    benefits: ["Contenido para Instagram: posts, historias y reels", "Estrategia de publicación orientada a clientes", "Visibilidad en búsquedas locales", "Seguimiento de resultados"],
+    id: "captacion", badge: "CAPTACIÓN",
   },
-  automatizacion: {
-    name: "Pack Organización",
-    tagline: "Clientes, agenda y seguimientos en un solo lugar.",
-    benefits: ["Registro de clientes e historial", "Agenda digital sin cruces", "Seguimiento claro por cliente", "Información para decidir mejor"],
-    id: "automatizacion", badge: "GESTIÓN",
+  atencion: {
+    name: "Atención y Orden",
+    tagline: "Automatizamos WhatsApp y organizamos tus clientes.",
+    benefits: ["Respuestas automáticas y seguimiento por WhatsApp", "Agenda digital sin cruces de horario", "Registro de clientes e historial", "Recordatorios automáticos de cita"],
+    id: "atencion", badge: "ATENCIÓN",
   },
   ecosistema: {
     name: "Ecosistema Completo",
-    tagline: "Presencia + atención + organización integrados.",
-    benefits: ["Todo lo anterior funcionando junto", "Seguimiento de resultados", "Estrategia de contenido digital", "Canales conectados entre sí"],
+    tagline: "Imagen, captación, atención y organización integrados.",
+    benefits: ["Todo lo anterior funcionando junto", "Estrategia de contenido mensual", "Análisis de resultados y mejora continua", "Canales digitales conectados"],
     id: "ecosistema", badge: "INTEGRAL",
   },
+  // Backwards-compat aliases for old pack IDs stored in sessionStorage
+  impulso: { name: "Imagen Digital", tagline: "Imagen de marca y presencia digital que te representan bien.", benefits: ["Piezas gráficas para Instagram", "WhatsApp Business", "Imagen coherente", "Instagram optimizado"], id: "imagen", badge: "IMAGEN + CONTENIDO" },
+  asistente: { name: "Atención y Orden", tagline: "Automatizamos WhatsApp y organizamos tus clientes.", benefits: ["WhatsApp automático", "Agenda digital", "Registro de clientes", "Recordatorios"], id: "atencion", badge: "ATENCIÓN" },
+  automatizacion: { name: "Atención y Orden", tagline: "Automatizamos WhatsApp y organizamos tus clientes.", benefits: ["WhatsApp automático", "Agenda digital", "Registro de clientes", "Recordatorios"], id: "atencion", badge: "ATENCIÓN" },
 };
 
 const NEED_TO_PACK: Record<string, string> = {
-  empezar: "diagnostico", imagen: "impulso", promocionar: "impulso",
-  consultas: "asistente", organizar: "automatizacion", agenda: "automatizacion",
-  tiempo: "asistente", automatizar: "ecosistema", "nosé": "diagnostico",
-  // V39.3 new IDs
-  presencia: "impulso", ordenar: "automatizacion",
+  empezar: "diagnostico", imagen: "imagen", promocionar: "captacion",
+  consultas: "captacion", organizar: "atencion", agenda: "atencion",
+  tiempo: "atencion", automatizar: "ecosistema", "nosé": "diagnostico",
+  presencia: "imagen", ordenar: "atencion",
+  // Legacy aliases
+  impulso: "imagen", asistente: "atencion", automatizacion: "atencion",
 };
 
 const WELCOME_QRS: QR[] = [
@@ -423,7 +428,7 @@ export default function ChimiChat() {
             {/* Header */}
             <div className="flex items-center gap-3 px-4 py-3 bg-[#060e1f] border-b border-white/[0.06] flex-shrink-0">
               <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-indigo-500/40 flex-shrink-0">
-                <Image src="/images/chimi.jpeg" alt="Chimi" width={36} height={36} className="w-full h-full object-cover object-[85%_25%]" />
+                <Image src="/images/chimi.svg" alt="Chimi" width={36} height={36} className="w-full h-full object-contain p-0.5" />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-white font-bold text-sm leading-none">Chimi</p>
@@ -454,7 +459,7 @@ export default function ChimiChat() {
                   {msg.role === 'chimi' ? (
                     <div className="flex gap-2 items-start">
                       <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-indigo-500/25 mt-0.5">
-                        <Image src="/images/chimi.jpeg" alt="" width={28} height={28} className="w-full h-full object-cover object-[85%_25%]" />
+                        <Image src="/images/chimi.svg" alt="" width={28} height={28} className="w-full h-full object-contain" />
                       </div>
                       <div className="flex-1 space-y-2.5 min-w-0">
                         {/* Bubble */}
@@ -517,7 +522,7 @@ export default function ChimiChat() {
                 {isTyping && (
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex gap-2 items-center">
                     <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-indigo-500/25">
-                      <Image src="/images/chimi.jpeg" alt="" width={28} height={28} className="w-full h-full object-cover object-[85%_25%]" />
+                      <Image src="/images/chimi.svg" alt="" width={28} height={28} className="w-full h-full object-contain" />
                     </div>
                     <div className="bg-zinc-800/70 border border-white/[0.06] rounded-2xl rounded-tl-sm px-3 py-2.5">
                       <span className="flex gap-1 items-center h-4">
@@ -574,23 +579,23 @@ export default function ChimiChat() {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 1.4, type: 'spring', stiffness: 260, damping: 22 }}
-          className="relative w-14 h-14 rounded-full overflow-hidden shadow-2xl shadow-indigo-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
+          className="relative w-16 h-16 rounded-full overflow-hidden shadow-2xl shadow-cyan-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 bg-[#0c1828]"
           aria-label={open ? 'Cerrar chat con Chimi' : 'Abrir chat con Chimi'}
           aria-expanded={open}
         >
           {/* Pulse ring */}
           {!open && (
-            <span className="absolute inset-0 rounded-full border-2 border-indigo-400/50 animate-ping pointer-events-none" />
+            <span className="absolute inset-0 rounded-full border-2 border-cyan-400/40 animate-ping pointer-events-none" />
           )}
           {/* Border */}
-          <span className="absolute inset-0 rounded-full border-2 border-indigo-500/60 pointer-events-none z-10" />
+          <span className="absolute inset-0 rounded-full border-2 border-cyan-500/50 pointer-events-none z-10" />
 
           <Image
-            src="/images/chimi.jpeg"
+            src="/images/chimi.svg"
             alt="Chimi — Asistente Health Growth"
-            width={56}
-            height={56}
-            className="w-full h-full object-cover object-[85%_25%]"
+            width={64}
+            height={64}
+            className="w-full h-full object-contain p-1"
           />
 
           {/* Close overlay */}

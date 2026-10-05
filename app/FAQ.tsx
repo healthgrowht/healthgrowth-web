@@ -30,7 +30,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto tiempo toma ver resultados?",
-    a: "La presencia digital profesional (web + WhatsApp configurado) se puede tener lista en días. Los sistemas de automatización y registro de clientes suelen estar operativos en 2 a 4 semanas. Desde el primer día en que el sistema funciona, empiezas a ahorrar tiempo y a no perder clientes por respuesta lenta."
+    a: "La imagen digital (piezas gráficas, Instagram profesional, WhatsApp Business) se puede tener lista en días. Los sistemas de automatización y registro de clientes suelen estar operativos en 2 a 4 semanas. Desde el primer día en que el sistema funciona, empiezas a ahorrar tiempo y a no perder clientes por respuesta lenta."
   },
   {
     q: "¿Qué necesito para empezar?",
@@ -50,7 +50,7 @@ const faqs = [
   },
   {
     q: "¿También ayudan con redes sociales y publicidad?",
-    a: "Sí. Dentro de los packs más completos incluimos estrategia de contenido y optimización de Instagram para atraer clientes nuevos. No hacemos publicidad pagada de forma independiente, pero sí ayudamos a que tu presencia orgánica en redes funcione y genere consultas reales — no solo seguidores."
+    a: "Sí. La creación de piezas gráficas para Instagram, estrategia de publicación y optimización de perfil está disponible desde nuestros primeros niveles — no es algo exclusivo de los packs más avanzados. No hacemos publicidad pagada de forma independiente, pero sí hacemos que tu presencia orgánica en redes genere consultas reales."
   },
   {
     q: "¿Puedo empezar con algo pequeño y crecer después?",

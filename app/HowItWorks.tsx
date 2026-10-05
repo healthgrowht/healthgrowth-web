@@ -17,7 +17,7 @@ const steps = [
   {
     num: "03",
     label: "Lo implementamos",
-    desc: "Ejecutamos los cambios: web, WhatsApp, organización — lo que corresponda.",
+    desc: "Ejecutamos lo que corresponde: imagen, contenido, automatización — según lo que necesita tu negocio.",
     accent: "text-sky-400",
   },
   {
