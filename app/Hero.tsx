@@ -93,7 +93,7 @@ function ChimiPreview() {
                   className="w-full h-full object-cover object-[85%_25%]" />
               </div>
               <div className="bg-zinc-800/70 border border-white/[0.06] rounded-2xl rounded-tl-sm px-3 py-2.5 max-w-[240px]">
-                <p className="text-gray-200 text-[13px] leading-relaxed">Entendido 🐾 ¿Por dónde te llegan las consultas hoy?</p>
+                <p className="text-gray-200 text-[13px] leading-relaxed">Entendido, ¿por dónde te llegan las consultas hoy?</p>
               </div>
             </motion.div>
           ) : stage === 2 ? (
@@ -121,7 +121,7 @@ function ChimiPreview() {
             onClick={openChimi}
             className="w-full py-2.5 rounded-xl bg-indigo-500/15 border border-indigo-500/25 text-indigo-300 text-[12px] font-bold hover:bg-indigo-500/25 transition-all"
           >
-            🐾 Continuar esta conversación →
+            Continuar esta conversación →
           </button>
         </div>
       </motion.div>
@@ -203,7 +203,9 @@ export default function Hero() {
                 onClick={openChimi}
                 className="flex items-center justify-center gap-2 px-8 py-4 border border-white/[0.12] text-white font-semibold rounded-2xl hover:border-indigo-500/50 hover:text-indigo-300 transition-all"
               >
-                <span>🐾</span>
+                <div className="w-6 h-6 rounded-full overflow-hidden border border-white/20 flex-shrink-0">
+                  <Image src="/images/chimi.jpeg" alt="" width={24} height={24} className="w-full h-full object-cover object-[85%_25%]" />
+                </div>
                 Hablar con Chimi
               </button>
             </div>
