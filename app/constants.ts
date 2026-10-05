@@ -23,7 +23,7 @@ export const SITE_CONFIG = {
   },
 
   contact: {
-    email: 'agenda.salud.digital@gmail.com',
+    email: 'contacto@healthgrowth.cl',
     emailFuture: 'contacto@healthgrowth.cl',
     whatsapp: {
       number: '+56 9 5101 7947',

@@ -2,19 +2,20 @@
 import { motion } from 'framer-motion';
 import { SITE_CONFIG } from './constants';
 
+// Solo items verificados y completos
 const implemented = [
-  { icon: "🌐", item: "Landing page profesional con WhatsApp integrado", done: true },
-  { icon: "📱", item: "Calendario de contenido y reels para Instagram", done: true },
-  { icon: "🔔", item: "Automatización de confirmación y recordatorio de citas", done: false },
-  { icon: "📋", item: "Registro de clientes y seguimiento de mascotas", done: true },
-  { icon: "📊", item: "Sistema básico de registro y seguimiento de clientes", done: true },
+  { item: "Landing page profesional con WhatsApp integrado", done: true },
+  { item: "Registro de clientes y seguimiento de mascotas", done: true },
+  { item: "Sistema básico de seguimiento de clientes", done: true },
+  { item: "Calendario de contenido para Instagram", done: true },
 ];
 
-const roccoFunctions = [
-  { icon: "💬", title: "Recibe consultas" },
-  { icon: "📋", title: "Ordena solicitudes" },
-  { icon: "📅", title: "Apoya reservas" },
-  { icon: "🔔", title: "Activa seguimiento" },
+// Lo que ROCCO está siendo diseñado para hacer (aún no activo)
+const roccoPlanned = [
+  { title: "Responder consultas por WhatsApp" },
+  { title: "Organizar solicitudes de turno" },
+  { title: "Recordatorios automáticos de cita" },
+  { title: "Seguimiento de clientes habituales" },
 ];
 
 export default function CasoPatitas() {
@@ -61,12 +62,8 @@ export default function CasoPatitas() {
               <ul className="space-y-2">
                 {implemented.map((item, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm">
-                    <span className={`flex-shrink-0 mt-0.5 text-xs ${item.done ? 'text-green-400' : 'text-amber-400'}`}>
-                      {item.done ? '✓' : '⏳'}
-                    </span>
-                    <span className={item.done ? 'text-gray-300' : 'text-gray-400'}>
-                      {item.item}{!item.done && <span className="ml-1 text-amber-400/70 text-[10px] font-medium">(en implementación)</span>}
-                    </span>
+                    <span className="flex-shrink-0 mt-0.5 text-xs text-green-400">✓</span>
+                    <span className="text-gray-300">{item.item}</span>
                   </li>
                 ))}
               </ul>
@@ -87,31 +84,31 @@ export default function CasoPatitas() {
               className="p-5 rounded-2xl bg-[#071428] border border-blue-500/20 relative overflow-hidden"
             >
               <span className="absolute top-4 right-4 text-[10px] bg-amber-500/15 border border-amber-500/30 text-amber-400 px-2 py-0.5 rounded-full font-bold uppercase tracking-widest">
-                Próximamente
+                En desarrollo
               </span>
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-lg flex-shrink-0">
-                  🐕
+                <div className="w-10 h-10 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center flex-shrink-0">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M12 2C7 2 4 6 4 10c0 3 1.5 5.5 4 7v3l4-2 4 2v-3c2.5-1.5 4-4 4-7 0-4-3-8-8-8z" stroke="#60a5fa" strokeWidth="1.4" strokeLinejoin="round"/>
+                    <path d="M9 10h.01M15 10h.01M9 13s1 1.5 3 1.5 3-1.5 3-1.5" stroke="#60a5fa" strokeWidth="1.4" strokeLinecap="round"/>
+                  </svg>
                 </div>
                 <div>
                   <p className="text-white font-bold text-sm">ROCCO</p>
                   <p className="text-blue-400 text-xs">Asistente Digital · Patitas Felices</p>
                 </div>
               </div>
-              <p className="text-gray-400 text-xs leading-relaxed mb-4">
-                Primer piloto de asistente digital del modelo Health Growth. Diseñado para explorar cómo una PYME local puede organizar su atención digital paso a paso.
+              <p className="text-gray-400 text-xs leading-relaxed mb-3">
+                Primer piloto de asistente digital del modelo Health Growth. Actualmente en configuración — la integración WhatsApp está pendiente de credenciales Meta.
               </p>
+              <p className="text-gray-600 text-[10px] font-bold uppercase tracking-widest mb-2">Diseñado para hacer:</p>
               <div className="grid grid-cols-2 gap-2">
-                {roccoFunctions.map((fn, i) => (
+                {roccoPlanned.map((fn, i) => (
                   <div key={i} className="flex items-center gap-2 p-2 rounded-xl bg-white/4 border border-white/6">
-                    <span className="text-sm">{fn.icon}</span>
-                    <span className="text-gray-400 text-xs">{fn.title}</span>
+                    <span className="w-1 h-1 rounded-full bg-blue-400/50 flex-shrink-0" />
+                    <span className="text-gray-500 text-xs">{fn.title}</span>
                   </div>
                 ))}
-              </div>
-              <div className="mt-3 p-3 rounded-xl bg-white/3 border border-white/6">
-                <p className="text-gray-600 text-[10px] font-mono uppercase tracking-wider mb-1">Qué se está integrando:</p>
-                <p className="text-gray-500 text-[11px] leading-relaxed">Atención por WhatsApp · Recordatorios automáticos · Registro de clientes · Seguimiento de consultas</p>
               </div>
             </motion.div>
 

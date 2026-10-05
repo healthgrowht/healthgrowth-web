@@ -2,10 +2,48 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// SVG icon system — consistent with Problem.tsx and PacksCanonical.tsx
+const IconMegaphone = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M19 9.5V14.5M5 9H3a1 1 0 00-1 1v3a1 1 0 001 1h2V9z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+    <path d="M5 9l11-6v15L5 14V9z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+    <path d="M9 14l1.5 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+  </svg>
+);
+
+const IconChat = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M3 4a1 1 0 011-1h16a1 1 0 011 1v10a1 1 0 01-1 1H7l-4 4V4z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+    <path d="M8 8h8M8 11h5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+  </svg>
+);
+
+const IconFolder = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M2 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V7z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+    <path d="M7 13h4M7 16h7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+  </svg>
+);
+
+const IconClock = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5"/>
+    <path d="M12 7v5l3 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const IconQuestion = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5"/>
+    <path d="M9.5 9.5a2.5 2.5 0 014.5 1.5c0 1.5-2 2-2 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    <circle cx="12" cy="17" r="0.75" fill="currentColor"/>
+  </svg>
+);
+
 const needs = [
   {
     id: "presencia",
-    icon: "📣",
+    Icon: IconMegaphone,
     label: "Darme a conocer",
     packId: "impulso",
     pack: "Pack Impulso",
@@ -14,7 +52,7 @@ const needs = [
   },
   {
     id: "consultas",
-    icon: "💬",
+    Icon: IconChat,
     label: "Conseguir más clientes",
     packId: "asistente",
     pack: "Atención Automática",
@@ -23,7 +61,7 @@ const needs = [
   },
   {
     id: "ordenar",
-    icon: "📋",
+    Icon: IconFolder,
     label: "Ordenar mi negocio",
     packId: "automatizacion",
     pack: "Pack Organización",
@@ -32,7 +70,7 @@ const needs = [
   },
   {
     id: "tiempo",
-    icon: "⏱️",
+    Icon: IconClock,
     label: "Ahorrar tiempo",
     packId: "asistente",
     pack: "Atención Automática",
@@ -41,7 +79,7 @@ const needs = [
   },
   {
     id: "nosé",
-    icon: "🐾",
+    Icon: IconQuestion,
     label: "No sé — ayúdame",
     packId: "diagnostico",
     pack: "Chimi te orienta",
@@ -98,7 +136,7 @@ export default function NeedsSelector() {
                   : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400 hover:text-gray-900'
               }`}
             >
-              <span className="text-base leading-none">{n.icon}</span>
+              <span className="flex-shrink-0 leading-none"><n.Icon /></span>
               <span>{n.label}</span>
             </button>
           ))}
@@ -120,7 +158,7 @@ export default function NeedsSelector() {
                   <p className="text-[10px] text-cyan-400 font-bold uppercase tracking-widest mb-0.5">Solución recomendada</p>
                   <p className="text-white font-bold text-lg">{need.pack}</p>
                 </div>
-                <span className="text-2xl flex-shrink-0">{need.icon}</span>
+                <span className="text-cyan-400 flex-shrink-0"><need.Icon /></span>
               </div>
               <p className="text-gray-400 text-sm mb-1 leading-relaxed">{need.tip}</p>
               <p className="text-cyan-300 text-sm font-medium mb-5">{need.benefit}</p>
