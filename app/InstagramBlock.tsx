@@ -27,7 +27,7 @@ export default function InstagramBlock() {
 
           {/* Description */}
           <p className="text-gray-400 text-sm text-center sm:text-left flex-1 leading-relaxed">
-            Contenido semanal sobre cómo mejorar la atención, el orden y la presencia digital de tu negocio — sin necesitar conocimientos técnicos.
+            Contenido práctico para PYMEs sobre presencia digital, organización y cómo mejorar la atención a tus clientes — sin conocimientos técnicos.
           </p>
 
           {/* CTA */}

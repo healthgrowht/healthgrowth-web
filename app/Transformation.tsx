@@ -22,6 +22,15 @@ const steps = [
   },
   {
     num: "03",
+    icon: "📣",
+    title: "Mostrar",
+    desc: "Aparecer donde están tus clientes, con imagen profesional y contenido que genera consultas.",
+    bg: "bg-sky-500/8 border-sky-500/20",
+    numColor: "text-sky-400",
+    titleColor: "text-sky-100",
+  },
+  {
+    num: "04",
     icon: "⚙️",
     title: "Automatizar",
     desc: "Flujos de atención, recordatorios y seguimiento que trabajan solos.",
@@ -30,7 +39,7 @@ const steps = [
     titleColor: "text-teal-100",
   },
   {
-    num: "04",
+    num: "05",
     icon: "📈",
     title: "Crecer",
     desc: "Con la operación ordenada, tu negocio crece sin trabajar más horas.",
@@ -47,13 +56,13 @@ export default function Transformation() {
         <div className="text-center mb-8">
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-500 mb-3 block">Qué hace Health Growth</span>
           <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-white mb-3">
-            Ordenar · Digitalizar · Automatizar · Crecer
+            Ordenar · Digitalizar · Mostrar · Automatizar · Crecer
           </h2>
         </div>
 
         {/* Mobile: snap-scroll carousel · Desktop: grid */}
         <div
-          className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth -mx-6 px-6 pb-4 lg:grid lg:grid-cols-4 lg:mx-0 lg:px-0 lg:overflow-visible"
+          className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth -mx-6 px-6 pb-4 lg:grid lg:grid-cols-5 lg:mx-0 lg:px-0 lg:overflow-visible"
           style={{ scrollbarWidth: 'none' }}
         >
           {steps.map((step, i) => (

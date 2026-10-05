@@ -4,67 +4,49 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const needs = [
   {
-    id: "profesional",
-    icon: "🌐",
-    label: "Verme profesional en internet",
-    pack: "Pack Impulso",
-    packId: "impulso",
-    tip: "Web profesional + WhatsApp Business + imagen digital coherente.",
-    benefit: "Tus clientes te ven, te contactan y te perciben como un negocio de verdad.",
-  },
-  {
-    id: "promocionar",
+    id: "presencia",
     icon: "📣",
-    label: "Promocionar mi negocio",
-    pack: "Pack Impulso",
+    label: "Darme a conocer",
     packId: "impulso",
-    tip: "Presencia en redes + página web que convierte + WhatsApp listo para atender.",
-    benefit: "Más personas conocen lo que haces y saben cómo contactarte.",
+    pack: "Pack Impulso",
+    tip: "Web profesional, WhatsApp Business y redes que muestran tu negocio como corresponde.",
+    benefit: "Más personas te encuentran y se animan a contactarte.",
   },
   {
     id: "consultas",
     icon: "💬",
-    label: "Conseguir más consultas",
-    pack: "Asistente IA Esencial",
+    label: "Conseguir más clientes",
     packId: "asistente",
-    tip: "Flujos automáticos de respuesta para que nadie quede sin atender.",
-    benefit: "Las personas que preguntan reciben respuesta rápida — y vuelven.",
+    pack: "Atención Automática",
+    tip: "Organizamos cómo llegan y se gestionan las consultas para que no se pierda ninguna.",
+    benefit: "Las personas que preguntan reciben respuesta rápida — y eligen tu negocio.",
   },
   {
-    id: "organizar",
+    id: "ordenar",
     icon: "📋",
-    label: "Organizar mis clientes y mi agenda",
-    pack: "Pack Automatización",
+    label: "Ordenar mi negocio",
     packId: "automatizacion",
-    tip: "Registro de clientes, agenda digital y seguimiento sin papeles ni memoria.",
-    benefit: "Sabes quién te contactó, cuándo, qué necesita — y a quién tenías que llamar.",
+    pack: "Pack Organización",
+    tip: "Clientes, agenda y seguimientos en un solo lugar, sin papeles ni memoria.",
+    benefit: "Sabes quién te contactó, cuándo y qué necesita — siempre.",
   },
   {
     id: "tiempo",
     icon: "⏱️",
-    label: "Ahorrar tiempo en atención",
-    pack: "Asistente IA Esencial",
+    label: "Ahorrar tiempo",
     packId: "asistente",
-    tip: "Respuestas automáticas, recordatorios y seguimiento que funcionan solos.",
+    pack: "Atención Automática",
+    tip: "Configuramos respuestas y recordatorios para que las tareas repetitivas se hagan solas.",
     benefit: "Dejas de responder siempre lo mismo y te enfocas en lo que importa.",
   },
   {
-    id: "automatizar",
-    icon: "⚙️",
-    label: "Automatizar mi operación",
-    pack: "Ecosistema Completo",
-    packId: "ecosistema",
-    tip: "Presencia + atención automática + clientes organizados + seguimiento integrado.",
-    benefit: "Tu negocio trabaja con menos esfuerzo de tu parte.",
-  },
-  {
     id: "nosé",
-    icon: "🤷",
-    label: "No sé qué necesito",
-    pack: "Diagnóstico Express Pyme",
+    icon: "🐾",
+    label: "No sé — ayúdame",
     packId: "diagnostico",
-    tip: "Revisamos tu negocio juntos y te decimos qué tiene más sentido mejorar primero.",
-    benefit: "Te vas con 3 mejoras concretas — sin costo y sin compromiso.",
+    pack: "Chimi te orienta",
+    tip: "Cuéntale a Chimi qué pasa en tu negocio y te dice qué tiene más sentido mejorar primero.",
+    benefit: "Te vas con claridad, sin costo y sin compromiso.",
   },
 ];
 
@@ -74,6 +56,14 @@ export default function NeedsSelector() {
 
   const handleSelect = (i: number) => {
     setSelected(prev => prev === i ? null : i);
+    const id = needs[i].id;
+    try { sessionStorage.setItem('chimi-need', id); } catch { /* ok */ }
+    if (id === 'nosé') {
+      setTimeout(() => {
+        const launcher = document.querySelector<HTMLButtonElement>('[aria-label="Abrir chat con Chimi"]');
+        launcher?.click();
+      }, 400);
+    }
   };
 
   const handleViewPack = () => {
@@ -86,21 +76,23 @@ export default function NeedsSelector() {
 
   return (
     <section className="py-12 md:py-16 px-6 bg-white border-t border-gray-100">
-      <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-6">
-          <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-1">
-            ¿Qué quieres mejorar en tu negocio?
+      <div className="max-w-2xl mx-auto">
+
+        {/* Header */}
+        <div className="text-center mb-7">
+          <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 mb-1.5">
+            ¿Qué necesitas hoy?
           </h2>
-          <p className="text-gray-400 text-sm">Selecciona lo que más te identifica.</p>
+          <p className="text-gray-400 text-sm">Elige lo que más se parece a tu situación.</p>
         </div>
 
-        {/* Chips */}
+        {/* 5 chips */}
         <div className="flex flex-wrap justify-center gap-2 mb-5">
           {needs.map((n, i) => (
             <button
               key={n.id}
               onClick={() => handleSelect(i)}
-              className={`flex items-center gap-1.5 px-4 py-2.5 min-h-[44px] rounded-full text-sm font-semibold border transition-all ${
+              className={`flex items-center gap-2 px-5 py-3 min-h-[44px] rounded-full text-sm font-semibold border transition-all ${
                 selected === i
                   ? 'bg-[#071428] text-white border-[#071428] shadow-md'
                   : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400 hover:text-gray-900'
@@ -114,7 +106,7 @@ export default function NeedsSelector() {
 
         {/* Result card */}
         <AnimatePresence mode="wait">
-          {need && (
+          {need && need.id !== 'nosé' && (
             <motion.div
               key={selected}
               initial={{ opacity: 0, y: 8 }}
@@ -125,13 +117,13 @@ export default function NeedsSelector() {
             >
               <div className="flex items-start justify-between gap-3 mb-3">
                 <div>
-                  <p className="text-xs text-cyan-400 font-bold uppercase tracking-widest mb-0.5">Te recomendamos</p>
+                  <p className="text-[10px] text-cyan-400 font-bold uppercase tracking-widest mb-0.5">Solución recomendada</p>
                   <p className="text-white font-bold text-lg">{need.pack}</p>
                 </div>
                 <span className="text-2xl flex-shrink-0">{need.icon}</span>
               </div>
               <p className="text-gray-400 text-sm mb-1 leading-relaxed">{need.tip}</p>
-              <p className="text-cyan-300 text-sm font-medium mb-4">{need.benefit}</p>
+              <p className="text-cyan-300 text-sm font-medium mb-5">{need.benefit}</p>
               <button
                 onClick={handleViewPack}
                 className="w-full py-3 rounded-xl bg-white text-black font-extrabold text-sm hover:bg-cyan-400 transition-all active:scale-[0.98]"
@@ -141,6 +133,7 @@ export default function NeedsSelector() {
             </motion.div>
           )}
         </AnimatePresence>
+
       </div>
     </section>
   );

@@ -26,31 +26,31 @@ const NODES = [
   {
     icon: "🤖",
     id: "ai",
-    label: "Clasifica y responde",
-    channel: "Califica · Responde",
+    label: "Entiende y orienta",
+    channel: "Según lo que necesitas",
     event: "AI_QUALIFIED",
     badge: "prioridad alta",
-    notification: "Intención: agendar evaluación → prioridad alta",
+    notification: "Consulta clasificada: evaluación inicial → prioridad alta",
     color: "indigo",
   },
   {
     icon: "💬",
     id: "whatsapp",
-    label: "WhatsApp",
-    channel: "Respuesta < 2 min",
+    label: "Aviso directo",
+    channel: "Respuesta directa",
     event: "WA_SENT",
     badge: "enviado",
-    notification: "Hola, recibimos tu consulta. Te contactamos hoy.",
+    notification: "Hola, recibimos tu consulta. Te contactamos pronto.",
     color: "green",
   },
   {
     icon: "📅",
     id: "booking",
-    label: "Reserva",
-    channel: "Confirmada · Calendar",
+    label: "Cita coordinada",
+    channel: "Con seguimiento incluido",
     event: "BOOKING_CONFIRMED",
     badge: "✓",
-    notification: "Evaluación agendada. Recordatorio automático programado.",
+    notification: "Evaluación coordinada. Seguimiento programado.",
     color: "emerald",
   },
 ];
@@ -96,13 +96,13 @@ export default function LiveSystemFlow() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/[0.07] border border-cyan-500/20 mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-400">Demo del flujo · Así funciona</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-400">Demo del flujo · Así puede funcionar</span>
           </div>
           <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight mb-3">
             Del primer contacto a la cita confirmada
           </h2>
           <p className="text-gray-500 text-sm md:text-base max-w-xl">
-            Cada consulta que llega se registra, clasifica, responde y agenda — sin que tengas que hacer nada.
+            Así puede funcionar tu negocio cuando el sistema está activo: cada consulta registrada, orientada y con seguimiento.
           </p>
         </motion.div>
 
@@ -203,7 +203,6 @@ export default function LiveSystemFlow() {
           <div className="flex items-center gap-2 mb-4 pb-3 border-b border-white/[0.05]">
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
             <span className="text-[9px] font-bold uppercase tracking-[0.35em] text-gray-500">Health Growth · Flujo de ejemplo</span>
-            <span className="ml-auto font-mono text-[9px] text-cyan-500/50">api.healthgrowth.cl</span>
           </div>
           <div className="space-y-2 min-h-[80px]">
             <AnimatePresence>

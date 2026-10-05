@@ -21,7 +21,7 @@ export default function Footer() {
                 className="h-14 w-auto object-contain"
               />
             </div>
-            <p className="text-gray-500 text-sm mb-2">Modernización Tecnológica para PYMEs · Chile</p>
+            <p className="text-gray-500 text-sm mb-2">Presencia · Gestión · Crecimiento · Chile</p>
             <p className="text-gray-600 text-[11px] uppercase tracking-widest">
               Empresa Constituida · {SITE_CONFIG.legal.foundationYear}
             </p>
@@ -88,7 +88,7 @@ export default function Footer() {
                   <p className="text-gray-400 group-hover:text-pink-400 transition-colors text-sm font-medium">
                     {SITE_CONFIG.social.instagram.handle}
                   </p>
-                  <p className="text-gray-600 text-xs">Contenido diario de transformación PYME</p>
+                  <p className="text-gray-600 text-xs">Contenido práctico para PYMEs</p>
                 </div>
               </a>
             </div>
@@ -118,11 +118,11 @@ export default function Footer() {
               <a href="#diagnostico" className="block text-gray-400 hover:text-indigo-400 transition-colors text-sm">
                 Evaluación Gratis
               </a>
-              <a href="#transformacion" className="block text-gray-400 hover:text-indigo-400 transition-colors text-sm">
+              <a href="#como-funciona" className="block text-gray-400 hover:text-indigo-400 transition-colors text-sm">
                 Cómo funciona
               </a>
-              <a href="#automatizacion" className="block text-gray-400 hover:text-indigo-400 transition-colors text-sm">
-                Chimi — Canal Oficial
+              <a href="#packs" className="block text-gray-400 hover:text-indigo-400 transition-colors text-sm">
+                Soluciones
               </a>
             </div>
           </div>

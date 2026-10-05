@@ -97,7 +97,7 @@ export const SITE_CONFIG = {
   },
 
   navLinks: [
-    { name: 'Cómo funciona', href: '#transformacion' },
+    { name: 'Cómo funciona', href: '#como-funciona' },
     { name: 'Soluciones', href: '#packs' },
     { name: 'Caso Real', href: '#piloto' },
     { name: 'FAQ', href: '#faq' },

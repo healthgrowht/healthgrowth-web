@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -16,6 +16,12 @@ export default function Navbar() {
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
+
+  const openChimi = useCallback(() => {
+    const launcher = document.querySelector<HTMLButtonElement>('[aria-label="Abrir chat con Chimi"]');
+    launcher?.click();
+    closeMenu();
+  }, []);
 
   return (
     <>
@@ -53,7 +59,15 @@ export default function Navbar() {
           </div>
 
           {/* Right side */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={openChimi}
+              className="hidden lg:flex items-center gap-1.5 px-4 py-2 border border-white/[0.12] text-gray-300 rounded-full text-xs font-semibold hover:border-indigo-500/40 hover:text-indigo-300 transition-all"
+            >
+              <Image src="/images/chimi.jpeg" alt="" width={16} height={16}
+                className="rounded-full object-cover object-[85%_20%]" />
+              Chimi
+            </button>
             <a
               href="#diagnostico"
               className="px-5 py-2 bg-gradient-to-r from-indigo-600 to-blue-600 text-white rounded-full text-xs font-bold hover:shadow-lg hover:shadow-indigo-500/50 transition-all hidden sm:block"
@@ -110,7 +124,15 @@ export default function Navbar() {
                     {link.name}
                   </a>
                 ))}
-                <div className="pt-4 mt-2 border-t border-white/5">
+                <div className="pt-4 mt-2 border-t border-white/5 flex flex-col gap-2">
+                  <button
+                    onClick={openChimi}
+                    className="flex items-center justify-center gap-2 py-3 border border-white/10 text-gray-300 rounded-2xl font-semibold text-sm hover:border-indigo-500/30 hover:text-indigo-300 transition-all"
+                  >
+                    <Image src="/images/chimi.jpeg" alt="" width={20} height={20}
+                      className="rounded-full object-cover object-[85%_20%]" />
+                    Hablar con Chimi
+                  </button>
                   <a
                     href="#diagnostico"
                     onClick={closeMenu}

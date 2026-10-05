@@ -95,7 +95,7 @@ export default function DiagnosticForm() {
           <p className="text-gray-400 mb-6 leading-relaxed font-light">
             {submitOk
               ? 'En un momento abriremos WhatsApp para continuar la conversación con el equipo.'
-              : 'Cuéntanos sobre tu negocio cuando abra WhatsApp y el equipo te atenderá en menos de 24 horas.'}
+              : 'Cuéntanos sobre tu negocio cuando abra WhatsApp y el equipo te orientará sobre el mejor siguiente paso.'}
           </p>
           <button
             onClick={openWhatsApp}
@@ -143,7 +143,7 @@ export default function DiagnosticForm() {
             </h2>
             <p className="text-gray-500 text-sm max-w-sm mx-auto leading-relaxed">
               {step === 1
-                ? 'Datos básicos para que Luis te contacte en menos de 24 horas.'
+                ? 'Cuéntanos sobre tu negocio y te orientamos sobre el mejor siguiente paso.'
                 : 'Un poco más sobre tu situación para preparar la evaluación.'}
             </p>
           </div>
@@ -276,7 +276,7 @@ export default function DiagnosticForm() {
               </div>
 
               <div className="text-center border-t border-white/5 pt-5 mt-2">
-                <p className="text-gray-600 text-xs mb-2 italic">Respuesta en menos de 24 horas</p>
+                <p className="text-gray-600 text-xs mb-2 italic">Te orientamos sobre el mejor paso para tu negocio</p>
                 <a
                   href={`${SITE_CONFIG.whatsapp.url}?text=${encodeURIComponent(SITE_CONFIG.whatsapp.messages.diagnostic)}`}
                   target="_blank"

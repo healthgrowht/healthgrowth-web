@@ -99,7 +99,7 @@ export default function CasoPatitas() {
                 </div>
               </div>
               <p className="text-gray-400 text-xs leading-relaxed mb-4">
-                Primer piloto de asistente digital del modelo Health Growth. Demuestra que una PYME local puede atender mejor sin contratar más personal.
+                Primer piloto de asistente digital del modelo Health Growth. Diseñado para explorar cómo una PYME local puede organizar su atención digital paso a paso.
               </p>
               <div className="grid grid-cols-2 gap-2">
                 {roccoFunctions.map((fn, i) => (

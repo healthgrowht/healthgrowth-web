@@ -6,7 +6,7 @@ import { SITE_CONFIG } from './constants';
 const faqs = [
   {
     q: "¿Qué hace exactamente Health Growth?",
-    a: "Ordenamos la operación de tu negocio. Implementamos sistemas de atención, agenda digital, WhatsApp profesional, automatización de seguimiento y presencia web para que pierdas menos clientes y trabajes con menos caos. No hacemos solo redes sociales — nos enfocamos en que tu negocio funcione mejor desde adentro."
+    a: "Ayudamos a PYMEs y negocios de servicios a crecer y ordenarse. Eso incluye: mejorar cómo te ven en internet (web, Instagram, WhatsApp Business), ayudarte a promocionarte y atraer más consultas, organizar tu operación (clientes, agenda, seguimiento), y automatizar lo repetitivo cuando tiene sentido. Puedes contratarnos desde una cosa puntual hasta una solución completa — según lo que necesite tu negocio ahora."
   },
   {
     q: "¿Para quién es Health Growth?",
@@ -38,11 +38,11 @@ const faqs = [
   },
   {
     q: "¿Cómo se agenda una evaluación?",
-    a: "Completa el formulario de evaluación en esta página o escríbenos directamente por WhatsApp. En menos de 24 horas te contactamos para coordinar la conversación inicial. Es sin costo y sin compromiso."
+    a: "Completa el formulario de evaluación en esta página o escríbenos directamente por WhatsApp. Te contactamos para coordinar la conversación inicial tan pronto como podamos. Es sin costo y sin compromiso."
   },
   {
     q: "¿Qué pasa después de llenar el formulario?",
-    a: "Te contactamos por WhatsApp en menos de 24 horas para conocer más sobre tu negocio. Si hay un match, coordinamos una sesión de diagnóstico donde revisamos tu situación actual y te entregamos 3 mejoras concretas. Sin jerga técnica, sin venta agresiva."
+    a: "Te contactamos por WhatsApp para conocer más sobre tu negocio. Si hay un match, coordinamos una sesión de diagnóstico donde revisamos tu situación actual y te entregamos 3 mejoras concretas. Sin jerga técnica, sin venta agresiva."
   },
   {
     q: "¿Cuánto cuesta? ¿Hay evaluación previa gratuita?",
@@ -129,7 +129,7 @@ export default function FAQ() {
         )}
 
         <div className="mt-8 text-center border-t border-white/5 pt-6">
-          <p className="text-gray-600 text-xs italic mb-2">¿Tienes otra pregunta? Luis te responde directamente.</p>
+          <p className="text-gray-600 text-xs italic mb-2">¿Tienes otra pregunta? Escríbenos directamente.</p>
           <a
             href={SITE_CONFIG.whatsapp.url}
             target="_blank"

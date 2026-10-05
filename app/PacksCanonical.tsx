@@ -1,214 +1,237 @@
 "use client";
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+
+// SVG icon components — consistent stroke-based system
+const IconMegaphone = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M19 9.5V14.5M5 9H3a1 1 0 00-1 1v3a1 1 0 001 1h2V9z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+    <path d="M5 9l11-6v15L5 14V9z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+    <path d="M9 14l1.5 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+  </svg>
+);
+
+const IconChat = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M3 4a1 1 0 011-1h16a1 1 0 011 1v10a1 1 0 01-1 1H7l-4 4V4z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+    <path d="M8 8h8M8 11h5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+  </svg>
+);
+
+const IconFolder = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M2 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V7z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+    <path d="M7 13h4M7 16h7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+  </svg>
+);
+
+const IconLayers = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+    <path d="M2 12l10 5 10-5" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+    <path d="M2 17l10 5 10-5" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+  </svg>
+);
+
+const IconSearch = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.5"/>
+    <path d="M16.5 16.5L21 21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+  </svg>
+);
 
 const packs = [
   {
-    id: "diagnostico",
-    chip: "Diagnóstico",
-    icon: "🔍",
-    badge: "GRATIS",
-    badgeClass: "bg-green-500 text-black font-bold",
-    title: "Diagnóstico Express Pyme",
-    tagline: "Entiende qué frena tu negocio antes de invertir en nada.",
-    forWho: "Para cualquier negocio que quiere saber por dónde empezar.",
-    benefits: [
-      "Revisión de tu operación y presencia actual",
-      "3 mejoras concretas aplicables de inmediato",
-      "Plan de prioridades claro para tu caso",
-      "Sin costo y sin compromiso",
-    ],
-    cta: "Solicitar diagnóstico gratuito",
-    ctaClass: "bg-green-500 hover:bg-green-400 text-black font-extrabold",
-    cardBorder: "border-green-500/20",
-    cardBg: "bg-green-500/5",
-  },
-  {
     id: "impulso",
-    chip: "Impulso",
-    icon: "🌐",
+    Icon: IconMegaphone,
     badge: "PRESENCIA",
-    badgeClass: "bg-blue-500/20 border border-blue-500/30 text-blue-400",
+    badgeClass: "bg-blue-500/15 text-blue-400 border-blue-500/25",
     title: "Pack Impulso",
-    tagline: "Tu negocio en internet, con imagen y WhatsApp que transmiten confianza.",
     forWho: "Para negocios que quieren verse profesionales y generar más contactos.",
+    tagline: "Tu negocio en internet, con imagen y WhatsApp que transmiten confianza.",
     benefits: [
       "Sitio web profesional orientado a consultas",
-      "WhatsApp Business configurado y organizado",
+      "WhatsApp Business configurado",
       "Imagen digital coherente en todos tus canales",
-      "Perfil de Instagram optimizado para atraer clientes",
+      "Instagram optimizado para atraer clientes",
     ],
-    cta: "Consultar disponibilidad",
-    ctaClass: "bg-white hover:bg-cyan-500 hover:text-black text-black font-extrabold",
-    cardBorder: "border-blue-500/15",
-    cardBg: "bg-blue-500/5",
+    model: "Pago único",
+    cta: "Quiero esta solución",
+    cardBorder: "border-blue-500/15 hover:border-blue-500/30",
+    accent: "text-blue-400",
+    iconBg: "bg-blue-500/10",
   },
   {
     id: "asistente",
-    chip: "Respuesta rápida",
-    icon: "💬",
+    Icon: IconChat,
     badge: "ATENCIÓN",
-    badgeClass: "bg-indigo-500/20 border border-indigo-500/30 text-indigo-400",
+    badgeClass: "bg-indigo-500/15 text-indigo-400 border-indigo-500/25",
     title: "Atención Automática",
-    tagline: "Responde, organiza y hace seguimiento sin que tengas que estar pendiente.",
-    forWho: "Para negocios que reciben muchos mensajes pero pierden consultas por demora.",
+    forWho: "Para negocios que reciben mensajes pero pierden consultas por demora.",
+    tagline: "Implementamos respuestas, recordatorios y seguimiento automático según las necesidades de tu negocio.",
     benefits: [
-      "Respuestas automáticas en WhatsApp cuando no estás",
-      "Las consultas se organizan solas por tipo y urgencia",
-      "Recordatorios de cita que llegan sin que lo pidas",
-      "Seguimiento automático a clientes que no respondieron",
+      "Respuestas automáticas en WhatsApp",
+      "Consultas organizadas por tipo y urgencia",
+      "Recordatorios de cita automatizados",
+      "Seguimiento a clientes sin hacerlo manual",
     ],
-    cta: "Consultar disponibilidad",
-    ctaClass: "bg-white hover:bg-cyan-500 hover:text-black text-black font-extrabold",
-    cardBorder: "border-indigo-500/15",
-    cardBg: "bg-indigo-500/5",
+    model: "Implementación + mensualidad",
+    cta: "Quiero esta solución",
+    cardBorder: "border-indigo-500/15 hover:border-indigo-500/30",
+    accent: "text-indigo-400",
+    iconBg: "bg-indigo-500/10",
   },
   {
     id: "automatizacion",
-    chip: "Organización",
-    icon: "📋",
-    badge: "GESTIÓN",
-    badgeClass: "bg-purple-500/20 border border-purple-500/30 text-purple-400",
+    Icon: IconFolder,
+    badge: "ORGANIZACIÓN",
+    badgeClass: "bg-purple-500/15 text-purple-400 border-purple-500/25",
     title: "Pack Organización",
-    tagline: "Todos tus clientes, tu agenda y tus seguimientos en un solo lugar.",
     forWho: "Para negocios con clientes recurrentes que quieren dejar de depender de la memoria.",
+    tagline: "Todos tus clientes, tu agenda y tus seguimientos en un solo lugar.",
     benefits: [
-      "Registro organizado de tus clientes y su historial",
+      "Registro organizado de clientes e historial",
       "Agenda digital sin cruces de horario",
       "Seguimiento claro de quién necesita atención",
       "Información real para tomar mejores decisiones",
     ],
-    cta: "Consultar disponibilidad",
-    ctaClass: "bg-white hover:bg-cyan-500 hover:text-black text-black font-extrabold",
-    cardBorder: "border-purple-500/15",
-    cardBg: "bg-purple-500/5",
+    model: "Implementación + mensualidad",
+    cta: "Quiero esta solución",
+    cardBorder: "border-purple-500/15 hover:border-purple-500/30",
+    accent: "text-purple-400",
+    iconBg: "bg-purple-500/10",
   },
   {
     id: "ecosistema",
-    chip: "Ecosistema",
-    icon: "🚀",
+    Icon: IconLayers,
     badge: "INTEGRAL",
-    badgeClass: "bg-pink-500/20 border border-pink-500/30 text-pink-400",
+    badgeClass: "bg-cyan-500/15 text-cyan-400 border-cyan-500/25",
     title: "Ecosistema Completo",
-    tagline: "Presencia + atención organizada + clientes registrados + contenido digital.",
     forWho: "Para PYMEs que quieren modernizarse en serio, paso a paso, con acompañamiento.",
+    tagline: "Presencia + atención organizada + clientes registrados + contenido.",
     benefits: [
-      "Todo lo anterior integrado y funcionando junto",
-      "Seguimiento de resultados para saber qué está pasando",
+      "Todo lo anterior integrado y funcionando",
+      "Seguimiento de resultados para saber qué funciona",
       "Estrategia de contenido para redes sociales",
       "Canales digitales conectados entre sí",
     ],
-    cta: "Consultar disponibilidad",
-    ctaClass: "bg-white hover:bg-cyan-500 hover:text-black text-black font-extrabold",
-    cardBorder: "border-pink-500/15",
-    cardBg: "bg-pink-500/5",
-  },
-  {
-    id: "acompanamiento",
-    chip: "Mensual",
-    icon: "📈",
-    badge: "CONTINUO",
-    badgeClass: "bg-amber-500/20 border border-amber-500/30 text-amber-400",
-    title: "Acompañamiento Mensual",
-    tagline: "Revisión, ajustes y soporte para que el sistema siempre funcione bien.",
-    forWho: "Para negocios que quieren seguir mejorando mes a mes sin hacerlo solos.",
-    benefits: [
-      "Revisión mensual de cómo está funcionando todo",
-      "Ajustes y mejoras continuas sin costo extra",
-      "Soporte directo cuando lo necesitas",
-      "Plan de crecimiento progresivo para tu negocio",
-    ],
-    cta: "Consultar disponibilidad",
-    ctaClass: "bg-white hover:bg-cyan-500 hover:text-black text-black font-extrabold",
-    cardBorder: "border-amber-500/15",
-    cardBg: "bg-amber-500/5",
+    model: "Implementación + mensualidad",
+    cta: "Ver qué incluye",
+    cardBorder: "border-cyan-500/15 hover:border-cyan-500/30",
+    accent: "text-cyan-400",
+    iconBg: "bg-cyan-500/10",
   },
 ];
 
 export default function PacksCanonical() {
-  const [selected, setSelected] = useState(0);
-  const pack = packs[selected];
-
   return (
     <section id="packs" className="py-16 md:py-24 px-6 bg-[#0a1e38] border-t border-white/5">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-8">
-          <span className="text-xs font-bold uppercase tracking-[0.4em] text-cyan-400 mb-3 block">Soluciones</span>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
-            Empieza por donde necesitas
-          </h2>
-          <p className="text-gray-500 text-sm max-w-md mx-auto leading-relaxed">
-            No tienes que comprometerte con todo. Cada solución resuelve un problema concreto y se puede ampliar cuando quieras.
-          </p>
-        </div>
+      <div className="max-w-6xl mx-auto">
 
-        {/* Chips — scroll horizontal en mobile */}
-        <div
-          className="flex gap-2 overflow-x-auto pb-3 mb-6 md:flex-wrap md:justify-center"
-          style={{ scrollbarWidth: 'none' }}
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-10 md:mb-14"
         >
-          {packs.map((p, i) => (
-            <button
-              key={p.id}
-              onClick={() => setSelected(i)}
-              className={`flex-shrink-0 flex items-center gap-1.5 px-4 py-2.5 min-h-[44px] rounded-full text-sm font-semibold border transition-all ${
-                selected === i
-                  ? 'bg-white text-[#071428] border-white shadow-lg'
-                  : 'bg-transparent text-gray-400 border-white/15 hover:border-white/35 hover:text-white'
-              }`}
+          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-cyan-400 mb-3 block">Soluciones</span>
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-3">
+            ¿Qué puedes contratar?
+          </h2>
+          <p className="text-gray-500 text-sm md:text-base max-w-md mx-auto leading-relaxed">
+            Cuatro soluciones concretas para problemas concretos. Puedes empezar por cualquiera y ampliar después.
+          </p>
+        </motion.div>
+
+        {/* Grid */}
+        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4 mb-8">
+          {packs.map((pack, i) => (
+            <motion.div
+              key={pack.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ delay: i * 0.07, duration: 0.5 }}
+              className={`rounded-[24px] border bg-[#071428] ${pack.cardBorder} p-5 md:p-6 flex flex-col gap-4 transition-all`}
             >
-              <span className="text-base">{p.icon}</span>
-              <span>{p.chip}</span>
-            </button>
+              {/* Header */}
+              <div className="flex items-start justify-between gap-2">
+                <div className={`w-9 h-9 rounded-xl ${pack.iconBg} flex items-center justify-center ${pack.accent} flex-shrink-0`}>
+                  <pack.Icon />
+                </div>
+                <span className={`text-[9px] font-bold uppercase tracking-[0.25em] px-2 py-1 rounded-full border ${pack.badgeClass}`}>
+                  {pack.badge}
+                </span>
+              </div>
+
+              {/* Title + tagline */}
+              <div>
+                <h3 className="text-white font-extrabold text-base leading-tight mb-1.5">{pack.title}</h3>
+                <p className="text-gray-500 text-xs leading-relaxed">{pack.tagline}</p>
+              </div>
+
+              {/* Benefits */}
+              <ul className="space-y-1.5 flex-1">
+                {pack.benefits.map((b, j) => (
+                  <li key={j} className="flex items-start gap-2 text-gray-400 text-xs leading-snug">
+                    <span className={`flex-shrink-0 mt-0.5 text-[10px] ${pack.accent}`}>✓</span>
+                    {b}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Model + CTA */}
+              <div>
+                <p className="text-[10px] text-gray-600 font-medium mb-2.5">
+                  Modelo: <span className="text-gray-500">{pack.model}</span>
+                </p>
+                <a
+                  href="#diagnostico"
+                  onClick={() => {
+                    if (typeof window !== 'undefined') sessionStorage.setItem('hg-pack', pack.id);
+                  }}
+                  className="block w-full py-2.5 rounded-xl bg-white/90 hover:bg-white text-[#071428] font-extrabold text-xs text-center transition-all active:scale-[0.98]"
+                >
+                  {pack.cta} →
+                </a>
+              </div>
+            </motion.div>
           ))}
         </div>
 
-        {/* Card dinámica */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={selected}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className={`rounded-[24px] border ${pack.cardBorder} ${pack.cardBg} p-6 md:p-8`}
-          >
-            <div className="flex items-start justify-between mb-4 gap-3">
-              <div className="flex items-center gap-3">
-                <span className="text-2xl">{pack.icon}</span>
-                <h3 className="text-white font-bold text-lg leading-tight">{pack.title}</h3>
-              </div>
-              <span className={`flex-shrink-0 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full ${pack.badgeClass}`}>
-                {pack.badge}
-              </span>
+        {/* Diagnóstico — entry point, NOT a product */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="rounded-[20px] border border-green-500/20 bg-green-500/[0.04] p-5 md:p-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+        >
+          <div className="flex items-start gap-4">
+            <div className="w-10 h-10 rounded-xl bg-green-500/15 flex items-center justify-center text-green-400 flex-shrink-0">
+              <IconSearch />
             </div>
-
-            <p className="text-gray-300 text-sm font-medium leading-relaxed mb-2">{pack.tagline}</p>
-            <p className="text-gray-500 text-xs mb-5 italic">{pack.forWho}</p>
-
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6">
-              {pack.benefits.map((b, j) => (
-                <li key={j} className="flex items-start gap-2 text-gray-400 text-sm">
-                  <span className="text-cyan-400 flex-shrink-0 mt-0.5 text-xs">✓</span>
-                  {b}
-                </li>
-              ))}
-            </ul>
-
-            <a
-              href="#diagnostico"
-              onClick={() => {
-                if (typeof window !== 'undefined') sessionStorage.setItem('hg-pack', pack.id);
-              }}
-              className={`block w-full py-3.5 rounded-2xl text-sm text-center transition-all active:scale-[0.98] ${pack.ctaClass}`}
-            >
-              {pack.cta} →
-            </a>
-          </motion.div>
-        </AnimatePresence>
+            <div>
+              <div className="flex items-center gap-2 mb-0.5">
+                <p className="text-white font-extrabold text-base">¿No sabes cuál elegir?</p>
+                <span className="text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full bg-green-500 text-black">GRATIS</span>
+              </div>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Partamos con un diagnóstico gratuito. Revisamos tu negocio y te decimos 3 mejoras concretas — sin costo y sin compromiso.
+              </p>
+            </div>
+          </div>
+          <a
+            href="#diagnostico"
+            className="flex-shrink-0 px-7 py-3 bg-green-500 hover:bg-green-400 text-black font-extrabold text-sm rounded-2xl transition-all active:scale-[0.98] text-center whitespace-nowrap"
+          >
+            Diagnóstico gratuito →
+          </a>
+        </motion.div>
 
         <p className="mt-5 text-center text-gray-600 text-xs italic">
-          Precios y condiciones disponibles en la evaluación gratuita.
+          Precios y condiciones se definen en la evaluación gratuita, según tu negocio específico.
         </p>
       </div>
     </section>

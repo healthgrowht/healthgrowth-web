@@ -1,64 +1,60 @@
 import Navbar from './Navbar';
 import Hero from './Hero';
+import BusinessStrip from './BusinessStrip';
 import Problem from './Problem';
 import NeedsSelector from './NeedsSelector';
-import Transformation from './Transformation';
 import PacksCanonical from './PacksCanonical';
-import UseCases from './UseCases';
-import AutomationAI from './AutomationAI';
-import LiveSystemFlow from './LiveSystemFlow';
+import ChimiSection from './ChimiSection';
+import HowItWorks from './HowItWorks';
 import CasoPatitas from './CasoPatitas';
 import ProfessionalSupport from './ProfessionalSupport';
-import InstagramBlock from './InstagramBlock';
-import VideoShowcase from './VideoShowcase';
 import FAQ from './FAQ';
 import DiagnosticForm from './DiagnosticForm';
 import Footer from './Footer';
 import FloatingWhatsApp from './FloatingWhatsApp';
+import ChimiChat from './ChimiChat';
 
 export default function Home() {
   return (
     <main className="bg-[#071428] text-white min-h-screen relative">
       <Navbar />
 
-      {/* 1. ATENCIÓN */}
+      {/* 1. HERO */}
       <Hero />
 
-      {/* 2. PROBLEMA + NECESIDAD + PROCESO */}
-      <Problem />
-      <NeedsSelector />
-      <Transformation />
+      {/* 2. NEGOCIOS */}
+      <BusinessStrip />
 
-      {/* 3. SOLUCIONES */}
+      {/* 3. PROBLEMA */}
+      <Problem />
+
+      {/* 4. ¿QUÉ NECESITAS? */}
+      <NeedsSelector />
+
+      {/* 5. SOLUCIONES */}
       <PacksCanonical />
 
-      {/* 4. RUBROS */}
-      <UseCases />
+      {/* 6. CHIMI */}
+      <ChimiSection />
 
-      {/* 5. CÓMO FUNCIONA + CHIMI */}
-      <AutomationAI />
+      {/* 7. CÓMO FUNCIONA */}
+      <HowItWorks />
 
-      {/* 6. ECOSISTEMA EN ACCIÓN */}
-      <LiveSystemFlow />
-
-      {/* 7. CASO REAL — PATITAS FELICES + ROCCO */}
+      {/* 8. CASO REAL */}
       <CasoPatitas />
 
-      {/* 8. DIFERENCIADORES */}
+      {/* 9. CONFIANZA */}
       <ProfessionalSupport />
 
-      {/* 9. INSTAGRAM */}
-      <InstagramBlock />
-
-      {/* 10. VIDEO */}
-      <VideoShowcase />
-
-      {/* 11. PREGUNTAS + FORMULARIO */}
+      {/* 10. FAQ */}
       <FAQ />
+
+      {/* 11. EVALUACIÓN */}
       <DiagnosticForm />
 
       <Footer />
       <FloatingWhatsApp />
+      <ChimiChat />
     </main>
   );
 }

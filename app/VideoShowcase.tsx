@@ -12,7 +12,7 @@ const videos = [
   {
     src: '/videos/empresa/video-empresa-02.mp4',
     title: 'Sistemas que Trabajan por Ti',
-    desc: 'Agenda, WhatsApp y seguimiento de clientes funcionando solos.',
+    desc: 'Cómo conectamos atención, agenda y seguimiento para reducir el trabajo manual.',
   },
   {
     src: '/videos/empresa/video-empresa-03.mp4',

@@ -1,226 +1,253 @@
 "use client";
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { SITE_CONFIG } from './constants';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 
-const STEPS = [
-  { icon: "🌐", label: "Consulta llega", sub: "Web · WhatsApp · Instagram" },
-  { icon: "📊", label: "Queda registrado", sub: "Nada se pierde" },
-  { icon: "🤖", label: "Clasifica y responde", sub: "Automáticamente" },
-  { icon: "💬", label: "WhatsApp", sub: "Respuesta en minutos" },
-  { icon: "📅", label: "Reserva confirmada", sub: "Con recordatorio automático" },
-];
-
-const LIVE_EVENTS = [
-  "Nueva consulta · formulario web",
-  "Consulta clasificada y registrada",
-  "WhatsApp enviado",
-  "Reserva confirmada",
-];
-
-function PipelineCard() {
-  const [active, setActive] = useState(0);
-  const [notifVisible, setNotifVisible] = useState(false);
-  const [notifIdx, setNotifIdx] = useState(0);
+function ChimiPreview() {
+  const [stage, setStage] = useState<0|1|2|3>(0);
 
   useEffect(() => {
-    const id = setInterval(() => setActive(a => (a + 1) % STEPS.length), 1800);
-    return () => clearInterval(id);
+    const t1 = setTimeout(() => setStage(1), 700);
+    const t2 = setTimeout(() => setStage(2), 1600);
+    const t3 = setTimeout(() => setStage(3), 2600);
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, []);
 
-  useEffect(() => {
-    const show = setTimeout(() => {
-      setNotifVisible(true);
-      const hide = setTimeout(() => {
-        setNotifVisible(false);
-        setNotifIdx(n => (n + 1) % LIVE_EVENTS.length);
-      }, 2600);
-      return () => clearTimeout(hide);
-    }, 3000);
-    const repeat = setInterval(() => {
-      setNotifVisible(true);
-      setTimeout(() => {
-        setNotifVisible(false);
-        setNotifIdx(n => (n + 1) % LIVE_EVENTS.length);
-      }, 2600);
-    }, 7000);
-    return () => { clearTimeout(show); clearInterval(repeat); };
-  }, []);
+  const openChimi = () => {
+    const launcher = document.querySelector<HTMLButtonElement>('[aria-label="Abrir chat con Chimi"]');
+    launcher?.click();
+  };
 
   return (
-    <div className="relative w-full max-w-[340px] mx-auto lg:mx-0 lg:ml-auto">
-      <div className="absolute inset-0 bg-cyan-500/[0.04] blur-3xl rounded-full pointer-events-none" />
+    <div className="relative">
+      <div className="absolute -inset-10 bg-indigo-600/8 blur-3xl rounded-full pointer-events-none" />
 
-      {/* Live notification toast */}
-      <AnimatePresence>
-        {notifVisible && (
-          <motion.div
-            initial={{ opacity: 0, y: -8, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -4, scale: 0.95 }}
-            transition={{ duration: 0.3 }}
-            className="absolute -top-10 left-2 right-2 z-10 flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#071f3a] border border-cyan-500/25 shadow-lg shadow-black/40"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse flex-shrink-0" />
-            <span className="text-[10px] text-cyan-300 font-mono truncate">{LIVE_EVENTS[notifIdx]}</span>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <div className="relative bg-[#071f3a]/90 backdrop-blur-2xl border border-white/[0.09] rounded-[28px] p-5 shadow-2xl shadow-black/40">
-
-        <div className="flex items-center gap-2 mb-5 pb-4 border-b border-white/[0.05]">
-          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
-          <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-gray-500">Flujo automático</span>
-          <span className="ml-auto text-[9px] font-mono text-cyan-400/50">Health Growth</span>
-        </div>
-
-        <div className="space-y-0">
-          {STEPS.map((step, i) => (
-            <div key={i}>
-              <motion.div
-                animate={{ backgroundColor: active === i ? 'rgba(6,182,212,0.07)' : 'rgba(0,0,0,0)' }}
-                transition={{ duration: 0.4 }}
-                className="flex items-center gap-3 rounded-2xl px-3 py-2.5"
-              >
-                <motion.div
-                  animate={{ scale: active === i ? [1, 1.12, 1] : 1 }}
-                  transition={{ duration: 0.5, repeat: active === i ? Infinity : 0, repeatDelay: 1.3 }}
-                  className={`w-9 h-9 rounded-xl flex items-center justify-center text-base flex-shrink-0 border transition-all duration-300 ${
-                    active === i
-                      ? 'bg-cyan-500/15 border-cyan-500/40'
-                      : 'bg-white/[0.04] border-white/[0.09]'
-                  }`}
-                >
-                  {step.icon}
-                </motion.div>
-                <div className="flex-1 min-w-0">
-                  <p className={`text-[13px] font-semibold leading-tight truncate transition-colors duration-300 ${
-                    active === i ? 'text-white' : 'text-gray-500'
-                  }`}>
-                    {step.label}
-                  </p>
-                  <p className="text-[10px] text-gray-600 truncate mt-0.5">{step.sub}</p>
-                </div>
-                {active === i && (
-                  <motion.span
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="w-2 h-2 rounded-full bg-cyan-400 flex-shrink-0"
-                  />
-                )}
-              </motion.div>
-
-              {i < STEPS.length - 1 && (
-                <div className="ml-[22px] w-px h-4 bg-white/[0.05]" />
-              )}
+      <motion.div
+        initial={{ opacity: 0, y: 20, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ delay: 0.35, duration: 0.7, type: 'spring', stiffness: 200, damping: 28 }}
+        className="relative bg-[#09132a] border border-white/[0.09] rounded-[28px] overflow-hidden shadow-2xl shadow-black/50"
+      >
+        {/* Header */}
+        <div className="flex items-center gap-3 px-5 py-3.5 bg-[#060e1f] border-b border-white/[0.06]">
+          <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-indigo-500/40 flex-shrink-0">
+            <Image src="/images/chimi.jpeg" alt="Chimi" width={36} height={36}
+              className="w-full h-full object-cover object-[85%_25%]" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-white font-bold text-sm leading-none">Chimi</p>
+            <div className="flex items-center gap-1.5 mt-0.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
+              <p className="text-green-400 text-[11px]">Asistente de Health Growth</p>
             </div>
-          ))}
+          </div>
+          <div className="flex gap-1.5 opacity-40">
+            <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
+            <div className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+            <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
+          </div>
         </div>
 
-        <div className="mt-5 pt-4 border-t border-white/[0.05] flex items-center justify-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
-          <span className="text-[10px] text-gray-500 font-mono">Sistema operativo</span>
+        {/* Messages */}
+        <div className="px-4 py-5 space-y-3.5 min-h-[220px]">
+
+          {/* Chimi opens */}
+          {stage >= 1 && (
+            <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="flex gap-2 items-start">
+              <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-indigo-500/25 mt-0.5">
+                <Image src="/images/chimi.jpeg" alt="" width={28} height={28}
+                  className="w-full h-full object-cover object-[85%_25%]" />
+              </div>
+              <div className="bg-zinc-800/70 border border-white/[0.06] rounded-2xl rounded-tl-sm px-3 py-2.5 max-w-[240px]">
+                <p className="text-gray-200 text-[13px] leading-relaxed">Hola 👋 Soy Chimi. ¿Qué quieres mejorar en tu negocio?</p>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Quick replies */}
+          {stage >= 1 && (
+            <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
+              className="flex flex-wrap gap-1.5 pl-9">
+              {["📣 Promocionarme", "💬 Más consultas", "🤷 No sé"].map((qr, i) => (
+                <span key={i} className="px-2.5 py-1.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-[12px] font-medium">
+                  {qr}
+                </span>
+              ))}
+            </motion.div>
+          )}
+
+          {/* User reply */}
+          {stage >= 2 && (
+            <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} className="flex justify-end">
+              <div className="bg-indigo-600/25 border border-indigo-500/20 rounded-2xl rounded-tr-sm px-3 py-2.5 max-w-[200px]">
+                <p className="text-[13px] text-gray-200">💬 Más consultas</p>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Chimi follow-up */}
+          {stage >= 3 ? (
+            <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="flex gap-2 items-start">
+              <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-indigo-500/25 mt-0.5">
+                <Image src="/images/chimi.jpeg" alt="" width={28} height={28}
+                  className="w-full h-full object-cover object-[85%_25%]" />
+              </div>
+              <div className="bg-zinc-800/70 border border-white/[0.06] rounded-2xl rounded-tl-sm px-3 py-2.5 max-w-[240px]">
+                <p className="text-gray-200 text-[13px] leading-relaxed">Entendido 🐾 ¿Por dónde te llegan las consultas hoy?</p>
+              </div>
+            </motion.div>
+          ) : stage === 2 ? (
+            <div className="flex gap-2 items-center">
+              <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-indigo-500/25">
+                <Image src="/images/chimi.jpeg" alt="" width={28} height={28}
+                  className="w-full h-full object-cover object-[85%_25%]" />
+              </div>
+              <div className="bg-zinc-800/70 border border-white/[0.06] rounded-2xl rounded-tl-sm px-3 py-2.5">
+                <span className="flex gap-1 items-center h-4">
+                  {[0,1,2].map(i => (
+                    <motion.span key={i} className="w-1.5 h-1.5 bg-gray-500 rounded-full inline-block"
+                      animate={{ opacity: [0.3, 1, 0.3], y: [0, -3, 0] }}
+                      transition={{ duration: 0.9, repeat: Infinity, delay: i * 0.22 }} />
+                  ))}
+                </span>
+              </div>
+            </div>
+          ) : null}
         </div>
-      </div>
+
+        {/* Open real chat */}
+        <div className="px-4 pb-4">
+          <button
+            onClick={openChimi}
+            className="w-full py-2.5 rounded-xl bg-indigo-500/15 border border-indigo-500/25 text-indigo-300 text-[12px] font-bold hover:bg-indigo-500/25 transition-all"
+          >
+            🐾 Continuar esta conversación →
+          </button>
+        </div>
+      </motion.div>
+
+      {/* Floating badge */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.85, x: 12 }}
+        animate={{ opacity: 1, scale: 1, x: 0 }}
+        transition={{ delay: 2.8, type: 'spring' }}
+        className="absolute -bottom-5 -right-5 bg-[#060e1f] border border-white/[0.09] rounded-2xl px-4 py-2.5 shadow-xl shadow-black/40"
+      >
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+          <p className="text-white text-xs font-bold">Disponible ahora</p>
+        </div>
+        <p className="text-gray-500 text-[10px] mt-0.5">Responde en este sitio</p>
+      </motion.div>
     </div>
   );
 }
 
 export default function Hero() {
+  const openChimi = () => {
+    if (typeof window === 'undefined') return;
+    const launcher = document.querySelector<HTMLButtonElement>('[aria-label="Abrir chat con Chimi"]');
+    launcher?.click();
+  };
+
   return (
-    <section className="relative pt-24 md:pt-36 pb-16 md:pb-24 px-6 overflow-hidden">
+    <section className="relative pt-28 md:pt-40 pb-16 md:pb-24 px-6 overflow-hidden">
+      {/* Background glows */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-16 left-[20%] w-[600px] h-[400px] bg-cyan-500/[0.03] rounded-full blur-[120px]" />
-        <div className="absolute top-32 right-[15%] w-[400px] h-[400px] bg-blue-600/[0.03] rounded-full blur-[100px]" />
+        <div className="absolute top-0 left-[15%] w-[700px] h-[500px] bg-indigo-600/[0.05] rounded-full blur-[140px]" />
+        <div className="absolute top-20 right-[10%] w-[500px] h-[400px] bg-cyan-500/[0.03] rounded-full blur-[120px]" />
       </div>
 
       <div className="relative max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-[1fr_360px] lg:grid-cols-[1fr_380px] gap-10 md:gap-14 items-center">
+        <div className="grid lg:grid-cols-[1fr_400px] xl:grid-cols-[1fr_420px] gap-10 lg:gap-16 items-center">
 
-          {/* Text */}
+          {/* Left: Typography */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="flex flex-col items-start"
           >
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-cyan-400/20 bg-cyan-500/[0.05] backdrop-blur-md mb-8">
-              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-cyan-300">
-                Digitalización · Gestión · Crecimiento · Chile
+            {/* Eyebrow badge */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/[0.1] bg-white/[0.03] mb-7">
+              <span className="text-sm">🇨🇱</span>
+              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400">
+                Para PYMEs · Chile
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-[58px] font-bold tracking-tight leading-[1.1] mb-5">
-              Ordenamos tu negocio{' '}
-              <br className="hidden sm:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500">
-                para que venda mejor.
+            {/* H1 — editorial, 3-line composition */}
+            <h1 className="text-[42px] md:text-[56px] lg:text-[64px] font-extrabold tracking-tight leading-[1.07] mb-6">
+              Más presencia.<br />
+              Más clientes.<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-sky-400 to-cyan-400">
+                Menos caos.
               </span>
             </h1>
 
-            <p className="max-w-lg text-base md:text-lg text-gray-400 font-light leading-relaxed mb-10">
-              Ayudamos a PYMEs y negocios de servicios a ordenar su atención,
-              automatizar procesos y vender más — sin complicaciones técnicas.
+            {/* Subheadline */}
+            <p className="text-base md:text-lg text-gray-400 font-light leading-relaxed mb-8 max-w-xl">
+              Ayudamos a pequeños negocios a verse profesionales,
+              promocionarse, conseguir más consultas y organizarse —
+              {' '}<span className="text-gray-300 font-medium">sin que tengas que entender tecnología.</span>
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-3 mb-9">
               <a
                 href="#diagnostico"
-                className="px-8 py-4 bg-white text-black rounded-2xl font-extrabold text-base transition-all hover:shadow-[0_0_32px_rgba(6,182,212,0.3)] hover:scale-105 active:scale-95 text-center"
+                className="px-8 py-4 bg-white text-[#071428] rounded-2xl font-extrabold text-base text-center transition-all hover:bg-cyan-400 hover:scale-[1.02] active:scale-[0.98]"
               >
-                Evaluación gratuita →
+                Quiero mejorar mi negocio →
               </a>
-              <a
-                href={`${SITE_CONFIG.whatsapp.url}?text=${encodeURIComponent(SITE_CONFIG.whatsapp.messages.general)}`}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center justify-center gap-2 px-8 py-4 border border-white/15 text-white font-semibold rounded-2xl hover:border-green-500/40 hover:text-green-400 transition-all"
+              <button
+                onClick={openChimi}
+                className="flex items-center justify-center gap-2 px-8 py-4 border border-white/[0.12] text-white font-semibold rounded-2xl hover:border-indigo-500/50 hover:text-indigo-300 transition-all"
               >
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-green-400 flex-shrink-0">
-                  <path d="M12 4C7.58 4 4 7.58 4 12c0 1.49.42 2.87 1.14 4.04L4 20l4.08-1.07A7.96 7.96 0 0 0 12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8zm3.9 11.08c-.16.45-.95.88-1.3.92-.35.04-1.03.14-3.06-.65-2.44-.95-4-3.43-4.12-3.59-.12-.16-.98-1.3-.98-2.48 0-1.18.62-1.76.84-2 .22-.24.48-.3.64-.3h.46c.14.01.34-.05.53.4.19.46.65 1.59.71 1.7.06.12.1.26.02.42-.08.16-.12.26-.24.4-.12.14-.25.3-.36.4-.12.1-.24.21-.1.41.14.2.62.9 1.33 1.46.91.76 1.68 1 1.92 1.11.24.11.38.09.52-.05.14-.14.59-.69.75-.93.16-.24.32-.2.54-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.56-.1 1.01z"/>
-                </svg>
-                WhatsApp
-              </a>
+                <span>🐾</span>
+                Hablar con Chimi
+              </button>
             </div>
 
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-10 text-gray-600">
-              {[
-                { icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0 1 12 2.944a11.955 11.955 0 0 1-8.618 3.04A12.02 12.02 0 0 0 3 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", label: "Presencia profesional" },
-                { icon: "M13 10V3L4 14h7v7l9-11h-7z", label: "Más consultas" },
-                { icon: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z", label: "Clientes organizados" },
-              ].map(f => (
-                <div key={f.label} className="flex items-center gap-1.5">
-                  <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-cyan-500/50 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d={f.icon} />
-                  </svg>
-                  <span className="text-[11px]">{f.label}</span>
-                </div>
-              ))}
+            {/* Trust strip */}
+            <div className="flex flex-wrap items-center gap-4 text-[12px] text-gray-500">
+              <div className="flex items-center gap-1.5">
+                <span className="text-green-400 text-xs">✓</span>
+                <span>Diagnóstico inicial gratuito</span>
+              </div>
+              <div className="w-px h-3 bg-white/[0.08] hidden sm:block" />
+              <div className="flex items-center gap-1.5">
+                <span className="text-green-400 text-xs">✓</span>
+                <span>Empresa chilena</span>
+              </div>
+              <div className="w-px h-3 bg-white/[0.08] hidden sm:block" />
+              <div className="flex items-center gap-1.5">
+                <span className="text-green-400 text-xs">✓</span>
+                <span>Sin jerga técnica</span>
+              </div>
             </div>
           </motion.div>
 
-          {/* Pipeline card — desktop only */}
+          {/* Right: Chimi chat preview */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="hidden md:block"
+            transition={{ duration: 0.8, delay: 0.25 }}
+            className="hidden lg:block"
           >
-            <PipelineCard />
+            <ChimiPreview />
           </motion.div>
+
         </div>
 
-        {/* Scroll indicator */}
+        {/* Scroll cue */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.4 }}
+          transition={{ delay: 1.8 }}
           className="flex justify-center mt-14 md:mt-20"
         >
           <div className="flex items-center gap-3">
-            <div className="w-8 h-px bg-gradient-to-r from-transparent to-white/10" />
+            <div className="w-8 h-px bg-gradient-to-r from-transparent to-white/[0.08]" />
             <motion.svg
               animate={{ y: [0, 4, 0] }}
               transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
@@ -229,7 +256,7 @@ export default function Hero() {
             >
               <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </motion.svg>
-            <div className="w-8 h-px bg-gradient-to-l from-transparent to-white/10" />
+            <div className="w-8 h-px bg-gradient-to-l from-transparent to-white/[0.08]" />
           </div>
         </motion.div>
       </div>
