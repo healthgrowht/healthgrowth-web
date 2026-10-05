@@ -47,7 +47,7 @@ const needs = [
     label: "Darme a conocer",
     packId: "impulso",
     pack: "Pack Impulso",
-    tip: "Web profesional, WhatsApp Business y redes que muestran tu negocio como corresponde.",
+    tip: "Piezas gráficas para Instagram, imagen digital coherente y presencia web que muestran tu negocio como corresponde.",
     benefit: "Más personas te encuentran y se animan a contactarte.",
   },
   {

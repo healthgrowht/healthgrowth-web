@@ -187,8 +187,8 @@ export default function Hero() {
             {/* Subheadline */}
             <p className="text-base md:text-lg text-gray-400 font-light leading-relaxed mb-8 max-w-xl">
               Ayudamos a pequeños negocios a verse profesionales,
-              promocionarse, conseguir más consultas y organizarse —
-              {' '}<span className="text-gray-300 font-medium">sin que tengas que entender tecnología.</span>
+              crear contenido, atraer nuevos clientes y organizarse mejor —
+              {' '}<span className="text-gray-300 font-medium">con acompañamiento real, sin jerga técnica.</span>
             </p>
 
             {/* CTAs */}

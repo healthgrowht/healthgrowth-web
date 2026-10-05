@@ -122,7 +122,7 @@ export default function CasoPatitas() {
             >
               <p className="text-gray-300 text-sm leading-relaxed">
                 <span className="text-white font-semibold">¿Por qué un laboratorio propio?</span>{' '}
-                Antes de ofrecer un sistema a un cliente, lo construimos y probamos en casa. Lo que aprende ROCCO aquí lo trae Health Growth a tu empresa.
+                Antes de ofrecer un sistema a un cliente, lo construimos y probamos en casa. Lo que validamos con este piloto nos permite mejorar cómo implementamos estas soluciones en otros negocios.
               </p>
             </motion.div>
 
