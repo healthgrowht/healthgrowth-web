@@ -29,16 +29,16 @@ function ChimiPreview() {
         className="relative bg-[#09132a] border border-white/[0.09] rounded-[28px] overflow-hidden shadow-2xl shadow-black/50"
       >
         {/* Header */}
-        <div className="flex items-center gap-3 px-5 py-3.5 bg-[#060e1f] border-b border-white/[0.06]">
-          <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-indigo-500/40 flex-shrink-0">
+        <div className="flex items-center gap-3 px-5 py-3.5 bg-[#060d1a] border-b border-white/[0.06]">
+          <div className="w-9 h-9 rounded-full overflow-hidden border border-cyan-500/30 flex-shrink-0">
             <Image src="/images/chimi.svg" alt="Chimi" width={36} height={36}
               className="w-full h-full object-contain" />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-white font-bold text-sm leading-none">Chimi</p>
+            <p className="text-white font-semibold text-sm leading-none">Chimi</p>
             <div className="flex items-center gap-1.5 mt-0.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
-              <p className="text-green-400 text-[11px]">Asistente de Health Growth</p>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
+              <p className="text-gray-400 text-[11px]">Asistente de Health Growth</p>
             </div>
           </div>
           <div className="flex gap-1.5 opacity-40">
@@ -54,22 +54,22 @@ function ChimiPreview() {
           {/* Chimi opens */}
           {stage >= 1 && (
             <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="flex gap-2 items-start">
-              <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-cyan-500/25 mt-0.5 bg-[#0c1828]">
+              <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-cyan-500/20 mt-0.5 bg-[#0c1828]">
                 <Image src="/images/chimi.svg" alt="" width={28} height={28}
                   className="w-full h-full object-contain" />
               </div>
-              <div className="bg-zinc-800/70 border border-white/[0.06] rounded-2xl rounded-tl-sm px-3 py-2.5 max-w-[240px]">
-                <p className="text-gray-200 text-[13px] leading-relaxed">Hola 👋 Soy Chimi. ¿Qué quieres mejorar en tu negocio?</p>
+              <div className="bg-[#111c30] border border-white/[0.07] rounded-2xl rounded-tl-sm px-3 py-2.5 max-w-[240px]">
+                <p className="text-gray-300 text-[13px] leading-[1.55] font-normal">Cuéntame de tu negocio — te ayudo a encontrar por dónde empezar.</p>
               </div>
             </motion.div>
           )}
 
-          {/* Quick replies */}
+          {/* Quick replies — compact pills, no emoji */}
           {stage >= 1 && (
             <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
               className="flex flex-wrap gap-1.5 pl-9">
-              {["📣 Promocionarme", "💬 Más consultas", "🤷 No sé"].map((qr, i) => (
-                <span key={i} className="px-2.5 py-1.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-[12px] font-medium">
+              {["Más clientes", "Mejor imagen", "No sé por dónde"].map((qr, i) => (
+                <span key={i} className="px-3 py-1.5 rounded-full bg-white/[0.07] border border-white/[0.12] text-gray-300 text-[11px] font-medium">
                   {qr}
                 </span>
               ))}
@@ -79,8 +79,8 @@ function ChimiPreview() {
           {/* User reply */}
           {stage >= 2 && (
             <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} className="flex justify-end">
-              <div className="bg-indigo-600/25 border border-indigo-500/20 rounded-2xl rounded-tr-sm px-3 py-2.5 max-w-[200px]">
-                <p className="text-[13px] text-gray-200">💬 Más consultas</p>
+              <div className="bg-[#0f2040] border border-sky-500/15 rounded-2xl rounded-tr-sm px-3 py-2.5 max-w-[200px]">
+                <p className="text-[13px] text-gray-200">Quiero más clientes</p>
               </div>
             </motion.div>
           )}
@@ -88,21 +88,21 @@ function ChimiPreview() {
           {/* Chimi follow-up */}
           {stage >= 3 ? (
             <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="flex gap-2 items-start">
-              <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-cyan-500/25 mt-0.5 bg-[#0c1828]">
+              <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-cyan-500/20 mt-0.5 bg-[#0c1828]">
                 <Image src="/images/chimi.svg" alt="" width={28} height={28}
                   className="w-full h-full object-contain" />
               </div>
-              <div className="bg-zinc-800/70 border border-white/[0.06] rounded-2xl rounded-tl-sm px-3 py-2.5 max-w-[240px]">
-                <p className="text-gray-200 text-[13px] leading-relaxed">Entendido, ¿por dónde te llegan las consultas hoy?</p>
+              <div className="bg-[#111c30] border border-white/[0.07] rounded-2xl rounded-tl-sm px-3 py-2.5 max-w-[240px]">
+                <p className="text-gray-300 text-[13px] leading-[1.55] font-normal">Perfecto. ¿Hoy llegan solos o tienes que salir a buscarlos?</p>
               </div>
             </motion.div>
           ) : stage === 2 ? (
             <div className="flex gap-2 items-center">
-              <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-indigo-500/25">
+              <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-cyan-500/20 bg-[#0c1828]">
                 <Image src="/images/chimi.svg" alt="" width={28} height={28}
                   className="w-full h-full object-contain" />
               </div>
-              <div className="bg-zinc-800/70 border border-white/[0.06] rounded-2xl rounded-tl-sm px-3 py-2.5">
+              <div className="bg-[#111c30] border border-white/[0.07] rounded-2xl rounded-tl-sm px-3 py-2.5">
                 <span className="flex gap-1 items-center h-4">
                   {[0,1,2].map(i => (
                     <motion.span key={i} className="w-1.5 h-1.5 bg-gray-500 rounded-full inline-block"
@@ -119,7 +119,7 @@ function ChimiPreview() {
         <div className="px-4 pb-4">
           <button
             onClick={openChimi}
-            className="w-full py-2.5 rounded-xl bg-indigo-500/15 border border-indigo-500/25 text-indigo-300 text-[12px] font-bold hover:bg-indigo-500/25 transition-all"
+            className="w-full py-2.5 rounded-xl bg-cyan-600/20 border border-cyan-500/25 text-cyan-300 text-[12px] font-semibold hover:bg-cyan-600/30 hover:border-cyan-500/40 transition-all"
           >
             Continuar esta conversación →
           </button>
@@ -151,7 +151,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative pt-28 md:pt-40 pb-16 md:pb-24 px-6 overflow-hidden">
+    <section className="relative pt-28 md:pt-40 pb-20 md:pb-28 px-6 overflow-hidden">
       {/* Background glows */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-[15%] w-[700px] h-[500px] bg-indigo-600/[0.05] rounded-full blur-[140px]" />
@@ -167,6 +167,23 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
+            {/* Brand identity lockup */}
+            <div className="flex items-center gap-4 mb-7">
+              <div className="flex-shrink-0 rounded-2xl overflow-hidden border border-white/15 shadow-xl shadow-black/40">
+                <Image
+                  src="/logo/health-growth-logo.jpeg"
+                  alt="Health Growth"
+                  width={64}
+                  height={64}
+                  className="h-16 w-auto object-contain block"
+                />
+              </div>
+              <div>
+                <p className="text-white font-black text-[26px] md:text-[28px] tracking-tight leading-none">Health Growth</p>
+                <p className="text-gray-400 text-[12px] mt-1.5 tracking-wider font-normal">Crecimiento digital para PYMEs chilenas</p>
+              </div>
+            </div>
+
             {/* Eyebrow badge */}
             <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/[0.1] bg-white/[0.03] mb-7">
               <span className="text-sm">🇨🇱</span>
@@ -211,17 +228,17 @@ export default function Hero() {
             {/* Trust strip */}
             <div className="flex flex-wrap items-center gap-4 text-[12px] text-gray-500">
               <div className="flex items-center gap-1.5">
-                <span className="text-green-400 text-xs">✓</span>
+                <span className="text-emerald-400 text-xs">✓</span>
                 <span>Diagnóstico inicial gratuito</span>
               </div>
               <div className="w-px h-3 bg-white/[0.08] hidden sm:block" />
               <div className="flex items-center gap-1.5">
-                <span className="text-green-400 text-xs">✓</span>
+                <span className="text-emerald-400 text-xs">✓</span>
                 <span>Empresa chilena</span>
               </div>
               <div className="w-px h-3 bg-white/[0.08] hidden sm:block" />
-              <div className="flex items-center gap-1.5">
-                <span className="text-green-400 text-xs">✓</span>
+              <div className="hidden sm:flex items-center gap-1.5">
+                <span className="text-emerald-400 text-xs">✓</span>
                 <span>Sin jerga técnica</span>
               </div>
             </div>

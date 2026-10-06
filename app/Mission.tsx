@@ -3,10 +3,19 @@ import { motion } from 'framer-motion';
 
 const pillars = [
   {
+    label: "Propósito",
+    icon: "◇",
+    content:
+      "Hacer que el marketing útil, la organización digital y la automatización progresiva estén al alcance de pequeños negocios chilenos — sin que el dueño tenga que entender de tecnología para que funcione.",
+    color: "from-purple-500/20 to-purple-600/10",
+    accent: "border-purple-500/30",
+    tag: "text-purple-400",
+  },
+  {
     label: "Misión",
     icon: "◎",
     content:
-      "Ayudar a PYMEs y negocios de servicios a ordenar su atención, mejorar su presencia digital, automatizar procesos comerciales y convertir consultas en oportunidades reales — mediante tecnología simple, acompañamiento práctico e inteligencia aplicada.",
+      "Ayudar a pequeños negocios chilenos a verse bien, atraer más clientes y organizarse mejor — empezando desde donde están, con el nivel correcto para cada momento.",
     color: "from-blue-500/20 to-blue-600/10",
     accent: "border-blue-500/30",
     tag: "text-blue-400",
@@ -15,19 +24,10 @@ const pillars = [
     label: "Visión",
     icon: "◈",
     content:
-      "Ser el ecosistema chileno de modernización empresarial para PYMEs — integrando automatización, IA, CRM, contenido, datos y gestión comercial en soluciones accesibles, escalables y fáciles de implementar.",
+      "Que cualquier PYME chilena que quiera crecer tenga acceso a herramientas y acompañamiento que realmente funcionen — sin necesitar equipo técnico ni presupuesto corporativo.",
     color: "from-indigo-500/20 to-indigo-600/10",
     accent: "border-indigo-500/30",
     tag: "text-indigo-400",
-  },
-  {
-    label: "Propósito",
-    icon: "◇",
-    content:
-      "Reducir la brecha digital de pequeños negocios — entregándoles herramientas concretas para vender mejor, responder más rápido, organizar clientes y crecer con tecnología sin depender de sistemas complejos o inaccesibles.",
-    color: "from-purple-500/20 to-purple-600/10",
-    accent: "border-purple-500/30",
-    tag: "text-purple-400",
   },
 ];
 
@@ -35,7 +35,7 @@ export default function Mission() {
   return (
     <section
       id="mision"
-      className="py-32 px-6 bg-gradient-to-b from-black via-black to-black border-b border-white/5 relative overflow-hidden"
+      className="py-32 px-6 bg-gradient-to-b from-[#040d1c] via-[#071428] to-[#040d1c] border-b border-white/5 relative overflow-hidden"
     >
       <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-indigo-500/5 blur-[150px] -z-10 rounded-full pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-500/5 blur-[150px] -z-10 rounded-full pointer-events-none" />
@@ -58,8 +58,8 @@ export default function Mission() {
             Detrás de Health Growth
           </h2>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto font-light">
-            Creemos que todo negocio, por pequeño que sea, merece operar con orden, tecnología y
-            sistemas que funcionen. Primero claridad, después escala.
+            No vendemos tecnología por tecnología. Ayudamos a que tu negocio
+            funcione mejor — con herramientas prácticas y acompañamiento real.
           </p>
         </motion.div>
 
@@ -108,10 +108,9 @@ export default function Mission() {
           className="p-12 rounded-[32px] border border-indigo-500/20 bg-gradient-to-br from-indigo-500/10 via-indigo-500/5 to-blue-500/5 text-center"
         >
           <p className="text-xl md:text-2xl font-light text-white mb-6 leading-relaxed max-w-3xl mx-auto">
-            &ldquo;No es solo tecnología. Es el{" "}
-            <span className="font-semibold text-indigo-300">compromiso</span> de transformar la
-            realidad operativa de tu negocio — haciéndola más simple, más rápida, más
-            confiable.&rdquo;
+            &ldquo;El dueño de una barbería, una clínica o una tienda no debería necesitar entender
+            de automatización para que su negocio{" "}
+            <span className="font-semibold text-indigo-300">responda bien y pierda menos oportunidades</span>.&rdquo;
           </p>
           <div className="flex items-center justify-center gap-3">
             <div className="w-2 h-2 rounded-full bg-indigo-500" />

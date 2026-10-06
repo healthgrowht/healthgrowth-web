@@ -57,7 +57,7 @@ export default function ChimiSection() {
                   <p className="text-white font-extrabold text-base tracking-tight">Chimi</p>
                 </div>
                 <p className="text-cyan-400/80 text-[11px] font-semibold uppercase tracking-[0.2em]">Asistente Digital</p>
-                <p className="text-gray-600 text-[10px] mt-0.5">Health Growth Agency</p>
+                <p className="text-gray-600 text-[10px] mt-0.5">Health Growth</p>
               </div>
             </div>
 

@@ -1,11 +1,13 @@
 import Navbar from './Navbar';
 import Hero from './Hero';
+import PromoAnnouncement from './PromoAnnouncement';
 import BusinessStrip from './BusinessStrip';
 import Problem from './Problem';
 import NeedsSelector from './NeedsSelector';
 import PacksCanonical from './PacksCanonical';
 import ChimiSection from './ChimiSection';
 import HowItWorks from './HowItWorks';
+import Mission from './Mission';
 import CasoPatitas from './CasoPatitas';
 import ProfessionalSupport from './ProfessionalSupport';
 import FAQ from './FAQ';
@@ -17,6 +19,7 @@ import ChimiChat from './ChimiChat';
 export default function Home() {
   return (
     <main className="bg-[#071428] text-white min-h-screen relative">
+      <PromoAnnouncement />
       <Navbar />
 
       {/* 1. HERO */}
@@ -40,16 +43,19 @@ export default function Home() {
       {/* 7. CÓMO FUNCIONA */}
       <HowItWorks />
 
-      {/* 8. CASO REAL */}
+      {/* 8. PROPÓSITO / MISIÓN / VISIÓN */}
+      <Mission />
+
+      {/* 9. CASO REAL */}
       <CasoPatitas />
 
-      {/* 9. CONFIANZA */}
+      {/* 10. CONFIANZA */}
       <ProfessionalSupport />
 
-      {/* 10. FAQ */}
+      {/* 11. FAQ */}
       <FAQ />
 
-      {/* 11. EVALUACIÓN */}
+      {/* 12. EVALUACIÓN */}
       <DiagnosticForm />
 
       <Footer />

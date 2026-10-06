@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const problems = [
   {
     headline: "Mi negocio casi no se ve en internet.",
-    detail: "Tu trabajo es bueno, pero online pareces desaparecer. Instagram inconsistente, sin web, o con una que no genera confianza.",
+    detail: "Tu trabajo es bueno, pero online pareces desaparecer. Presencia digital inconsistente o poco profesional hace que posibles clientes te vean y no te elijan.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
         <circle cx="10" cy="10" r="8.5" stroke="currentColor" strokeWidth="1.4"/>

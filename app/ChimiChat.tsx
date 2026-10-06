@@ -61,10 +61,10 @@ const PACKS: Record<string, PackInfo> = {
     id: "atencion", badge: "ATENCIÓN",
   },
   ecosistema: {
-    name: "Ecosistema Completo",
-    tagline: "Imagen, captación, atención y organización integrados.",
-    benefits: ["Todo lo anterior funcionando junto", "Estrategia de contenido mensual", "Análisis de resultados y mejora continua", "Canales digitales conectados"],
-    id: "ecosistema", badge: "INTEGRAL",
+    name: "Avanza",
+    tagline: "Todo en un solo sistema — imagen, clientes y organización.",
+    benefits: ["Imagen Digital + Captación + Atención integrados", "Estrategia de contenido mensual", "Análisis de resultados y mejoras continuas", "Acompañamiento del equipo"],
+    id: "ecosistema", badge: "COMPLETO",
   },
   // Backwards-compat aliases for old pack IDs stored in sessionStorage
   impulso: { name: "Imagen Digital", tagline: "Imagen de marca y presencia digital que te representan bien.", benefits: ["Piezas gráficas para Instagram", "WhatsApp Business", "Imagen coherente", "Instagram optimizado"], id: "imagen", badge: "IMAGEN + CONTENIDO" },
@@ -82,11 +82,9 @@ const NEED_TO_PACK: Record<string, string> = {
 };
 
 const WELCOME_QRS: QR[] = [
-  { icon: "📣", label: "Darme a conocer", value: "presencia" },
-  { icon: "💬", label: "Conseguir más clientes", value: "consultas" },
-  { icon: "📋", label: "Ordenar mi negocio", value: "ordenar" },
-  { icon: "⏱️", label: "Ahorrar tiempo", value: "tiempo" },
-  { icon: "🤷", label: "No sé por dónde empezar", value: "nosé" },
+  { icon: "", label: "Quiero más clientes", value: "consultas" },
+  { icon: "", label: "Mejorar mi imagen digital", value: "presencia" },
+  { icon: "", label: "No sé por dónde empezar", value: "nosé" },
 ];
 
 const CONTEXT_ACK: Record<string, string> = {
@@ -236,7 +234,7 @@ export default function ChimiChat() {
     } else {
       setTimeout(() =>
         addChimiMsg(
-          "Hola, soy Chimi, el asistente digital de Health Growth.\n\nCuéntame qué te gustaría mejorar en tu negocio. Si no sabes cómo explicarlo, no importa: te ayudo.",
+          "Hola, soy Chimi 🐱\n\nCuéntame de tu negocio como quieras — te ayudo a encontrar por dónde empezar.",
           WELCOME_QRS, undefined, 600,
         ), 200,
       );
@@ -342,10 +340,9 @@ export default function ChimiChat() {
       const data = await res.json();
 
       if (!res.ok || data.error === 'AI_UNAVAILABLE' || !data.text) {
-        // Graceful fallback to rule-based engine
         setIsTyping(false);
         addChimiMsg(
-          "Entendido 🐱 ¿Se parece a alguna de estas opciones? Así puedo orientarte mejor.",
+          "Entendido. Para orientarte mejor, ¿cuál se acerca más a lo que necesitas?",
           WELCOME_QRS, undefined, 0,
         );
         setStage('welcome');
@@ -395,11 +392,26 @@ export default function ChimiChat() {
     } catch {
       setIsTyping(false);
       addChimiMsg(
-        "No pude conectarme ahora 🐱 ¿Me cuentas con tus palabras qué necesitas?",
-        WELCOME_QRS, undefined, 0,
+        "No pude conectarme ahora 🐱 ¿Cuéntame qué necesitas con tus palabras?",
+        undefined, undefined, 0,
       );
     }
   }, [messages, addChimiMsg, setIsTyping]);
+
+  const startNewConversation = useCallback(() => {
+    setMessages([]);
+    setStage('welcome');
+    setCtx({ need: null, packId: null });
+    hasInit.current = true;
+    try { sessionStorage.removeItem('chimi-context'); } catch { /* ok */ }
+    try { sessionStorage.removeItem('chimi-need'); } catch { /* ok */ }
+    setTimeout(() =>
+      addChimiMsg(
+        "Hola, soy Chimi 🐱\n\nCuéntame de tu negocio como quieras — te ayudo a encontrar por dónde empezar.",
+        WELCOME_QRS, undefined, 600,
+      ), 200,
+    );
+  }, [addChimiMsg]);
 
   const toggle = () => {
     setOpen(o => !o);
@@ -419,30 +431,40 @@ export default function ChimiChat() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 14, scale: 0.95 }}
             transition={{ duration: 0.22, type: 'spring', stiffness: 320, damping: 32 }}
-            className="absolute bottom-[72px] left-0 flex flex-col rounded-[24px] bg-[#09132a] border border-white/10 shadow-2xl shadow-black/60 overflow-hidden"
-            style={{ width: 'min(360px, calc(100vw - 40px))', maxHeight: 'min(580px, 70svh)' }}
+            className="absolute bottom-[76px] left-0 flex flex-col rounded-[24px] bg-[#08111e] border border-white/[0.09] shadow-2xl shadow-black/70 overflow-hidden"
+            style={{ width: 'min(370px, calc(100vw - 40px))', maxHeight: 'min(600px, 72svh)' }}
             role="dialog"
             aria-modal="true"
             aria-label="Chat con Chimi"
           >
             {/* Header */}
-            <div className="flex items-center gap-3 px-4 py-3 bg-[#060e1f] border-b border-white/[0.06] flex-shrink-0">
-              <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-indigo-500/40 flex-shrink-0">
-                <Image src="/images/chimi.svg" alt="Chimi" width={36} height={36} className="w-full h-full object-contain p-0.5" />
+            <div className="flex items-center gap-3 px-4 py-3.5 bg-[#060d1a] border-b border-white/[0.06] flex-shrink-0">
+              <div className="w-9 h-9 rounded-full overflow-hidden border border-cyan-500/30 bg-[#0c1828] flex-shrink-0 flex items-center justify-center">
+                <Image src="/images/chimi.svg" alt="Chimi" width={36} height={36} className="w-full h-full object-contain" />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-white font-bold text-sm leading-none">Chimi</p>
-                <div className="flex items-center gap-1.5 mt-0.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
-                  <p className="text-green-400 text-[10px]">Asistente digital · Health Growth</p>
+                <p className="text-white font-semibold text-[13.5px] leading-none tracking-tight">Chimi</p>
+                <div className="flex items-center gap-1.5 mt-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
+                  <p className="text-gray-400 text-[10.5px] font-normal">Asistente digital · Health Growth</p>
                 </div>
               </div>
+              {messages.length > 0 && (
+                <button
+                  onClick={startNewConversation}
+                  className="px-2.5 py-1 rounded-full bg-white/[0.05] hover:bg-white/[0.10] text-gray-500 hover:text-gray-300 text-[10px] font-semibold transition-all flex-shrink-0 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/20 whitespace-nowrap"
+                  aria-label="Nueva conversación"
+                  title="Empezar nueva conversación"
+                >
+                  Nueva
+                </button>
+              )}
               <button
                 onClick={() => setOpen(false)}
-                className="w-7 h-7 rounded-full bg-white/5 hover:bg-white/[0.12] flex items-center justify-center text-gray-500 hover:text-white transition-all flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
+                className="w-7 h-7 rounded-full bg-white/[0.05] hover:bg-white/[0.10] flex items-center justify-center text-gray-500 hover:text-gray-300 transition-all flex-shrink-0 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/20"
                 aria-label="Cerrar chat"
               >
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
                   <path d="M1 1l10 10M11 1L1 11" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
                 </svg>
               </button>
@@ -458,49 +480,50 @@ export default function ChimiChat() {
                 <div key={msg.id}>
                   {msg.role === 'chimi' ? (
                     <div className="flex gap-2 items-start">
-                      <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-indigo-500/25 mt-0.5">
+                      <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-cyan-500/20 bg-[#0c1828] mt-0.5">
                         <Image src="/images/chimi.svg" alt="" width={28} height={28} className="w-full h-full object-contain" />
                       </div>
                       <div className="flex-1 space-y-2.5 min-w-0">
                         {/* Bubble */}
-                        <div className="bg-zinc-800/70 border border-white/[0.06] rounded-2xl rounded-tl-sm px-3 py-2.5 max-w-[260px] text-gray-200 text-[13px] leading-relaxed">
+                        <div className="bg-[#111c30] border border-white/[0.07] rounded-2xl rounded-tl-sm px-3.5 py-2.5 max-w-[260px] text-gray-200/90 text-[13.5px] leading-[1.55] font-normal">
                           {msg.text.split('\n').map((line, i, arr) => (
                             <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
                           ))}
                         </div>
 
-                        {/* Pack card */}
+                        {/* Recommendation card */}
                         {msg.pack && (
                           <motion.div
                             initial={{ opacity: 0, y: 6 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="bg-[#071f3a] border border-cyan-500/20 rounded-2xl p-3.5 max-w-[260px]"
+                            className="rounded-2xl max-w-[260px] overflow-hidden border border-cyan-500/15"
                           >
-                            <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-cyan-400">{msg.pack.badge}</span>
-                            <p className="text-white font-bold text-sm mt-0.5 leading-tight">{msg.pack.name}</p>
-                            <p className="text-gray-400 text-xs mt-1.5 leading-relaxed">{msg.pack.tagline}</p>
-                            <ul className="mt-2 space-y-1">
+                            <div className="bg-[#071828] px-3.5 pt-3 pb-2.5">
+                              <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-cyan-500/80 block mb-1">{msg.pack.badge}</span>
+                              <p className="text-white font-semibold text-[13px] leading-snug">{msg.pack.name}</p>
+                              <p className="text-gray-400/80 text-[11.5px] mt-1 leading-snug">{msg.pack.tagline}</p>
+                            </div>
+                            <div className="bg-[#060f1c] px-3.5 py-2.5 space-y-1">
                               {msg.pack.benefits.map((b, i) => (
-                                <li key={i} className="flex items-start gap-1.5 text-[11px] text-gray-400 leading-snug">
-                                  <span className="text-cyan-400 flex-shrink-0 mt-0.5 text-[10px]">✓</span>
+                                <div key={i} className="flex items-start gap-1.5 text-[11px] text-gray-400/80 leading-snug">
+                                  <span className="text-cyan-500/70 flex-shrink-0 mt-0.5 text-[10px]">✓</span>
                                   {b}
-                                </li>
+                                </div>
                               ))}
-                            </ul>
+                            </div>
                           </motion.div>
                         )}
 
-                        {/* Quick replies */}
+                        {/* Suggestion chips — compact, not menu buttons */}
                         {msg.qrs && !msg.usedQrs && (
-                          <div className="flex flex-wrap gap-1.5">
+                          <div className="flex flex-wrap gap-1.5 mt-0.5">
                             {msg.qrs.map((qr, i) => (
                               <button
                                 key={i}
                                 onClick={() => handleQR(msg.id, qr, stage, ctx)}
-                                className="flex items-center gap-1 px-2.5 py-1.5 min-h-[36px] rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-[12px] font-medium hover:bg-indigo-500/25 hover:border-indigo-500/45 transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-indigo-400"
+                                className="px-3 py-1.5 rounded-full bg-white/[0.07] border border-white/[0.12] text-gray-300 text-[11px] font-medium hover:bg-white/[0.13] hover:text-white hover:border-white/25 transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/30"
                               >
-                                <span className="text-sm leading-none">{qr.icon}</span>
-                                <span>{qr.label}</span>
+                                {qr.label}
                               </button>
                             ))}
                           </div>
@@ -509,7 +532,7 @@ export default function ChimiChat() {
                     </div>
                   ) : (
                     <div className="flex justify-end">
-                      <div className="bg-indigo-600/25 border border-indigo-500/20 rounded-2xl rounded-tr-sm px-3 py-2.5 text-[13px] text-gray-200 max-w-[230px] leading-relaxed">
+                      <div className="bg-[#0f2040] border border-sky-500/15 rounded-2xl rounded-tr-sm px-3.5 py-2.5 text-[13.5px] text-gray-100/90 max-w-[230px] leading-[1.55] font-normal">
                         {msg.text}
                       </div>
                     </div>
@@ -521,10 +544,10 @@ export default function ChimiChat() {
               <AnimatePresence>
                 {isTyping && (
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex gap-2 items-center">
-                    <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-indigo-500/25">
+                    <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-cyan-500/25 bg-[#0c1828]">
                       <Image src="/images/chimi.svg" alt="" width={28} height={28} className="w-full h-full object-contain" />
                     </div>
-                    <div className="bg-zinc-800/70 border border-white/[0.06] rounded-2xl rounded-tl-sm px-3 py-2.5">
+                    <div className="bg-[#111c30] border border-white/[0.07] rounded-2xl rounded-tl-sm px-3 py-2.5">
                       <span className="flex gap-1 items-center h-4">
                         {[0, 1, 2].map(i => (
                           <motion.span key={i} className="w-1.5 h-1.5 bg-gray-500 rounded-full inline-block"
@@ -542,8 +565,8 @@ export default function ChimiChat() {
             {/* Text input */}
             <ChatInput onSend={handleFreeText} />
 
-            <p className="text-center text-gray-700 text-[10px] pb-2.5 flex-shrink-0 px-4">
-              Chimi en tu sitio · Health Growth
+            <p className="text-center text-gray-600/70 text-[10px] pb-2 flex-shrink-0 px-4">
+              Health Growth SpA · healthgrowth.cl
             </p>
           </motion.div>
         )}
@@ -633,24 +656,24 @@ function ChatInput({ onSend }: { onSend: (text: string) => void }) {
   };
 
   return (
-    <div className="px-3 pb-3 pt-2 flex-shrink-0 border-t border-white/[0.06]">
-      <div className="flex gap-2 items-end">
+    <div className="px-3 pb-3.5 pt-2.5 flex-shrink-0 border-t border-white/[0.06]">
+      <div className="flex gap-2 items-center">
         <input
           ref={ref}
           value={val}
           onChange={e => setVal(e.target.value)}
           onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) submit(); }}
-          placeholder="Cuéntame sobre tu negocio..."
-          className="flex-1 bg-zinc-900/70 border border-white/[0.1] rounded-2xl px-4 py-3 text-[14px] text-white placeholder:text-gray-500 outline-none focus:border-indigo-500/60 focus:bg-zinc-900 transition-all min-h-[44px]"
+          placeholder="Escribe lo que quieras..."
+          className="flex-1 bg-[#0c1828] border border-white/[0.09] rounded-2xl px-4 py-2.5 text-[13.5px] text-white/90 placeholder:text-gray-500/70 outline-none focus:border-cyan-500/35 focus:bg-[#0e1c32] transition-all min-h-[44px]"
           aria-label="Mensaje a Chimi"
         />
         <button
           onClick={submit}
           disabled={!val.trim()}
-          className="w-10 h-10 min-h-[44px] min-w-[40px] rounded-2xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-20 flex items-center justify-center text-white transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
+          className="w-10 h-10 rounded-2xl bg-cyan-600 hover:bg-cyan-500 disabled:opacity-25 flex items-center justify-center text-white transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 flex-shrink-0"
           aria-label="Enviar"
         >
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
             <path d="M2 8h12M9 3l5 5-5 5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </button>

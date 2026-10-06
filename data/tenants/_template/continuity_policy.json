@@ -1,0 +1,41 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "purpose": "Template de política de continuidad por tenant — copiar y personalizar",
+    "updated": "2026-09-06"
+  },
+  "tenant_id": "TENANT_ID_HERE",
+  "tenant_name": "Nombre del Negocio",
+  "owner_contact": {
+    "name": "Nombre del dueño",
+    "telegram": "TELEGRAM_CHAT_ID",
+    "email": "email@example.com"
+  },
+  "critical_modules": ["crm", "booking", "whatsapp_inbound"],
+  "backup_policy": {
+    "frequency_hours": 24,
+    "location": "gcs",
+    "bucket": "gs://bunkermaestro-backups-carlos/",
+    "retention_days": 30
+  },
+  "emergency_mode": {
+    "auto_pause_outbound": true,
+    "preserve_inbound": true,
+    "preserve_crm": true,
+    "preserve_backups": true
+  },
+  "recovery_contact": {
+    "primary": "carlos@healthgrowth.cl",
+    "secondary_channel": "telegram_bot"
+  },
+  "channel_priority": ["whatsapp", "telegram", "email"],
+  "outbound_pause_triggers": ["manual", "emergency_mode_flag"],
+  "rto_hours": 4,
+  "rpo_hours": 24,
+  "data_classification": {
+    "must_survive": ["crm records", "booking state", "business profile", "env config"],
+    "important": ["code", "n8n workflows", "config docs"],
+    "regenerable": ["AI output", "logs", "temp files"],
+    "noncritical": ["demo data", "test fixtures", "cache"]
+  }
+}

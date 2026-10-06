@@ -6,7 +6,7 @@ import { SITE_CONFIG } from './constants';
 const faqs = [
   {
     q: "¿Qué hace exactamente Health Growth?",
-    a: "Ayudamos a PYMEs y negocios de servicios a crecer y ordenarse. Eso incluye: mejorar cómo te ven en internet (web, Instagram, WhatsApp Business), ayudarte a promocionarte y atraer más consultas, organizar tu operación (clientes, agenda, seguimiento), y automatizar lo repetitivo cuando tiene sentido. Puedes contratarnos desde una cosa puntual hasta una solución completa — según lo que necesite tu negocio ahora."
+    a: "Ayudamos a PYMEs y negocios de servicios a crecer y ordenarse. Eso incluye: mejorar tu imagen digital y presencia en redes para que te vean como un negocio serio, crear contenido que atraiga consultas reales, organizar tu atención y el seguimiento de clientes, y automatizar lo repetitivo cuando tiene sentido. Puedes contratarnos para una cosa específica o para un sistema completo — según lo que necesite tu negocio ahora."
   },
   {
     q: "¿Para quién es Health Growth?",

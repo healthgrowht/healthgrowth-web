@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { SITE_CONFIG } from './constants';
 
-const WA_MESSAGE = 'Hola Luis, acabo de completar el formulario en la web. Me gustaría avanzar con la evaluación.';
+const WA_MESSAGE = 'Hola Health Growth, acabo de completar el formulario en la web. Me gustaría avanzar con la evaluación.';
 
 const inputClass = "w-full px-5 py-4 rounded-2xl bg-zinc-950/50 border border-white/10 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all placeholder:text-zinc-700 text-white";
 const labelClass = "text-[10px] font-bold uppercase tracking-widest text-gray-500 ml-1 block mb-1.5";
@@ -17,8 +17,11 @@ export default function DiagnosticForm() {
   const [selectedService, setSelectedService] = useState<string>(() => {
     if (typeof window === 'undefined') return '';
     const stored = sessionStorage.getItem('hg-pack') ?? '';
+    // Normalize old pack IDs to new ones
+    const idMap: Record<string, string> = { impulso: 'imagen', asistente: 'atencion', automatizacion: 'atencion' };
+    const normalized = idMap[stored] ?? stored;
     if (stored) sessionStorage.removeItem('hg-pack');
-    return stored;
+    return normalized;
   });
 
   const openWhatsApp = () => {
@@ -53,7 +56,20 @@ export default function DiagnosticForm() {
       ciudad:    String(formData.get('commune') ?? ''),
       rubro:     String(formData.get('service') ?? ''),
       necesidad: String(formData.get('challenge') ?? ''),
-      source: 'web-healthgrowth.cl',
+      source: (() => {
+        try {
+          const ctx = JSON.parse(sessionStorage.getItem('chimi-context') ?? '{}');
+          if (ctx.source === 'chimi-ai') return 'chimi-ai';
+          if (ctx.source === 'chimi') return 'chimi-static';
+          return 'web-healthgrowth.cl';
+        } catch { return 'web-healthgrowth.cl'; }
+      })(),
+      chimiNeed: (() => {
+        try { return JSON.parse(sessionStorage.getItem('chimi-context') ?? '{}').need ?? ''; } catch { return ''; }
+      })(),
+      chimiRecommendation: (() => {
+        try { return JSON.parse(sessionStorage.getItem('chimi-context') ?? '{}').pack_recommendation ?? ''; } catch { return ''; }
+      })(),
       timestamp: new Date().toISOString(),
       utmSource:   new URLSearchParams(window.location.search).get('utm_source') ?? 'directo',
       utmMedium:   new URLSearchParams(window.location.search).get('utm_medium') ?? '',
@@ -216,12 +232,11 @@ export default function DiagnosticForm() {
                     className={`${inputClass} appearance-none pr-10 text-gray-300`}
                   >
                     <option value="">Seleccionar...</option>
-                    <option value="diagnostico">Diagnóstico Express (gratuito)</option>
-                    <option value="impulso">Pack Impulso — Presencia y imagen digital</option>
-                    <option value="asistente">Atención Automática — Respuesta rápida a consultas</option>
-                    <option value="automatizacion">Pack Organización — Clientes, agenda y seguimiento</option>
-                    <option value="ecosistema">Ecosistema Completo — Todo integrado</option>
-                    <option value="acompanamiento">Acompañamiento Mensual — Mejora continua</option>
+                    <option value="diagnostico">Diagnóstico Gratuito — Ver qué me conviene primero</option>
+                    <option value="imagen">Imagen Digital — Piezas gráficas, Instagram y WhatsApp Business</option>
+                    <option value="captacion">Captación Activa — Contenido mensual para atraer clientes</option>
+                    <option value="atencion">Atención y Orden — Automatización WhatsApp y agenda</option>
+                    <option value="ecosistema">Avanza — Todo integrado</option>
                     <option value="otro">No sé todavía — quiero orientación</option>
                   </select>
                   <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gray-500">

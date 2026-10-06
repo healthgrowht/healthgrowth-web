@@ -102,4 +102,19 @@ export const SITE_CONFIG = {
     { name: 'Caso Real', href: '#piloto' },
     { name: 'FAQ', href: '#faq' },
   ],
+
+  // ── Sistema de anuncios/promociones ────────────────────────────────────────
+  // Editar solo aquí para activar o cambiar el anuncio.
+  // enabled:false → no ocupa espacio, no se renderiza.
+  promo: {
+    enabled: false,
+    type: 'announcement' as 'announcement' | 'launch' | 'promotion',
+    eyebrow: '',
+    title: '',
+    description: '',
+    ctaLabel: '',
+    ctaTarget: '#diagnostico',
+    startDate: null as string | null,
+    endDate: null as string | null,
+  },
 };

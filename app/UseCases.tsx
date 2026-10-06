@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 const rubros = [
   {
     icon: "🐾",
-    name: "Grooming",
-    fullName: "Peluquería Canina / Grooming",
+    name: "Peluquería Canina",
+    fullName: "Peluquería Canina",
     problems: ["Reservas por WhatsApp sin orden", "Clientes que no confirman la cita", "Sin historial de mascotas"],
     solution: "Agenda digital, recordatorios automáticos y registro por mascota y dueño. Menos llamadas, más citas confirmadas.",
     result: "Menos ausencias, operación ordenada sin contratar más personal.",

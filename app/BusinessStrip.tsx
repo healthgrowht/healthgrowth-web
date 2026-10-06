@@ -14,7 +14,7 @@ const businesses = [
   },
   {
     id: "grooming",
-    label: "Grooming",
+    label: "Peluquería Canina",
     tagline: "Clientes, mascotas e historial organizado en un solo lugar.",
     photo: "/images/business/grooming.jpg",
     bar: "bg-teal-400",

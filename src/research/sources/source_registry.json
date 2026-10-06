@@ -1,0 +1,166 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "updated": "2026-09-06",
+    "purpose": "Official public sources for investigative research — NO private databases"
+  },
+  "jurisdictions": {
+    "CL": {
+      "name": "Chile",
+      "unclaimed_funds": [
+        {
+          "id": "CL-GOV-TESORONET",
+          "name": "TESORONET — Fondos no reclamados",
+          "url": "https://www.tesoronet.cl",
+          "type": "OFFICIAL_GOVERNMENT",
+          "evidence_level": 1,
+          "free": true,
+          "requires_auth": false,
+          "notes": "Tesorería General de la República — principal fuente CL"
+        }
+      ],
+      "succession": [
+        {
+          "id": "CL-COURT-PJUD",
+          "name": "Poder Judicial — Consulta de causas",
+          "url": "https://www.pjud.cl",
+          "type": "COURT",
+          "evidence_level": 2,
+          "free": true,
+          "requires_auth": false,
+          "notes": "Buscar causa por nombre/RUT — posesión efectiva, sucesión intestada"
+        },
+        {
+          "id": "CL-GOV-SRCEI",
+          "name": "Registro Civil e Identificación",
+          "url": "https://www.srcei.cl",
+          "type": "OFFICIAL_GOVERNMENT",
+          "evidence_level": 1,
+          "free": true,
+          "requires_auth": false,
+          "notes": "Defunciones, nacimientos, matrimonios — certificados con costo"
+        },
+        {
+          "id": "CL-REG-CBR",
+          "name": "Conservador de Bienes Raíces",
+          "url": "https://www.conservadores.cl",
+          "type": "REGISTRY",
+          "evidence_level": 2,
+          "free": false,
+          "requires_auth": false,
+          "notes": "Por jurisdicción local — propiedades, hipotecas"
+        },
+        {
+          "id": "CL-GOV-SII",
+          "name": "Servicio de Impuestos Internos",
+          "url": "https://www.sii.cl",
+          "type": "OFFICIAL_GOVERNMENT",
+          "evidence_level": 1,
+          "free": true,
+          "requires_auth": false,
+          "notes": "Bienes raíces (Contribuciones), RUT — solo datos públicos"
+        }
+      ],
+      "financial": [
+        {
+          "id": "CL-GOV-CMF",
+          "name": "Comisión para el Mercado Financiero",
+          "url": "https://www.cmfchile.cl",
+          "type": "OFFICIAL_GOVERNMENT",
+          "evidence_level": 1,
+          "free": true,
+          "notes": "Regulador financiero — entidades autorizadas, sanciones"
+        }
+      ]
+    },
+    "US": {
+      "name": "United States",
+      "unclaimed_funds": [
+        {
+          "id": "US-NAUPA-MISSINGMONEY",
+          "name": "MissingMoney.com (NAUPA Official)",
+          "url": "https://www.missingmoney.com",
+          "type": "OFFICIAL_GOVERNMENT",
+          "evidence_level": 1,
+          "free": true,
+          "requires_auth": false,
+          "notes": "National Association of Unclaimed Property Administrators — multi-state"
+        },
+        {
+          "id": "US-NAUPA-UNCLAIMED",
+          "name": "Unclaimed.org (NAUPA)",
+          "url": "https://unclaimed.org",
+          "type": "OFFICIAL_GOVERNMENT",
+          "evidence_level": 1,
+          "free": true,
+          "notes": "NAUPA member states aggregator"
+        },
+        {
+          "id": "US-GOV-USAGOV",
+          "name": "USA.gov Unclaimed Money",
+          "url": "https://www.usa.gov/unclaimed-money",
+          "type": "OFFICIAL_GOVERNMENT",
+          "evidence_level": 1,
+          "free": true,
+          "notes": "Federal government portal linking to official sources"
+        },
+        {
+          "id": "US-GOV-FDIC",
+          "name": "FDIC Unclaimed Funds",
+          "url": "https://www.fdic.gov/resources/resolutions/bank-failures/failed-bank-list/",
+          "type": "OFFICIAL_GOVERNMENT",
+          "evidence_level": 1,
+          "free": true,
+          "notes": "Failed bank unclaimed deposits"
+        },
+        {
+          "id": "US-GOV-PBGC",
+          "name": "PBGC Missing Participants",
+          "url": "https://www.pbgc.gov/workers-retirees/missing-participants-pension",
+          "type": "OFFICIAL_GOVERNMENT",
+          "evidence_level": 1,
+          "free": true,
+          "notes": "Pension Benefit Guaranty Corporation — unclaimed pension funds"
+        },
+        {
+          "id": "US-GOV-IRS",
+          "name": "IRS Unclaimed Tax Refunds",
+          "url": "https://www.irs.gov/refunds/about-where-s-my-refund",
+          "type": "OFFICIAL_GOVERNMENT",
+          "evidence_level": 1,
+          "free": true,
+          "notes": "Only claimable by the taxpayer or authorized representative"
+        }
+      ],
+      "succession": [
+        {
+          "id": "US-COURT-PACER",
+          "name": "PACER — Federal Court Records",
+          "url": "https://pacer.gov",
+          "type": "COURT",
+          "evidence_level": 2,
+          "free": false,
+          "requires_auth": true,
+          "notes": "Per-page fee — federal court records including probate appeals"
+        }
+      ],
+      "state_specific": {
+        "CA": {"name": "California", "url": "https://www.sco.ca.gov/upd_msg.html"},
+        "NY": {"name": "New York", "url": "https://osc.state.ny.us/osc/cpd/"},
+        "TX": {"name": "Texas", "url": "https://claimittexas.org"},
+        "FL": {"name": "Florida", "url": "https://www.myfloridacfo.com/division/unclaimed/"}
+      }
+    }
+  },
+  "scam_indicators": [
+    "advance fee required to release funds",
+    "unsolicited inheritance notification",
+    "cryptocurrency payment demanded",
+    "unofficial domain mimicking government",
+    "identity documents requested via email",
+    "promise of percentage in advance",
+    "foreign national claiming they selected you as beneficiary",
+    "urgency / limited time pressure",
+    "no official case number provided"
+  ]
+}

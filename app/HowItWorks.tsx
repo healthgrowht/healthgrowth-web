@@ -17,7 +17,7 @@ const steps = [
   {
     num: "03",
     label: "Lo implementamos",
-    desc: "Ejecutamos lo que corresponde: imagen, contenido, automatización — según lo que necesita tu negocio.",
+    desc: "Ejecutamos lo que corresponde: imagen y contenido para estar bien presentes, promoción para atraer clientes, organización y seguimiento para no perderlos.",
     accent: "text-sky-400",
   },
   {
@@ -30,7 +30,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="como-funciona" className="py-16 md:py-24 px-6 bg-[#071428] border-t border-white/[0.05]">
+    <section id="como-funciona" className="py-16 md:py-24 px-6 bg-[#0b1e38] border-t border-white/[0.07]">
       <div className="max-w-5xl mx-auto">
 
         {/* Header */}

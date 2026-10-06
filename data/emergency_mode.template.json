@@ -1,0 +1,27 @@
+{
+  "_meta": {
+    "purpose": "Emergency mode control flags — deploy to /opt/carlos-os/data/emergency_mode.json on server",
+    "note": "The carlos-os service reads this file. Backups/CRM/inbound are NOT affected by these flags.",
+    "updated": "2026-09-06"
+  },
+  "mode": "NORMAL",
+  "pause_marketing_outbound": false,
+  "pause_prospecting": false,
+  "pause_social_publishing": false,
+  "pause_noncritical_automations": false,
+  "pause_ai_background_jobs": false,
+  "updated_at": "2026-09-06T00:00:00Z",
+  "updated_by": "carlos",
+  "modes": {
+    "NORMAL": "All services active",
+    "STANDBY": "Infrastructure healthy, outbound paused",
+    "EMERGENCY": "Minimum viable services only"
+  },
+  "guaranteed_always_active": [
+    "GCS backups (cron on VM, not controlled by this flag)",
+    "GCP snapshots (GCP scheduler, not controlled by this flag)",
+    "CRM persistence (inbound always writes)",
+    "Health check endpoint (/health/ping)",
+    "Inbound webhook processing"
+  ]
+}

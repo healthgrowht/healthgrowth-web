@@ -80,15 +80,15 @@ export const CATALOG: Record<string, Pack> = {
   },
   ecosistema: {
     id: 'ecosistema',
-    name: 'Ecosistema Completo',
-    badge: 'INTEGRAL',
-    tagline: 'Imagen, captación, atención y organización integrados y funcionando juntos.',
-    forWho: 'PYMEs que quieren todo funcionando junto.',
+    name: 'Avanza',
+    badge: 'COMPLETO',
+    tagline: 'Todo en un solo sistema — imagen, clientes y organización.',
+    forWho: 'Negocios con movimiento que quieren imagen, captación y atención funcionando juntos.',
     benefits: [
-      'Todo lo anterior integrado y coordinado',
+      'Imagen Digital + Captación Activa + Atención y Orden integrados',
       'Estrategia de contenido mensual para redes',
-      'Análisis de resultados y mejora continua',
-      'Canales digitales conectados entre sí',
+      'Análisis de resultados y mejoras continuas',
+      'Acompañamiento directo del equipo',
     ],
     notIncluded: [],
     model: 'Implementación + mensualidad',
@@ -244,7 +244,7 @@ ESCALERA DE RECOMENDACIÓN:
 Sin imagen coherente → Imagen Digital primero
 Con imagen pero sin clientes nuevos → Captación Activa
 Con consultas pero se pierden → Atención y Orden
-Quiere todo funcionando → Ecosistema Completo
+Quiere todo funcionando → Avanza
 No sabe qué necesita → Diagnóstico Gratuito
 
 CONTROL DE VERACIDAD:
