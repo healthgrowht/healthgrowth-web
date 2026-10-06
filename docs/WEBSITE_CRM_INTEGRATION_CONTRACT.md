@@ -1,6 +1,6 @@
 # WEBSITE ↔ CRM INTEGRATION CONTRACT
 # healthgrowth.cl → carlos-os backend
-# Versión: 1.0 | Fecha: 2026-09-02
+# Versión: 1.1 | Fecha: 2026-10-06 (updated from 1.0 / 2026-09-02)
 
 ---
 
@@ -37,7 +37,7 @@ Auth:   ninguna (endpoint público — fuente diferencia leads)
 
   // ── CONTEXTO DEL NEGOCIO ────────────────────────────────────────
   "ciudad":    "string | required | ciudad o comuna",
-  "rubro":     "string | required | enum: diagnostico | impulso | asistente | automatizacion | ecosistema | acompanamiento | otro",
+  "rubro":     "string | required | enum: diagnostico | imagen | captacion | atencion | avanza | otro",
   "necesidad": "string | required | descripción libre del desafío",
 
   // ── ATTRIBUTION ─────────────────────────────────────────────────
@@ -52,15 +52,17 @@ Auth:   ninguna (endpoint público — fuente diferencia leads)
 
 ### Valores enum para `rubro`
 
-| Valor | Label en UI |
+| Valor | Label en UI (V43+) |
 |-------|------------|
-| `diagnostico` | Diagnóstico Express (gratuito) |
-| `impulso` | Pack Impulso — Presencia digital |
-| `asistente` | Asistente IA Esencial |
-| `automatizacion` | Pack Automatización — CRM |
-| `ecosistema` | Ecosistema Completo |
-| `acompanamiento` | Acompañamiento Mensual |
+| `diagnostico` | Diagnóstico Gratuito — Ver qué me conviene primero |
+| `imagen` | Imagen Digital — Piezas gráficas, Instagram y WhatsApp Business |
+| `captacion` | Captación Activa — Contenido mensual para atraer clientes |
+| `atencion` | Atención y Orden — Automatización WhatsApp y agenda |
+| `avanza` | Avanza — Solución completa integrada |
 | `otro` | No sé todavía — quiero orientación |
+
+**Backward-compat map** (DiagnosticForm.tsx idMap — server must accept both):
+`impulso → imagen` | `asistente → atencion` | `automatizacion → atencion` | `ecosistema → avanza`
 
 ---
 
