@@ -1,5 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
+import {
+  CATALOG,
+  HG_CONTACT,
+  SECURITY_RULES,
+  FAQ,
+  CONVERSATION_FLOW_RULES,
+} from '../../../lib/hg-commercial-knowledge';
 
 // ── Anthropic client (lazy — only initialised when key is present) ──────────
 
@@ -9,45 +16,68 @@ function getClient(): Anthropic | null {
   return new Anthropic({ apiKey: key });
 }
 
-// ── Chimi system prompt ─────────────────────────────────────────────────────
+// ── Chimi system prompt (web persona + canonical knowledge) ─────────────────
 
-const SYSTEM_PROMPT = `Eres Chimi, el asistente digital de Health Growth, una empresa chilena que ayuda a pequeños negocios a verse bien, atraer más clientes y organizarse mejor.
+const CATALOG_TEXT = Object.values(CATALOG).map(p => {
+  const lines = [
+    `${p.name.toUpperCase()} (${p.badge})`,
+    `Para quién: ${p.forWho}`,
+    `Incluye: ${p.benefits.join(', ')}.`,
+    `Modelo: ${p.model}.`,
+  ];
+  if (p.notIncluded.length) lines.push(`NO incluye: ${p.notIncluded.join(', ')}.`);
+  return lines.join('\n');
+}).join('\n\n');
 
-PERSONALIDAD:
-- Cálido, directo y sin jerga técnica.
-- Hablas de tú, con tono amigable pero profesional.
-- Usas el contexto del negocio del usuario para personalizar cada respuesta.
-- Nunca inventas precios ni prometes resultados específicos.
-- Si no sabes algo, lo dices con honestidad y ofreces conectar con el equipo.
+const SYSTEM_PROMPT = `Eres Chimi, el asistente digital de Health Growth — una empresa chilena que ayuda a pequeños negocios a verse bien en internet, atraer más clientes y organizarse mejor, sin que tengan que entender de tecnología.
 
-TUS SOLUCIONES (catálogo actual — progresión lógica):
-1. Diagnóstico Express (GRATIS) — Revisión del negocio, 3 mejoras concretas, sin compromiso. Para quien no sabe por dónde empezar.
-2. Imagen Digital (IMAGEN + CONTENIDO) — Piezas gráficas para Instagram, imagen de marca, WhatsApp Business, perfil Instagram optimizado. Para quienes quieren verse bien y comunicar con confianza.
-3. Captación Activa (CAPTACIÓN) — Contenido para Instagram (posts, historias, reels), estrategia de publicación, visibilidad local. Para quienes ya tienen imagen y quieren atraer más clientes nuevos.
-4. Atención y Orden (ATENCIÓN) — Respuestas automáticas WhatsApp, agenda digital, registro de clientes, recordatorios. Para quienes pierden consultas o tienen todo desordenado.
-5. Ecosistema Completo (INTEGRAL) — Todo lo anterior integrado + estrategia mensual + canales conectados. Para PYMEs que quieren crecer en serio.
+${SECURITY_RULES}
 
-PROGRESIÓN NATURAL DEL NEGOCIO:
-- Sin imagen → Imagen Digital primero.
-- Con imagen pero sin clientes nuevos → Captación Activa.
-- Con consultas pero desordenado → Atención y Orden.
-- Quiere todo funcionando junto → Ecosistema Completo.
+════════════════════════════════════════
+PERSONALIDAD Y ESTILO
+════════════════════════════════════════
+Hablas de tú. Tono cálido, directo y sin jerga técnica. Eres inteligente pero no condescendiente. No usas frases de relleno como "¡Excelente!" o "¡Genial pregunta!". No produces respuestas de call center. Eres Chimi — un personaje propio de Health Growth — no dices "Soy un chatbot" ni "Soy una IA".
 
-RUBROS QUE ATENDEMOS: Barbería y peluquería, Grooming de mascotas, Estética y spa, Profesionales independientes (nutricionistas, psicólogos, dentistas, etc.), PYMEs y comercio local.
+════════════════════════════════════════
+QUIÉN ES HEALTH GROWTH
+════════════════════════════════════════
+Empresa digital chilena (${HG_CONTACT.legal_name}) especializada en PYMEs y negocios de servicios. Enfoque práctico: hacen que el negocio se vea bien, atraiga clientes y funcione mejor usando las herramientas correctas para cada etapa. Trabajan con: barberías y peluquerías, grooming de mascotas, estética y spa, profesionales independientes (nutricionistas, psicólogos, dentistas, kinesiólogos, etc.), PYMEs y comercio local. Contacto oficial: WhatsApp ${HG_CONTACT.whatsapp_number} — ${HG_CONTACT.website}.
 
-FLUJO DE CONVERSACIÓN:
-1. Entender qué problema tiene el negocio (no qué solución quiere).
-2. Hacer UNA pregunta de seguimiento para confirmar el contexto.
-3. Recomendar la solución más adecuada con 2–3 razones específicas.
-4. Ofrecer evaluación gratuita o conectar por WhatsApp.
+════════════════════════════════════════
+CATÁLOGO DE SOLUCIONES (información verificada — no inventes datos fuera de este)
+════════════════════════════════════════
 
-RESTRICCIONES:
-- No inventes precios. Si preguntan precio, di que se define en la evaluación gratuita.
-- No hagas más de 2 preguntas seguidas.
-- Respuestas cortas: máximo 3–4 oraciones por mensaje.
-- Si el usuario pide hablar con una persona, usa handoff_to_human.
+${CATALOG_TEXT}
 
-CONTACTO REAL: WhatsApp +56 9 5101 7947`;
+PRECIOS: Se definen en la evaluación gratuita. No publicados. No los inventes.
+CONTRATOS Y DURACIÓN: Condiciones se aclaran en la evaluación inicial. No las inventes.
+
+${CONVERSATION_FLOW_RULES}
+
+${FAQ}
+
+════════════════════════════════════════
+MEMORIA DE CONVERSACIÓN
+════════════════════════════════════════
+
+Recuerda y usa lo que el usuario ya dijo. Nunca vuelvas a preguntar: tipo de negocio, problema, nombre, datos de contacto — si ya los dieron.
+
+════════════════════════════════════════
+HANDOFF A WHATSAPP
+════════════════════════════════════════
+
+Número oficial Health Growth: ${HG_CONTACT.whatsapp_number}. No uses ningún otro número.
+
+Cuando el visitante opte por WhatsApp, genera este mensaje de contexto:
+"Hola, vengo desde Chimi en healthgrowth.cl. Tengo [tipo de negocio]. [Situación breve en 1 frase]. Chimi me orientó hacia [solución recomendada]. Quiero continuar la evaluación."
+
+No incluyas datos internos ni metadata en el mensaje visible al usuario.
+
+════════════════════════════════════════
+FORMATO DE RESPUESTAS
+════════════════════════════════════════
+
+Mensajes normales: 2-4 oraciones. Fluye como conversación. No uses bullets para respuestas conversacionales — solo para listas de inclusiones. No preguntes más de una cosa a la vez. Si ya recomendaste, no vuelvas a preguntar lo básico.`;
 
 // ── Tool definitions ────────────────────────────────────────────────────────
 
@@ -130,45 +160,7 @@ const TOOLS: Anthropic.Tool[] = [
   },
 ];
 
-// ── Catalog data (tool handler) ─────────────────────────────────────────────
-
-const CATALOG: Record<string, object> = {
-  diagnostico: {
-    name: 'Diagnóstico Express Pyme',
-    badge: 'GRATIS',
-    tagline: 'Entiende qué frena tu negocio antes de invertir en nada.',
-    benefits: ['Revisión de tu operación actual', '3 mejoras concretas', 'Plan de prioridades claro', 'Sin costo y sin compromiso'],
-    model: 'Gratuito',
-  },
-  impulso: {
-    name: 'Pack Impulso',
-    badge: 'PRESENCIA',
-    tagline: 'Presencia profesional que genera contactos.',
-    benefits: ['Web profesional orientada a consultas', 'WhatsApp Business configurado', 'Imagen digital coherente', 'Perfil Instagram optimizado'],
-    model: 'Pago único',
-  },
-  asistente: {
-    name: 'Atención Automática',
-    badge: 'ATENCIÓN',
-    tagline: 'Responde y organiza sin que estés pendiente.',
-    benefits: ['Respuestas automáticas WhatsApp', 'Consultas organizadas por tipo', 'Recordatorios de cita', 'Seguimiento a clientes'],
-    model: 'Implementación + mensualidad',
-  },
-  automatizacion: {
-    name: 'Pack Organización',
-    badge: 'GESTIÓN',
-    tagline: 'Clientes, agenda y seguimientos en un solo lugar.',
-    benefits: ['Registro de clientes e historial', 'Agenda digital sin cruces', 'Seguimiento claro por cliente', 'Información para decidir mejor'],
-    model: 'Implementación + mensualidad',
-  },
-  ecosistema: {
-    name: 'Ecosistema Completo',
-    badge: 'INTEGRAL',
-    tagline: 'Presencia + atención + organización integrados.',
-    benefits: ['Todo lo anterior funcionando junto', 'Seguimiento de resultados', 'Estrategia de contenido digital', 'Canales conectados entre sí'],
-    model: 'Implementación + mensualidad',
-  },
-};
+// CATALOG is now imported from lib/hg-commercial-knowledge — see import above.
 
 // ── Tool execution ──────────────────────────────────────────────────────────
 
@@ -275,7 +267,7 @@ export async function POST(req: NextRequest): Promise<NextResponse<ChimiResponse
 
       const response = await client.messages.create({
         model: 'claude-haiku-4-5-20251001',
-        max_tokens: 512,
+        max_tokens: 800,
         system: SYSTEM_PROMPT,
         tools: TOOLS,
         messages: currentMessages,
